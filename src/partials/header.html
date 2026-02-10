@@ -1,0 +1,118 @@
+<header class="header">
+  <div class="container">
+    <nav class="header__wrapper">
+      <button class="header__burger" type="button">
+        <span class="visually-hidden">Open menu</span>
+      </button>
+
+      <div class="header__nav">
+
+        <ul class="header__menu">
+          <li class="header__menu-item">
+            <a class="header__menu-link" href="#">Главная</a>
+          </li>
+          <li class="header__menu-item">
+            <p class="header__subtitle">Перголы</p>
+            <ul class="header__submenu">
+              <li class="header__subitem">
+                <a class="header__menu-link" href="#">Тентовая пергола</a>
+              </li>
+              <li class="header__subitem">
+                <a class="header__menu-link" href="#">Биоклиматическая пергола</a>
+              </li>
+              <li class="header__subitem">
+                <a class="header__menu-link" href="#">Пергола с&nbsp;сэндвич&#8288;-&#8288;панелями</a>
+              </li>
+              <li class="header__subitem">
+                <a class="header__menu-link" href="#">Зимний сад</a>
+              </li>
+            </ul>
+          </li>
+          <li class="header__menu-item">
+            <a class="header__menu-link" href="#">Наши работы</a>
+          </li>
+          <li class="header__menu-item">
+            <a class="header__menu-link" href="#">Блог</a>
+          </li>
+          <li class="header__menu-item">
+            <a class="header__menu-link" href="#">Контакты</a>
+          </li>
+        </ul>
+
+        <div class="header__logo">
+          @if (typeof isHomepage !== 'undefined') {
+          <a class="header__logo-img">
+            <img src="img/logo.svg" alt="Логотип компании Luxsunlife.">
+          </a>
+          }
+          @if (typeof isHomepage === 'undefined') {
+          <a class="header__logo-img" href="index.html">Logo
+            <img src="img/logo.svg" alt="Логотип компании Luxsunlife.">
+          </a>
+          }
+        </div>
+
+        <div class="header__contacts">
+          <div class="header__contacts-wrapper">
+            <p class="header__contacts-title button">Связаться с&nbsp;нами</p>
+            <ul class="header__contacts-list">
+              <li class="header__contacts-item">
+                <a class="header__contacts-link button" href="#">Позвонить нам</a>
+              </li>
+              <li class="header__contacts-item">
+                <a class="header__contacts-link button" href="#">Написать в&nbsp;MAX</a>
+              </li>
+              <li class="header__contacts-item">
+                <a class="header__contacts-link button" href="#">Написать на&nbsp;почту</a>
+              </li>
+              <li class="header__contacts-item">
+                <a class="header__contacts-link button" href="#">Написать в&nbsp;Telegram</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="header__socials">
+          <p class="header__socials-title">Социальные сети</p>
+          <ul class="header__socials-list">
+            <li class="header__socials-item">
+              <a class="header__socials-link header__socials-link--rutube" href="#" target="_blank" rel="noreferrer noopener">
+                <span class="visually-hidden">Rutube.</span>
+              </a>
+            </li>
+            <li class="header__socials-item">
+              <a class="header__socials-link header__socials-link--dzen" href="#" target="_blank" rel="noreferrer noopener">
+                <span class="visually-hidden">Dzen.</span>
+              </a>
+            </li>
+            <li class="header__socials-item">
+              <a class="header__socials-link header__socials-link--vk" href="#" target="_blank" rel="noreferrer noopener">
+                <span class="visually-hidden">Vkontakte.</span>
+              </a>
+            </li>
+            <li class="header__socials-item">
+              <a class="header__socials-link header__socials-link--tg" href="#" target="_blank" rel="noreferrer noopener">
+                <span class="visually-hidden">Telegram.</span>
+              </a>
+            </li>
+            <li class="header__socials-item">
+              <a class="header__socials-link header__socials-link--youtube" href="#" target="_blank" rel="noreferrer noopener">
+                <span class="visually-hidden">Youtube.</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+
+
+      </div>
+
+      <button class="header__callback button" type="button">Обратный звонок</button>
+
+
+
+
+
+    </nav>
+  </div>
+</header>

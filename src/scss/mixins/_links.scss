@@ -1,0 +1,59 @@
+@use "interactive-states" as *;
+
+@mixin social-link {
+  --color: var(--white);
+
+  position: relative;
+  display: block;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--color);
+  border-radius: 50%;
+  transition: background-color 0.3s;
+
+  &--rutube {
+    --icon: url("../img/sprite.svg#rutube");
+  }
+
+  &--dzen {
+    --icon: url("../img/sprite.svg#dzen");
+  }
+
+  &--vk {
+    --icon: url("../img/sprite.svg#vk");
+  }
+
+  &--tg {
+    --icon: url("../img/sprite.svg#tg");
+  }
+
+  &--youtube {
+    --icon: url("../img/sprite.svg#youtube");
+  }
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    content: "";
+    width: 30px;
+    height: 30px;
+    mask-image: var(--icon);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    background-color: var(--color);
+    transition: background-color 0.3s;
+  }
+
+  // @include hover-focus {
+  //   --color: var(--bg-accent);
+
+  //   outline: none;
+  // }
+
+  // @include active {
+  //   --color: var(--bg-accent-opacity);
+  // }
+}

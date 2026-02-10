@@ -1,0 +1,15 @@
+// базовые подключения
+@use "index" as *;
+
+// подключения компонентов
+@use "./components/logo-image";
+@use "./components/title";
+@use "./components/button";
+@use "./components/button-swiper";
+@use "./components/button-scroll-top";
+@use "./components/breadcrumbs";
+@use "./components/map";
+@use "./components/modal";
+
+// подключения секций страницы
+@use "./blocks/header";

@@ -1,0 +1,30 @@
+:root {
+  // base
+  --font-family: "Inter", "Arial", sans-serif;
+  --font-secondary: "Benzin", "Arial", sans-serif;
+  --content-width: 1920px;
+  --container-offset-mobile: 10px;
+  --container-offset-tablet: 20px;
+
+  // colors
+  --transparent: rgba(255, 255, 255, 0);
+  --white: #ffffff;
+  --black: #000000;
+  --bg-light: #f2f2ef;
+  --bg-dark: #2a2a2a;
+
+  --milk: #fefcf6;
+}
+
+// Viewports
+// ---------------------------------
+
+$vp-320: 320px;
+$vp-430: 430px;
+$vp-550: 550px;
+$vp-768: 768px;
+$vp-1024: 1024px;
+$vp-1280: 1280px;
+$vp-1366: 1366px;
+$vp-1640: 1640px;
+$vp-1920: 1920px;
