@@ -57,3 +57,24 @@
   //   --color: var(--bg-accent-opacity);
   // }
 }
+
+@mixin link-with-arrow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  justify-items: start;
+  align-items: center;
+  gap: 10px;
+
+  &::after {
+    grid-area: 1 / 2 / 2 / 3;
+    content: "";
+    width: 10px;
+    height: 9px;
+    mask-image: url("../img/sprite.svg#arrow");
+    mask-repeat: no-repeat;
+    mask-size: 100% 100%;
+    mask-position: center center;
+    background-color: var(--white);
+    transition: background-color 0.3s, transform 0.3s, opacity 0.3s;
+  }
+}

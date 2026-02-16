@@ -3,6 +3,8 @@ import {
   isTabKey,
   getScrollWidth
 } from '../_utils.js';
+import { renderPhotoToModal } from '../components/_modal-render.js';
+import { TABLET_WIDTH } from "./../_vars.js";
 
 let scrollSize = 0;
 
@@ -25,6 +27,13 @@ class ModalWindow {
 
         this.modal = document.querySelector(`[data-modal="${modalName}"]`);
         if (!this.modal) return;
+
+        if (modalName === 'image-full' && !TABLET_WIDTH.matches) return;
+
+        // проверяет, нужно ли дополнительно отрисовывать элементы в модальном окне
+        if (modalName === 'image-full') {
+          renderPhotoToModal(this.modal, button);
+        }
 
         this.modalWindow = this.modal.querySelector('.modal__container');
         this.closeBtn = this.modal.querySelector('.modal__close-button');

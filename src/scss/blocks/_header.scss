@@ -3,11 +3,9 @@
 .header {
   padding: 17px 0 10px;
   color: var(--white);
-  background-color: var(--bg-dark);
+  z-index: 100;
 
-  min-height: 500px;
-
-  @include vp-768 {
+  @include vp-1366 {
     padding: 20px 0 10px;
   }
 }
@@ -72,6 +70,7 @@
     align-items: start;
     gap: 20px;
     padding: 0;
+    background-color: var(--transparent);
     overflow-y: unset;
     transform: scaleY(1);
     visibility: visible;
@@ -93,9 +92,13 @@
 
   @include vp-768 {
     justify-self: start;
-    min-width: 155px;
+    min-width: 130px;
     margin: 0;
     padding-right: 30px;
+  }
+
+  @include vp-1024 {
+    min-width: 155px;
   }
 }
 
@@ -107,6 +110,10 @@
   text-transform: uppercase;
 
   @include vp-768 {
+    font-size: 12px;
+  }
+
+  @include vp-1366 {
     font-size: 14px;
   }
 
@@ -119,32 +126,33 @@
   }
 }
 
+.header__menu-link {
+  @include interactive-link;
+
+  --color: var(--white);
+}
+
 .header__subtitle {
   display: none;
   margin: 0;
+  padding: 0;
+  background-color: var(--transparent);
+  border: none;
+  text-transform: uppercase;
+  color: inherit;
 
   @include vp-768 {
+    @include link-with-arrow;
+    @include interactive-arrow-shift;
+
     position: relative;
-    display: grid;
     grid-template-columns: auto 1fr;
-    justify-items: start;
-    align-items: center;
     gap: 5px;
     cursor: pointer;
   }
 
   &::after {
-    @include vp-768 {
-      grid-area: 1 / 2 / 2 / 3;
-      content: "";
-      width: 10px;
-      height: 9px;
-      mask-image: url("../img/sprite.svg#arrow");
-      mask-repeat: no-repeat;
-      mask-size: 100% 100%;
-      mask-position: center center;
-      background-color: var(--white);
-    }
+    opacity: 1;
   }
 }
 
@@ -159,11 +167,23 @@
     position: absolute;
     top: 0;
     left: 100%;
+    width: 220px;
+  }
+
+  @include vp-1024 {
     min-width: 240px;
+    max-width: 300px;
+  }
+
+  @include vp-1366 {
+    width: 450px;
+    max-width: unset;
   }
 }
 
-.header__menu-item:hover .header__submenu {
+.header__menu-item:hover .header__submenu,
+.header__menu-item:focus-visible .header__submenu,
+.header__menu-item:focus-within .header__submenu {
   @include visible;
 }
 
@@ -175,6 +195,20 @@
     @include vp-768 {
       margin: 0 0 2px;
     }
+  }
+}
+
+.header__subitem .header__menu-link {
+  @include vp-768 {
+    @include link-with-arrow;
+    @include interactive-arrow-shift;
+
+    grid-template-columns: auto 1fr;
+    gap: 5px;
+  }
+
+  &::after {
+    background-color: var(--color);
   }
 }
 
@@ -190,6 +224,10 @@
   @include vp-768 {
     position: relative;
     justify-self: end;
+    min-width: 185px;
+  }
+
+  @include vp-1024 {
     min-width: 225px;
   }
 }
@@ -201,7 +239,37 @@
   @include vp-768 {
     display: grid;
     width: 100%;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+
+  @include vp-1366 {
+    padding: 6px 0;
     font-size: 14px;
+  }
+
+  @include vp-1920 {
+    padding: 8px 0;
+  }
+
+  @include hover-focus {
+    --color: var(--white);
+
+    transform: scale(1);
+
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+
+  @include active {
+    --color: var(--white);
+  }
+}
+.header__contacts-wrapper:has(.header__contacts-list:hover) .header__contacts-title,
+.header__contacts-wrapper:focus-within .header__contacts-title {
+  &::after {
+    transform: rotate(90deg);
   }
 }
 
@@ -215,13 +283,16 @@
 
     position: absolute;
     top: 100%;
-    width: 100%;
+    left: -10px;
+    width: calc(100% + 20px);
     margin: 0;
-    padding: 0;
+    padding: 0 10px;
   }
 }
 
-.header__contacts-wrapper:hover .header__contacts-list {
+.header__contacts-wrapper:hover .header__contacts-list,
+.header__contacts-wrapper:focus-visible .header__contacts-list,
+.header__contacts-wrapper:focus-within .header__contacts-list {
   @include visible;
 }
 
@@ -233,6 +304,32 @@
 
 .header__contacts-link {
   font-size: 14px;
+
+  @include vp-768 {
+    padding: 4px 0;
+    font-size: 12px;
+  }
+
+  @include vp-1366 {
+    padding: 6px 0;
+    font-size: 14px;
+  }
+
+  @include vp-1920 {
+    padding: 8px 0;
+  }
+
+  &::after {
+    opacity: 0;
+    transform: translateX(-5px);
+  }
+
+  @include hover-focus {
+    &::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 }
 
 .header__socials {
@@ -267,7 +364,17 @@
 
   @include vp-768 {
     width: 100%;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+
+  @include vp-1366 {
     margin: 0 0 5px;
+    padding: 6px 0;
     font-size: 14px;
+  }
+
+  @include vp-1920 {
+    padding: 8px 0;
   }
 }

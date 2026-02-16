@@ -1,30 +1,33 @@
 @use "index" as *;
 
 .title {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
+  font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 1.1;
+  text-transform: uppercase;
 
-  @include vp-550 {
+  font-weight: 500;
+  font-variation-settings: "wdth" 200;
+
+  @include vp-1024 {
     font-size: 25px;
   }
 
-  @include vp-768 {
-    font-size: 30px;
-  }
-
-  @include vp-1024 {
-    font-size: 45px;
-    line-height: 90%;
-    letter-spacing: -0.03em;
+  @include vp-1280 {
+    font-size: 32px;
   }
 
   @include vp-1366 {
-    margin: 0;
+    font-size: 38px;
   }
 
   @include vp-1640 {
-    font-size: 62px;
+    font-size: 46px;
+  }
+
+  @include vp-1920 {
+    font-size: 52px;
   }
 }

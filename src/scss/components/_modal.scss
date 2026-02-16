@@ -6,16 +6,19 @@
   overflow-y: auto;
   top: 0;
   left: 0;
-  display: none;
+  display: flex;
   width: 100%;
   height: 100%;
   padding: 20px 0;
-  background-color: var(--overlay);
-  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.8);
+  visibility: hidden;
+  opacity: 0;
   z-index: 300;
 
   &.open {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.4s, opacity 0.4s;
   }
 }
 
@@ -36,6 +39,24 @@
   }
 }
 
+.modal--photo .modal__container {
+  padding: 0;
+
+  @include vp-768 {
+    max-width: calc(100% - 200px);
+    padding: 0;
+  }
+
+  @include vp-1024 {
+    max-width: calc(100% - 300px);
+    padding: 0;
+  }
+
+  @include vp-1640 {
+    max-width: 1280px;
+  }
+}
+
 .modal__close-button {
   @include interactive-opacity;
   @include close-button;
@@ -50,4 +71,24 @@
     width: 40px;
     height: 40px;
   }
+}
+
+.modal__image {
+  width: 100%;
+  max-width: 1280px;
+  max-height: 720px;
+  aspect-ratio: 1280 / 720;
+  margin: 0 auto;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: transform 0.6s 0.1s, opacity 0.6s 0.1s;
+
+  img {
+    @include img-cover;
+  }
+}
+
+.modal.open .modal__image {
+  opacity: 1;
+  transform: scale(1);
 }

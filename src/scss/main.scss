@@ -10,6 +10,10 @@
 @use "./components/breadcrumbs";
 @use "./components/map";
 @use "./components/modal";
+@use "./components/scroll-animation";
 
 // подключения секций страницы
 @use "./blocks/header";
+@use "./blocks/hero";
+@use "./blocks/about-us";
+@use "./blocks/areas";
