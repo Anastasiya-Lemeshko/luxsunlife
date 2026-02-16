@@ -11,11 +11,17 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_open_mobile_menu_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/_open-mobile-menu.js */ "./src/js/components/_open-mobile-menu.js");
 /* harmony import */ var _components_move_header_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/_move-header.js */ "./src/js/components/_move-header.js");
+/* harmony import */ var _components_scroll_trigger_animation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/_scroll-trigger-animation.js */ "./src/js/components/_scroll-trigger-animation.js");
+/* harmony import */ var _components_modal_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/_modal.js */ "./src/js/components/_modal.js");
+
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
   (0,_components_open_mobile_menu_js__WEBPACK_IMPORTED_MODULE_0__.toggleBurgerMenu)();
   (0,_components_move_header_js__WEBPACK_IMPORTED_MODULE_1__.moveHeader)();
+  (0,_components_scroll_trigger_animation_js__WEBPACK_IMPORTED_MODULE_2__.setScrollAnimation)();
+  (0,_components_modal_js__WEBPACK_IMPORTED_MODULE_3__.setModals)();
 });
 
 /***/ }),
@@ -253,6 +259,195 @@ const COUNT_GRID_COLUMNS = {
 
 /***/ }),
 
+/***/ "./src/js/components/_modal-render.js":
+/*!********************************************!*\
+  !*** ./src/js/components/_modal-render.js ***!
+  \********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   renderPhotoToModal: () => (/* binding */ renderPhotoToModal)
+/* harmony export */ });
+const renderPhotoToModal = (modal, button) => {
+  const modalImgContainer = modal.querySelector('.modal__image');
+  const fullImgContainer = button.parentElement.querySelector('[data-full-photo]');
+  if (!modalImgContainer || !fullImgContainer) return;
+  const fullImg = fullImgContainer.querySelector('picture') || fullImgContainer.querySelector('img');
+  if (!fullImg) return;
+  const copyFullImg = fullImg.cloneNode(true);
+  modalImgContainer.innerHTML = '';
+  modalImgContainer.appendChild(copyFullImg);
+};
+
+
+/***/ }),
+
+/***/ "./src/js/components/_modal.js":
+/*!*************************************!*\
+  !*** ./src/js/components/_modal.js ***!
+  \*************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setModals: () => (/* binding */ setModals)
+/* harmony export */ });
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../_utils.js */ "./src/js/_utils.js");
+/* harmony import */ var _components_modal_render_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/_modal-render.js */ "./src/js/components/_modal-render.js");
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../_vars.js */ "./src/js/_vars.js");
+
+
+
+let scrollSize = 0;
+class ModalWindow {
+  constructor(buttons) {
+    this.html = document.querySelector('html');
+    this.buttons = buttons || [];
+    this.firstFocusableElement = null;
+    this.lastFocusableElement = null;
+  }
+  handleOpen() {
+    if (this.buttons.length === 0) return;
+    this.buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const modalName = button.getAttribute('data-modal-button');
+        if (!modalName) return;
+        this.modal = document.querySelector(`[data-modal="${modalName}"]`);
+        if (!this.modal) return;
+        if (modalName === 'image-full' && !_vars_js__WEBPACK_IMPORTED_MODULE_2__.TABLET_WIDTH.matches) return;
+
+        // проверяет, нужно ли дополнительно отрисовывать элементы в модальном окне
+        if (modalName === 'image-full') {
+          (0,_components_modal_render_js__WEBPACK_IMPORTED_MODULE_1__.renderPhotoToModal)(this.modal, button);
+        }
+        this.modalWindow = this.modal.querySelector('.modal__container');
+        this.closeBtn = this.modal.querySelector('.modal__close-button');
+        const focusableElements = Array.from(this.modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
+        this.firstFocusableElement = focusableElements[0];
+        this.lastFocusableElement = focusableElements[focusableElements.length - 1];
+        this.addEventListeners();
+        this.openModal(this.modal);
+      });
+    });
+  }
+  addEventListeners() {
+    if (!this.modal || !this.modalWindow || !this.closeBtn) return;
+
+    // Закрытие по кнопке
+    this.closeBtn.addEventListener('click', this.handleClose);
+
+    // Закрытие по Escape
+    this.escapeHandler = evt => {
+      if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.isEscapeKey)(evt)) this.closeModal(this.modal);
+    };
+    window.addEventListener('keydown', this.escapeHandler);
+
+    // Закрытие по клику вне модального окна
+    this.modalWindow.addEventListener('click', evt => {
+      evt.stopPropagation();
+    });
+    this.modal.addEventListener('click', this.handleOverlayClick);
+
+    // Зацикливание фокуса
+    this.modal.addEventListener('keydown', this.loopFocus);
+  }
+  removeEventListeners() {
+    if (this.closeBtn) {
+      this.closeBtn.removeEventListener('click', this.handleClose);
+    }
+    window.removeEventListener('keydown', this.escapeHandler);
+    if (this.modal) {
+      this.modal.removeEventListener('click', this.handleOverlayClick);
+      this.modal.removeEventListener('keydown', this.loopFocus);
+    }
+  }
+  handleClose = () => {
+    this.closeModal(this.modal);
+  };
+  handleOverlayClick = evt => {
+    if (evt.target === this.modal) {
+      this.closeModal(this.modal);
+    }
+  };
+  loopFocus = evt => {
+    if (!(0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.isTabKey)(evt)) {
+      return;
+    }
+    if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.isTabKey)(evt) && evt.shiftKey && document.activeElement === this.firstFocusableElement) {
+      evt.preventDefault();
+      this.lastFocusableElement.focus();
+    } else if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.isTabKey)(evt) && !evt.shiftKey && document.activeElement === this.lastFocusableElement) {
+      evt.preventDefault();
+      this.firstFocusableElement.focus();
+    }
+  };
+  openModal(modal) {
+    if (!modal) return;
+
+    // нивелирует скачок из-за полосы прокрутки
+    scrollSize = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.getScrollWidth)();
+    this.html.style.paddingRight = `${scrollSize}px`;
+    this.html.classList.add('dis-scroll');
+    modal.classList.add('open');
+    this.closeBtn.focus();
+  }
+  openModalSuccess(modalSuccess) {
+    if (!modalSuccess) return;
+    this.closeAllModal();
+    this.modal = modalSuccess;
+    this.modalWindow = this.modal.querySelector('.modal__container');
+    this.closeBtn = this.modal.querySelector('.modal__close-button');
+    const focusableElements = Array.from(this.modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
+    this.firstFocusableElement = focusableElements[0];
+    this.lastFocusableElement = focusableElements[focusableElements.length - 1];
+    this.addEventListeners();
+    this.openModal(this.modal);
+  }
+  closeModal(modal) {
+    if (!modal) return;
+    this.html.classList.remove('dis-scroll');
+    modal.classList.remove('open');
+    this.removeEventListeners();
+    this.html.style.paddingRight = 0;
+  }
+  closeAllModal() {
+    const allModal = document.querySelectorAll('.modal');
+    if (!allModal) return;
+    allModal.forEach(el => {
+      if (el.classList.contains('open')) {
+        el.classList.remove('open');
+      }
+      if (this.html.classList.contains('dis-scroll')) {
+        this.html.classList.remove('dis-scroll');
+      }
+    });
+    this.removeEventListeners();
+    this.html.style.paddingRight = 0;
+  }
+  init() {
+    this.handleOpen();
+  }
+}
+const setModals = () => {
+  const openButtons = document.querySelectorAll('[data-modal-button]');
+  const modalWindow = new ModalWindow(openButtons);
+  const modalSuccess = document.querySelector('[modal-success]');
+  modalWindow.init();
+
+  // Проверка наличия jQuery
+  if (typeof jQuery === 'undefined' && typeof $ === 'undefined') {
+    console.warn('jQuery is not loaded.');
+    return;
+  }
+  $(document).on('af_complete', (evt, res) => {
+    if (modalSuccess) if (res.success) modalWindow.openModalSuccess(modalSuccess);
+  });
+};
+
+
+/***/ }),
+
 /***/ "./src/js/components/_move-header.js":
 /*!*******************************************!*\
   !*** ./src/js/components/_move-header.js ***!
@@ -362,6 +557,33 @@ _vars_js__WEBPACK_IMPORTED_MODULE_1__.DESKTOP_WIDTH.addEventListener('change', (
     (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.removeTabIndex)(headerLinks);
   }
 });
+
+
+/***/ }),
+
+/***/ "./src/js/components/_scroll-trigger-animation.js":
+/*!********************************************************!*\
+  !*** ./src/js/components/_scroll-trigger-animation.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setScrollAnimation: () => (/* binding */ setScrollAnimation)
+/* harmony export */ });
+const animatedElements = document.querySelectorAll('[data-animation]');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animated');
+    }
+  });
+}, {
+  threshold: 0.8
+});
+const setScrollAnimation = () => {
+  animatedElements.forEach(el => observer.observe(el));
+};
 
 
 /***/ })
