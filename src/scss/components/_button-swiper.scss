@@ -37,6 +37,7 @@
     mask-size: 100% 100%;
     mask-repeat: no-repeat;
     background-color: var(--color-arrow);
+    transform: rotate(180deg);
   }
 
   &--next {

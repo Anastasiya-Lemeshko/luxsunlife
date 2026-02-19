@@ -4,7 +4,7 @@
 @mixin swiper-button-position {
   display: flex;
   gap: 6px;
-  justify-content: flex-end;
+  justify-content: center;
 
   @include vp-1024 {
     gap: 10px;

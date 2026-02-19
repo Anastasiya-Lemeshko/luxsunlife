@@ -6,15 +6,12 @@
 <body class="page__body">
   @include('partials/header.html', {"isHomepage": true})
   <main class="page__main index">
-    <div class="index__hero">
-      @include('partials/hero.html')
-    </div>
-    <div class="index__about-us">
-      @include('partials/about-us.html')
-    </div>
-    <div class="index__about-us">
-      @include('partials/areas.html')
-    </div>
+    @include('partials/hero.html')
+    @include('partials/about-us.html')
+    @include('partials/areas.html')
+    @include('partials/advantages.html')
+    @include('partials/features.html')
+    @include('partials/types.html')
   </main>
   @include('partials/footer.html')
 </body>

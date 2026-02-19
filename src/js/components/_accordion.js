@@ -1,9 +1,10 @@
 const accordionButtons = document ? document.querySelectorAll('.accordion-button') : null;
 
 const openVisibleFontCardContent = () => {
-  if (!accordionButtons.length) return;
-
   const visibleFontCardContent = document.querySelectorAll('.accordion-content--opened');
+
+  if (!accordionButtons.length || !visibleFontCardContent.length) return;
+
   visibleFontCardContent.forEach((element) => {
     element.style.maxHeight = `${element.scrollHeight}px`;
   });
@@ -33,4 +34,4 @@ const setAccordeonToggles = () => {
   });
 };
 
-export { openVisibleFontCardContent, setAccordeonToggles };
+export { openVisibleFontCardContent, setAccordeonToggles, openCardDetails };

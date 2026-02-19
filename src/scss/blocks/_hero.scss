@@ -70,11 +70,11 @@
   @include vp-768 {
     max-width: 70%;
     padding: 50px 0 30px;
+    font-size: 32px;
   }
 
   @include vp-1024 {
     max-width: unset;
-    font-size: 32px;
     padding: 0;
   }
 

@@ -9,31 +9,23 @@ export const TABLET_WIDTH = window.matchMedia('(min-width: 768px)');
 export const SMALL_DESKTOP_WIDTH = window.matchMedia('(min-width: 1024px)');
 export const DESKTOP_WIDTH = window.matchMedia('(min-width: 1366px)');
 
-export const SLIDES_COUNT = {
+export const SLIDER_CONFIG = {
   'default': {
-    'mobile': 1,
-    'tablet': 2,
-    'desktop': 3
+    'mobile_count': 1,
+    'tablet_count': 2,
+    'desktop_count': 3
   },
-  'team': {
-    'mobile': 1,
-    'tablet': 2,
-    'desktop': 3
-  },
-  'featured': {
-    'mobile': 1,
-    'tablet': 3,
-    'desktop': 6
-  },
-  'blog-preview': {
-    'mobile': 1,
-    'tablet': 2,
-    'desktop': 3
+  'advantages': {
+    'mobile_count': 1,
+    'tablet_count': 2,
+    'desktop_count': 10000,
+    'loop': true,
+    'desktop_width': SMALL_DESKTOP_WIDTH,
   },
   'similar': {
-    'mobile': 1,
-    'tablet': 2,
-    'desktop': 3,
+    'mobile_count': 1,
+    'tablet_count': 2,
+    'desktop_count': 3,
     'desktop_width': SMALL_DESKTOP_WIDTH,
   }
 };
