@@ -1,0 +1,171 @@
+@use "index" as *;
+
+.render {
+  padding: 20px 0;
+
+  @include vp-1024 {
+    padding: 50px 0 38px;
+  }
+}
+
+.render__header {
+  margin: 0 0 20px;
+
+  @include vp-1366 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    gap: 50px;
+    margin: 0 0 34px;
+  }
+}
+
+.render__title {
+  margin: 0 0 20px;
+
+  @include vp-1366 {
+    margin: 0;
+  }
+}
+
+.render__header-text {
+  margin: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.03em;
+  color: var(--text-light);
+
+  @include vp-1366 {
+    max-width: 454px;
+    justify-self: end;
+  }
+}
+
+.render__wrapper {
+  @include vp-1024 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+.render__slider {
+  width: 100%;
+  aspect-ratio: 410 / 295;
+  margin: 0 0 20px;
+
+  @include vp-1024 {
+    margin: 0;
+  }
+}
+
+.render__form {
+  @include vp-1024 {
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+}
+
+.render__form-title {
+  font-size: 18px;
+
+  @include vp-1366 {
+    font-size: 25px;
+  }
+
+  @include vp-1640 {
+    font-size: 30px;
+  }
+
+  @include vp-1920 {
+    font-size: 35px;
+  }
+}
+
+.render__form-group {
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  @include vp-768 {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    align-items: end;
+    gap: 20px;
+  }
+
+  @include vp-1024 {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    grid-auto-flow: unset;
+  }
+
+  @include vp-1366 {
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+  }
+}
+
+.render__form-item {
+  &:not(:last-child) {
+    margin: 0 0 20px;
+
+    @include vp-768 {
+      margin: 0;
+    }
+  }
+}
+
+.render__field {
+  @include input;
+
+  input {
+    width: 100%;
+  }
+}
+
+.render__accept {
+  @include accept;
+}
+
+.render__file {
+  @include vp-768 {
+    grid-area: 1 / 2 / 3 / 3;
+    align-self: start;
+    padding: 7px 0 0;
+  }
+
+  @include vp-1024 {
+    grid-area: unset;
+  }
+
+  @include vp-1366 {
+    grid-area: 1 / 2 / 3 / 3;
+  }
+
+  .file-input__list {
+    @include vp-768 {
+      margin: 20px 0 0;
+    }
+
+    @include vp-1024 {
+      margin: 20px 0;
+    }
+
+    @include vp-1366 {
+      margin: 20px 0 0;
+    }
+  }
+}
+
+.render__file:has(.file-input__list.hidden) {
+  align-self: end;
+}
+
+.render__form-button {
+  width: 100%;
+}

@@ -1,0 +1,64 @@
+@use "index" as *;
+
+.file-input {
+  &__group {
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__label {
+    &::after {
+      content: "+";
+      font-size: 16px;
+      line-height: 0.6;
+      mask-image: none;
+      background-color: var(--transparent);
+    }
+  }
+
+  &__list {
+    margin: 20px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 20px;
+    align-items: center;
+    gap: 10px;
+
+    &:not(:last-child) {
+      margin: 0 0 3px;
+    }
+  }
+
+  &__name {
+    display: inline-block;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    @include vp-1024 {
+      max-width: 300px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+
+  &__delete {
+    @include close-button;
+    @include interactive-opacity;
+
+    background-color: var(--error);
+
+    &::before,
+    &::after {
+      width: 13px;
+      height: 1px;
+    }
+  }
+}

@@ -8,7 +8,8 @@ import {
   setSlidesTabIndex,
   checkVisibleSlides,
   getSwiperClass,
-  getBlockClass
+  getBlockClass,
+  setSwiperProgress
 } from '../_utils.js';
 import {
   TABLET_WIDTH,
@@ -81,10 +82,12 @@ const setNavigationSwiper = () => {
           init: function () {
             const numberOfVisibleSlides = checkVisibleSlides(sectionName);
             setSlidesTabIndex(this, numberOfVisibleSlides);
+            setSwiperProgress(this);
           },
           slideChange: function () {
             const numberOfVisibleSlides = checkVisibleSlides(sectionName);
             setSlidesTabIndex(this, numberOfVisibleSlides);
+            setSwiperProgress(this);
           }
         },
       });

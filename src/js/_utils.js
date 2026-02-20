@@ -123,6 +123,21 @@ const checkVisibleSlides = (block) => {
   }
 };
 
+const formatNumber = (num) => {
+  return num < 10 ? `0${num}` : `${num}`;
+};
+
+const setSwiperProgress = (swiper) => {
+  const progressElement = swiper.el.querySelector('.swiper-progress');
+
+  if (!progressElement) return;
+
+  const activeIndex = swiper.realIndex;
+  const totalSlides = swiper.slides.length;
+
+  progressElement.textContent = `${formatNumber(activeIndex + 1)}/${formatNumber(totalSlides)}`;
+};
+
 const debounce = (callback, timeoutDelay = 500) => {
   let timeoutId;
   return (...rest) => {
@@ -148,5 +163,6 @@ export {
   getBlockClass,
   setSlidesTabIndex,
   checkVisibleSlides,
+  setSwiperProgress,
   debounce
 };

@@ -1,0 +1,68 @@
+<section class="render">
+  <div class="container">
+    <div class="render__header">
+      <h2 class="render__title title">Бесплатный замер и 3d визуализация</h2>
+      <p class="render__header-text">Мы&nbsp;делаем предварительный рендер перголы в&nbsp;специальных программах и&nbsp;вы&nbsp;сможете увидеть, как будет выглядеть ваша пергола до&nbsp;начала работ.</p>
+    </div>
+    <div class="render__wrapper">
+      <div class="render__slider slider-compare">
+        <ul class="slider-compare__list">
+          <li class="slider-compare__screen slider-compare__screen--before">
+            <picture>
+              <source width="410" height="295" type="image/webp" media="(min-width: 768px)" srcset="img/render/before-tablet@1x.webp 1x, img/render/before-tablet@2x.webp 2x">
+              <source width="935" height="673" type="image/webp" srcset="img/render/before-mobile@1x.webp 1x, img/render/before-mobile@2x.webp 2x">
+              <source width="410" height="295" type="image/jpg" media="(min-width: 768px)" srcset="img/render/before-tablet@1x.jpg 1x, img/render/before-tablet@2x.jpg 2x">
+              <img class="slider__image" src="img/render/before-mobile@1x.jpg" srcset="img/render/before-mobile@2x.jpg 2x" width="935" height="673" alt="Премиальные перголы">
+            </picture>
+          </li>
+          <li class="slider-compare__screen slider-compare__screen--after">
+            <picture>
+              <source width="410" height="295" type="image/webp" media="(min-width: 768px)" srcset="img/render/after-tablet@1x.webp 1x, img/render/after-tablet@2x.webp 2x">
+              <source width="935" height="673" type="image/webp" srcset="img/render/after-mobile@1x.webp 1x, img/render/after-mobile@2x.webp 2x">
+              <source width="410" height="295" type="image/jpg" media="(min-width: 768px)" srcset="img/render/after-tablet@1x.jpg 1x, img/render/after-tablet@2x.jpg 2x">
+              <img class="slider__image" src="img/render/after-mobile@1x.jpg" srcset="img/render/after-mobile@2x.jpg 2x" width="935" height="673" alt="Премиальные перголы">
+            </picture>
+          </li>
+        </ul>
+        <button class="slider-compare__toggle" type="button">
+          <span class="visually-hidden">Изменить состояние слайдера.</span>
+        </button>
+      </div>
+      <form class="render__form" action="" method="post">
+        <p class="render__form-title title">Отправьте фото места, где планируете разместить перголу, и&nbsp;мы&nbsp;покажем как будет смотреться пергола именно у&nbsp;Вас.</p>
+        <div class="render__form-group">
+          <div class="render__form-item">
+            <label class="render__field">
+              <span class="visually-hidden">Имя</span>
+              <input class="render__input" type="text" name="name" placeholder="Имя">
+            </label>
+          </div>
+          <div class="render__form-item">
+            <label class="render__field">
+              <span class="visually-hidden">Телефон</span>
+              <input class="render__input" type="tel" name="phone" placeholder="Телефон">
+            </label>
+          </div>
+          <div class="render__form-item">
+            <label class="render__accept">
+              <span class="render__label">Я&nbsp;ознакомлен с&nbsp;Политикой конфиденциальности и&nbsp;даю согласие на&nbsp;обработку моих персональных данных</span>
+              <input class="visually-hidden" type="checkbox" name="accept" required>
+            </label>
+          </div>
+          <div class="render__file file-input">
+            <label class="file-input__group">
+              <span class="file-input__icon" aria-hidden="true"></span>
+              <span class="file-input__label button button--dark">Приложите файл</span>
+              <input class="visually-hidden" type="file" name="file">
+            </label>
+            <ul class="file-input__list hidden"></ul>
+          </div>
+          <button class="render__form-button button button--dark" type="submit">Отправить</button>
+        </div>
+        <div class="render__form-error-wrapper">
+          <p class="render__form-error hidden"></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

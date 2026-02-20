@@ -22,12 +22,12 @@ export const SLIDER_CONFIG = {
     'loop': true,
     'desktop_width': SMALL_DESKTOP_WIDTH,
   },
-  'similar': {
+  'chars': {
     'mobile_count': 1,
-    'tablet_count': 2,
-    'desktop_count': 3,
-    'desktop_width': SMALL_DESKTOP_WIDTH,
-  }
+    'tablet_count': 1,
+    'desktop_count': 1,
+    'loop': true
+  },
 };
 
 export const RANGE_VALUES = {

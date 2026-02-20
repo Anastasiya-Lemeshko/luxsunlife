@@ -1,4 +1,3 @@
-import { debounce } from "../_utils.js";
 import {
   TABLET_WIDTH,
   DESKTOP_WIDTH
@@ -34,8 +33,7 @@ const setParallax = () => {
   }
 }
 
-const debouncedSetParallax = debounce(setParallax, 10);
-window.addEventListener('scroll', debouncedSetParallax);
+window.addEventListener('scroll', setParallax);
 
 TABLET_WIDTH.addEventListener('change', setParallax);
 DESKTOP_WIDTH.addEventListener('change', setParallax);

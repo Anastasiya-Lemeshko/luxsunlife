@@ -11,6 +11,8 @@
 @use "./components/map";
 @use "./components/modal";
 @use "./components/scroll-animation";
+@use "./components/slider-compare";
+@use "./components/file-input";
 
 // подключения секций страницы
 @use "./blocks/header";
@@ -20,3 +22,5 @@
 @use "./blocks/advantages";
 @use "./blocks/features";
 @use "./blocks/types";
+@use "./blocks/render";
+@use "./blocks/chars";
