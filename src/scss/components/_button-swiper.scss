@@ -6,24 +6,14 @@
 
   position: relative;
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 32px;
   padding: 0;
   border: none;
   background-color: var(--bg-color);
   transition: background-color 0.3s;
   border-radius: 5px;
   cursor: pointer;
-
-  @include vp-768 {
-    width: 40px;
-    height: 40px;
-  }
-
-  @include vp-1366 {
-    width: 54px;
-    height: 54px;
-  }
 
   &::before {
     position: absolute;
@@ -55,8 +45,8 @@
   }
 
   @include disabled {
-    --color-arrow: var(--grey-extra-light);
-    --bg-color: var(--grey);
+    --color-arrow: var(--text-grey);
+    --bg-color: var(--transparent);
 
     cursor: default;
     pointer-events: none;

@@ -13,6 +13,8 @@
 @use "./components/scroll-animation";
 @use "./components/slider-compare";
 @use "./components/file-input";
+@use "./components/tabs";
+@use "./components/video";
 
 // подключения секций страницы
 @use "./blocks/header";
@@ -24,3 +26,5 @@
 @use "./blocks/types";
 @use "./blocks/render";
 @use "./blocks/chars";
+@use "./blocks/production-video";
+@use "./blocks/solutions";

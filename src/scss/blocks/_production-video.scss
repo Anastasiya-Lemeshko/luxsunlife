@@ -1,0 +1,9 @@
+@use "index" as *;
+
+.production-video {
+  padding: 20px 0;
+
+  @include vp-1024 {
+    padding: 40px 0;
+  }
+}

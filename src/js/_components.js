@@ -6,7 +6,8 @@ import { setNavigationSwiper } from './components/_navigation-swiper.js';
 import { openVisibleFontCardContent, setAccordeonToggles } from './components/_accordion.js';
 import { setParallax } from './components/_parallax.js';
 import { setSliderCompare } from './components/_slider-compare.js';
-import { setFileInputs } from './components/_file-input.js'
+import { setFileInputs } from './components/_file-input.js';
+import { setTabs } from './components/_tabs.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   toggleBurgerMenu();
@@ -19,4 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setParallax();
   setSliderCompare();
   setFileInputs();
+  setTabs();
 });

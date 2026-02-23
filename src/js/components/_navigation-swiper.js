@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay, EffectFade } from 'swiper/modules';
 import {
   getSlidesCount,
   getAutoSlidesCount,
@@ -45,7 +45,7 @@ const setNavigationSwiper = () => {
       swiperButtons.classList.remove('hidden');
 
       swiperContainer = new Swiper(section, {
-        modules: [Navigation, Autoplay],
+        modules: [Navigation, Autoplay, EffectFade],
         direction: 'horizontal',
         speed: 500,
         allowTouchMove: true,
@@ -61,6 +61,11 @@ const setNavigationSwiper = () => {
         //   waitForTransition: true,
         // },
 
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
+
         breakpoints: {
           768: {
             slidesPerView: sliderConfig.tablet_count,
@@ -70,6 +75,7 @@ const setNavigationSwiper = () => {
           1366: {
             slidesPerView: sliderConfig.desktop_count,
             autoHeight: sliderConfig.desktop_count === 1,
+            speed: 1000,
           },
         },
 

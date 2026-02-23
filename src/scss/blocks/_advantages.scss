@@ -147,33 +147,12 @@
 }
 
 .advantages__name {
-  display: none;
-  position: relative;
+  @include name-full-width;
+
   height: 200px;
-  width: 100%;
-  overflow: visible;
-  font-family: var(--font-secondary);
-
-  font-weight: 500;
-  font-variation-settings: "wdth" 200;
-
-  font-size: calc(255px / $vp-1920 * 100vw);
-  line-height: 0.9;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  color: rgba(135, 135, 135, 0.5);
-
-  @include vp-1024 {
-    display: block;
-  }
-
-  @include vp-1920 {
-    font-size: 255px;
-  }
 
   p {
     position: absolute;
-    margin: 0;
     bottom: -90px;
     left: 50%;
     transform: translateX(-50%);

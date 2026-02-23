@@ -3,11 +3,11 @@
 
 @mixin swiper-button-position {
   display: flex;
-  gap: 6px;
+  gap: 10px;
   justify-content: center;
 
   @include vp-1024 {
-    gap: 10px;
+    gap: 30px;
   }
 }
 
