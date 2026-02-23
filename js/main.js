@@ -10597,6 +10597,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_parallax_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/_parallax.js */ "./src/js/components/_parallax.js");
 /* harmony import */ var _components_slider_compare_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/_slider-compare.js */ "./src/js/components/_slider-compare.js");
 /* harmony import */ var _components_file_input_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/_file-input.js */ "./src/js/components/_file-input.js");
+/* harmony import */ var _components_tabs_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/_tabs.js */ "./src/js/components/_tabs.js");
+
 
 
 
@@ -10617,6 +10619,7 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_parallax_js__WEBPACK_IMPORTED_MODULE_6__.setParallax)();
   (0,_components_slider_compare_js__WEBPACK_IMPORTED_MODULE_7__.setSliderCompare)();
   (0,_components_file_input_js__WEBPACK_IMPORTED_MODULE_8__.setFileInputs)();
+  (0,_components_tabs_js__WEBPACK_IMPORTED_MODULE_9__.setTabs)();
 });
 
 /***/ }),
@@ -10799,7 +10802,7 @@ const SLIDER_CONFIG = {
   'advantages': {
     'mobile_count': 1,
     'tablet_count': 2,
-    'desktop_count': 10000,
+    'desktop_count': 100000,
     'loop': true,
     'desktop_width': SMALL_DESKTOP_WIDTH
   },
@@ -10807,6 +10810,12 @@ const SLIDER_CONFIG = {
     'mobile_count': 1,
     'tablet_count': 1,
     'desktop_count': 1,
+    'loop': true
+  },
+  'solutions': {
+    'mobile_count': 1,
+    'tablet_count': 100000,
+    'desktop_count': 100000,
     'loop': true
   }
 };
@@ -11228,7 +11237,7 @@ const setNavigationSwiper = () => {
       (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.addSwiperClass)(section, sectionClass);
       swiperButtons.classList.remove('hidden');
       swiperContainer = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](section, {
-        modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Autoplay],
+        modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Autoplay, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.EffectFade],
         direction: 'horizontal',
         speed: 500,
         allowTouchMove: true,
@@ -11243,6 +11252,10 @@ const setNavigationSwiper = () => {
         //   waitForTransition: true,
         // },
 
+        effect: 'fade',
+        fadeEffect: {
+          crossFade: true
+        },
         breakpoints: {
           768: {
             slidesPerView: sliderConfig.tablet_count,
@@ -11250,7 +11263,8 @@ const setNavigationSwiper = () => {
           },
           1366: {
             slidesPerView: sliderConfig.desktop_count,
-            autoHeight: sliderConfig.desktop_count === 1
+            autoHeight: sliderConfig.desktop_count === 1,
+            speed: 1000
           }
         },
         navigation: {
@@ -11488,6 +11502,43 @@ const setSliderCompare = () => {
     const percent = x / rect.width * 100;
     afterScreen.style.clipPath = `inset(0 0 0 ${percent}%)`;
     toggle.style.left = `${percent}%`;
+  });
+};
+
+
+/***/ }),
+
+/***/ "./src/js/components/_tabs.js":
+/*!************************************!*\
+  !*** ./src/js/components/_tabs.js ***!
+  \************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setTabs: () => (/* binding */ setTabs)
+/* harmony export */ });
+const tabs = document.querySelectorAll('.tabs');
+const setTabs = () => {
+  if (!tabs || !tabs.length) return;
+  tabs.forEach(tab => {
+    const tabLinks = tab.querySelectorAll('.tabs__tablink');
+    const tabContents = tab.querySelectorAll('.tabs__tabcontent');
+    const openTabs = evt => {
+      const btnTarget = evt.currentTarget;
+      const section = btnTarget.dataset.tab;
+      tabLinks.forEach(link => {
+        link.classList.remove('tabs__tablink--active');
+      });
+      tabContents.forEach(item => {
+        item.classList.remove('tabs__tabcontent--active');
+      });
+      tab.querySelector(`[data-tab-content="${section}"]`).classList.add('tabs__tabcontent--active');
+      btnTarget.classList.add('tabs__tablink--active');
+    };
+    tabLinks.forEach(tablink => {
+      tablink.addEventListener('click', openTabs);
+    });
   });
 };
 
