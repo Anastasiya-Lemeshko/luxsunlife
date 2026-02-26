@@ -10598,6 +10598,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_slider_compare_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/_slider-compare.js */ "./src/js/components/_slider-compare.js");
 /* harmony import */ var _components_file_input_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/_file-input.js */ "./src/js/components/_file-input.js");
 /* harmony import */ var _components_tabs_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/_tabs.js */ "./src/js/components/_tabs.js");
+/* harmony import */ var _components_move_works_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/_move-works.js */ "./src/js/components/_move-works.js");
+/* harmony import */ var _components_move_blog_preview_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/_move-blog-preview.js */ "./src/js/components/_move-blog-preview.js");
+
+
 
 
 
@@ -10620,6 +10624,8 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_slider_compare_js__WEBPACK_IMPORTED_MODULE_7__.setSliderCompare)();
   (0,_components_file_input_js__WEBPACK_IMPORTED_MODULE_8__.setFileInputs)();
   (0,_components_tabs_js__WEBPACK_IMPORTED_MODULE_9__.setTabs)();
+  (0,_components_move_works_js__WEBPACK_IMPORTED_MODULE_10__.moveWorks)();
+  (0,_components_move_blog_preview_js__WEBPACK_IMPORTED_MODULE_11__.moveBlogPreview)();
 });
 
 /***/ }),
@@ -10804,19 +10810,28 @@ const SLIDER_CONFIG = {
     'tablet_count': 2,
     'desktop_count': 100000,
     'loop': true,
-    'desktop_width': SMALL_DESKTOP_WIDTH
+    'desktop_width': SMALL_DESKTOP_WIDTH,
+    'fade': true
   },
   'chars': {
     'mobile_count': 1,
     'tablet_count': 1,
     'desktop_count': 1,
-    'loop': true
+    'loop': true,
+    'fade': true
   },
   'solutions': {
     'mobile_count': 1,
     'tablet_count': 100000,
     'desktop_count': 100000,
-    'loop': true
+    'loop': true,
+    'fade': true
+  },
+  'process': {
+    'mobile_count': 100000,
+    'tablet_count': 100000,
+    'desktop_count': 'auto',
+    'desktop_width': SMALL_DESKTOP_WIDTH
   }
 };
 const RANGE_VALUES = {
@@ -11164,6 +11179,38 @@ const setModals = () => {
 
 /***/ }),
 
+/***/ "./src/js/components/_move-blog-preview.js":
+/*!*************************************************!*\
+  !*** ./src/js/components/_move-blog-preview.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   moveBlogPreview: () => (/* binding */ moveBlogPreview)
+/* harmony export */ });
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../_vars.js */ "./src/js/_vars.js");
+
+const blogPreview = document.querySelector('.blog-preview');
+const wrapper = blogPreview ? blogPreview.querySelector('.blog-preview__wrapper') : null;
+const linkAll = blogPreview ? blogPreview.querySelector('.blog-preview__all') : null;
+const blogItems = blogPreview ? blogPreview.querySelectorAll('.blog-preview__item') : null;
+let isBlogPreviewMoved = false;
+const moveBlogPreview = () => {
+  if (blogPreview && _vars_js__WEBPACK_IMPORTED_MODULE_0__.TABLET_WIDTH.matches && !isBlogPreviewMoved) {
+    blogItems[1].after(linkAll);
+    isBlogPreviewMoved = true;
+  }
+  if (blogPreview && !_vars_js__WEBPACK_IMPORTED_MODULE_0__.TABLET_WIDTH.matches && isBlogPreviewMoved) {
+    wrapper.appendChild(linkAll);
+    isBlogPreviewMoved = false;
+  }
+};
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.TABLET_WIDTH.addEventListener('change', moveBlogPreview);
+
+
+/***/ }),
+
 /***/ "./src/js/components/_move-header.js":
 /*!*******************************************!*\
   !*** ./src/js/components/_move-header.js ***!
@@ -11196,6 +11243,38 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.TABLET_WIDTH.addEventListener('change', mo
 
 /***/ }),
 
+/***/ "./src/js/components/_move-works.js":
+/*!******************************************!*\
+  !*** ./src/js/components/_move-works.js ***!
+  \******************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   moveWorks: () => (/* binding */ moveWorks)
+/* harmony export */ });
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../_vars.js */ "./src/js/_vars.js");
+
+const works = document.querySelector('.works');
+const linkAll = works ? works.querySelector('.works__all') : null;
+const firstItem = works ? works.querySelector('.works__item') : null;
+const form = works ? works.querySelector('.works__form') : null;
+let isWorksMoved = false;
+const moveWorks = () => {
+  if (works && _vars_js__WEBPACK_IMPORTED_MODULE_0__.TABLET_WIDTH.matches && !isWorksMoved) {
+    firstItem.after(linkAll);
+    isWorksMoved = true;
+  }
+  if (works && !_vars_js__WEBPACK_IMPORTED_MODULE_0__.TABLET_WIDTH.matches && isWorksMoved) {
+    form.before(linkAll);
+    isWorksMoved = false;
+  }
+};
+_vars_js__WEBPACK_IMPORTED_MODULE_0__.TABLET_WIDTH.addEventListener('change', moveWorks);
+
+
+/***/ }),
+
 /***/ "./src/js/components/_navigation-swiper.js":
 /*!*************************************************!*\
   !*** ./src/js/components/_navigation-swiper.js ***!
@@ -11220,9 +11299,11 @@ const setNavigationSwiper = () => {
   sections.forEach((section, index) => {
     const sectionClass = (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.getSwiperClass)(section);
     const sectionName = (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.getBlockClass)(section);
-    const swiperButtons = section.querySelector(`.${sectionClass}swiper-button-container`);
+    const swiperButtons = section.querySelector(`.${sectionClass}swiper-button-container`) ?? section.parentElement.querySelector(`.${sectionClass}swiper-button-container`);
     const sliderConfig = _vars_js__WEBPACK_IMPORTED_MODULE_3__.SLIDER_CONFIG[sectionName] || _vars_js__WEBPACK_IMPORTED_MODULE_3__.SLIDER_CONFIG.default;
     const desktopBreakpoint = sliderConfig.desktop_width ?? _vars_js__WEBPACK_IMPORTED_MODULE_3__.DESKTOP_WIDTH;
+    const sectionBlock = document.querySelector(`.${sectionName}`);
+    const tabs = sectionBlock ? sectionBlock.querySelector('.tabs') : null;
     let swiperContainer = null;
     let autoplayDelay = 7000 + index * 1000;
     const destroyNavigationSwiper = (swiper, el) => {
@@ -11233,7 +11314,7 @@ const setNavigationSwiper = () => {
         swiperButtons.classList.add('hidden');
       }
     };
-    const initNavigationSwiper = () => {
+    const initNavigationSwiper = isLoopNeeded => {
       (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.addSwiperClass)(section, sectionClass);
       swiperButtons.classList.remove('hidden');
       swiperContainer = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](section, {
@@ -11243,7 +11324,7 @@ const setNavigationSwiper = () => {
         allowTouchMove: true,
         slidesPerView: sliderConfig.mobile_count,
         spaceBetween: 10,
-        loop: sliderConfig.loop ? sliderConfig.loop : false,
+        loop: isLoopNeeded,
         autoHeight: sliderConfig.mobile_count === 1,
         // autoplay: {
         //   delay: autoplayDelay,
@@ -11252,19 +11333,22 @@ const setNavigationSwiper = () => {
         //   waitForTransition: true,
         // },
 
-        effect: 'fade',
-        fadeEffect: {
-          crossFade: true
-        },
+        ...(sliderConfig.fade && {
+          effect: 'fade',
+          fadeEffect: {
+            crossFade: true
+          }
+        }),
         breakpoints: {
           768: {
             slidesPerView: sliderConfig.tablet_count,
             autoHeight: sliderConfig.tablet_count === 1
           },
-          1366: {
+          1024: {
             slidesPerView: sliderConfig.desktop_count,
             autoHeight: sliderConfig.desktop_count === 1,
-            speed: 1000
+            speed: 1000,
+            spaceBetween: 32
           }
         },
         navigation: {
@@ -11286,6 +11370,19 @@ const setNavigationSwiper = () => {
       });
     };
     const checkNavigationSwiper = () => {
+      // делает скрытый табами слайдер нерабочим
+      if (tabs) {
+        const tabContent = section.closest('.tabs__tabcontent');
+        const isTabActive = tabContent?.classList.contains('tabs__tabcontent--active');
+        if (!isTabActive) {
+          if (swiperContainer) {
+            destroyNavigationSwiper(section, sectionClass);
+          }
+          return;
+        }
+      }
+
+      // проверка использования параметра 'auto' у количества слайдов на странице
       let autoSliderConfig = null;
       if (!_vars_js__WEBPACK_IMPORTED_MODULE_3__.TABLET_WIDTH.matches && sliderConfig.mobile_count === 'auto') {
         autoSliderConfig = (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.getAutoSlidesCount)(section);
@@ -11296,21 +11393,43 @@ const setNavigationSwiper = () => {
       if (desktopBreakpoint.matches && sliderConfig.desktop_count === 'auto') {
         autoSliderConfig = (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.getAutoSlidesCount)(section);
       }
+
+      // проверка необходимости слайдера
       const isNeedMobile = !_vars_js__WEBPACK_IMPORTED_MODULE_3__.TABLET_WIDTH.matches && (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.getSlidesCount)(section) > (autoSliderConfig ?? sliderConfig.mobile_count);
       const isNeedTablet = _vars_js__WEBPACK_IMPORTED_MODULE_3__.TABLET_WIDTH.matches && !desktopBreakpoint.matches && (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.getSlidesCount)(section) > (autoSliderConfig ?? sliderConfig.tablet_count);
       const isNeedDesktop = desktopBreakpoint.matches && (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.getSlidesCount)(section) > (autoSliderConfig ?? sliderConfig.desktop_count);
+      const isLoopNeeded = (sliderConfig.loop ?? false) && (isNeedMobile || isNeedTablet || isNeedDesktop);
       if (!swiperContainer && (isNeedMobile || isNeedTablet || isNeedDesktop)) {
-        initNavigationSwiper();
+        initNavigationSwiper(isLoopNeeded);
       } else if (swiperContainer && !isNeedMobile && !isNeedTablet && !isNeedDesktop) {
         destroyNavigationSwiper(section, sectionClass);
       } else if (swiperContainer && (isNeedMobile || isNeedTablet || isNeedDesktop)) {
         destroyNavigationSwiper(section, sectionClass);
-        initNavigationSwiper();
+        initNavigationSwiper(isLoopNeeded);
       }
     };
     checkNavigationSwiper();
     _vars_js__WEBPACK_IMPORTED_MODULE_3__.TABLET_WIDTH.addEventListener('change', checkNavigationSwiper);
     desktopBreakpoint.addEventListener('change', checkNavigationSwiper);
+
+    // проверка активности таба для скрытых слайдеров
+    const tabContent = tabs ? section.closest('.tabs__tabcontent') : null;
+    if (tabContent) {
+      const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+          if (mutation.attributeName === 'class') {
+            const isActive = tabContent.classList.contains('tabs__tabcontent--active');
+            if (isActive) {
+              checkNavigationSwiper();
+            }
+          }
+        });
+      });
+      observer.observe(tabContent, {
+        attributes: true
+      });
+    }
+    // конец проверки активности таба
   });
 };
 
