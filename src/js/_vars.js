@@ -21,18 +21,27 @@ export const SLIDER_CONFIG = {
     'desktop_count': 100000,
     'loop': true,
     'desktop_width': SMALL_DESKTOP_WIDTH,
+    'fade': true,
   },
   'chars': {
     'mobile_count': 1,
     'tablet_count': 1,
     'desktop_count': 1,
-    'loop': true
+    'loop': true,
+    'fade': true,
   },
   'solutions': {
     'mobile_count': 1,
     'tablet_count': 100000,
     'desktop_count': 100000,
-    'loop': true
+    'loop': true,
+    'fade': true,
+  },
+  'process': {
+    'mobile_count': 100000,
+    'tablet_count': 100000,
+    'desktop_count': 'auto',
+    'desktop_width': SMALL_DESKTOP_WIDTH,
   },
 };
 

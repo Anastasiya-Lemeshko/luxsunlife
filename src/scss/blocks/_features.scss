@@ -244,7 +244,7 @@
 .features__text {
   transform: scaleY(0);
   transform-origin: top;
-  transition: opacity 0.2s, max-height 0.3s, transform 0.2s, margin 0.1s;
+  transition: opacity 0.4s, max-height 0.5s, transform 0.5s, margin 0.5s;
 
   @include vp-1024 {
     max-height: unset;
@@ -255,7 +255,7 @@
   &.accordion-content--opened {
     margin: 20px 0;
     transform: scaleY(1);
-    transition: opacity 0.4s, max-height 0.4s, transform 0.1s, margin 0.1s;
+    transition: opacity 0.4s, max-height 0.5s, transform 0.3s, margin 0.3s;
 
     @include vp-1024 {
       margin: 0;

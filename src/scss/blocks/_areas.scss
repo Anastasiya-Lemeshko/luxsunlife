@@ -250,6 +250,10 @@
   @include vp-1280 {
     margin: 0 0 16px;
   }
+
+  @include vp-1366 {
+    font-size: 35px;
+  }
 }
 
 .areas__form-list {

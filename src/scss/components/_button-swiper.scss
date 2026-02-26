@@ -28,20 +28,25 @@
     mask-repeat: no-repeat;
     background-color: var(--color-arrow);
     transform: rotate(180deg);
+    transition: background-color 0.3s;
   }
 
   &--next {
     transform: rotate(180deg);
   }
 
+  &--dark {
+    --color-arrow: var(--black);
+  }
+
   @include hover-focus {
-    --bg-color: var(--bg-accent);
+    --color-arrow: var(--text-light);
 
     outline: none;
   }
 
   @include active {
-    --bg-color: var(--bg-accent-opacity);
+    --color-arrow: var(--text-extra-light);
   }
 
   @include disabled {

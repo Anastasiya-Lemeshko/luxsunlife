@@ -8,6 +8,8 @@ import { setParallax } from './components/_parallax.js';
 import { setSliderCompare } from './components/_slider-compare.js';
 import { setFileInputs } from './components/_file-input.js';
 import { setTabs } from './components/_tabs.js';
+import { moveWorks } from './components/_move-works.js';
+import { moveBlogPreview } from './components/_move-blog-preview.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   toggleBurgerMenu();
@@ -21,4 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setSliderCompare();
   setFileInputs();
   setTabs();
+  moveWorks();
+  moveBlogPreview();
 });
