@@ -255,4 +255,10 @@
 
 .chars__name {
   @include name-full-width;
+
+  display: none;
+
+  @include vp-1024 {
+    display: block;
+  }
 }

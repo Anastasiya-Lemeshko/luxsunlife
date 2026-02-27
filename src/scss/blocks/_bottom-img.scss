@@ -1,0 +1,10 @@
+@use "index" as *;
+
+.bottom-img {
+  width: 100%;
+  height: 610px;
+
+  img {
+    @include img-cover;
+  }
+}

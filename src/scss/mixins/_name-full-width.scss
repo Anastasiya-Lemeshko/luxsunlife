@@ -2,23 +2,22 @@
 @use "vars" as *;
 
 @mixin name-full-width {
-  display: none;
   position: relative;
   width: 100%;
-  overflow: visible;
+  overflow-x: hidden;
   font-family: var(--font-secondary);
+  font-size: calc(57px / $vp-430 * 100vw);
 
   font-weight: 500;
   font-variation-settings: "wdth" 200;
 
-  font-size: calc(255px / $vp-1920 * 100vw);
   line-height: 0.9;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   color: rgba(135, 135, 135, 0.5);
 
   @include vp-1024 {
-    display: block;
+    font-size: calc(255px / $vp-1920 * 100vw);
   }
 
   @include vp-1920 {

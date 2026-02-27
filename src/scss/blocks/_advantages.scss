@@ -149,7 +149,13 @@
 .advantages__name {
   @include name-full-width;
 
-  height: 200px;
+  display: none;
+
+  @include vp-1024 {
+    display: block;
+    overflow-y: visible;
+    height: 200px;
+  }
 
   p {
     position: absolute;
