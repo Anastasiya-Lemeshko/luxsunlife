@@ -23,8 +23,8 @@
 /* stylelint-disable */
 @font-face {
   font-family: "Benzin";
-  src: url("../fonts/pragmatica-next_vf.woff2") format("woff2");
-  font-weight: 100 900;
+  src: url("../fonts/PhonkSans-Light.woff2") format("woff2");
+  font-weight: 400;
   font-display: swap;
   font-style: normal;
 }
@@ -296,14 +296,15 @@ a:not([href]) {
 }
 
 .title {
-  margin: 0 0 10px;
+  --color: var(--text-dark);
+  margin: 0 0 20px;
   font-family: var(--font-secondary);
   font-weight: 400;
-  font-size: 20px;
-  line-height: 1.1;
+  font-size: 19px;
+  line-height: 1.16;
   text-transform: uppercase;
-  font-weight: 500;
-  font-variation-settings: "wdth" 200;
+  -webkit-text-stroke: 1px var(--color);
+  text-stroke: 1px var(--color);
 }
 @media (min-width: 768px) {
   .title {
@@ -1881,6 +1882,7 @@ span.breadcrumbs__link {
 
 .hero {
   margin-top: -58px;
+  padding: 0 0 5px;
 }
 @media (min-width: 768px) {
   .hero {
@@ -1935,15 +1937,15 @@ span.breadcrumbs__link {
   -ms-grid-column-span: 1;
   grid-area: 1/1/2/2;
   margin: 0;
-  padding: 500px 9px 40px;
+  padding: 505px 9px 46px;
   font-family: var(--font-secondary);
   font-weight: 400;
-  font-weight: 500;
-  font-variation-settings: "wdth" 200;
-  font-size: 25px;
-  line-height: 1.1;
+  font-size: 22px;
+  line-height: 1.2;
   letter-spacing: -0.03em;
   text-transform: uppercase;
+  -webkit-text-stroke: 1px var(--white);
+  text-stroke: 1px var(--white);
   color: var(--white);
   clip-path: inset(0 100% 0 0);
   -webkit-animation: appear 1.2s forwards, reveal 1.2s forwards;
@@ -1969,17 +1971,20 @@ span.breadcrumbs__link {
 }
 @media (min-width: 1280px) {
   .hero__slogan {
-    font-size: 42px;
+    font-size: 38px;
+    -webkit-text-stroke: 2px var(--white);
+    text-stroke: 2px var(--white);
   }
 }
 @media (min-width: 1640px) {
   .hero__slogan {
-    font-size: 52px;
+    font-size: 45px;
   }
 }
 @media (min-width: 1920px) {
   .hero__slogan {
-    font-size: 62px;
+    font-size: 56px;
+    line-height: 1.23;
   }
 }
 .hero__slogan br {
@@ -1992,8 +1997,8 @@ span.breadcrumbs__link {
 }
 
 .hero__title {
-  max-width: 70%;
-  margin: 0 var(--container-offset-mobile) 63px;
+  max-width: 500px;
+  margin: 0 var(--container-offset-mobile) 52px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.4;
@@ -2012,7 +2017,7 @@ span.breadcrumbs__link {
 @media (min-width: 1024px) {
   .hero__title {
     max-width: 400px;
-    margin: 40px 0 5px;
+    margin: 40px 0 8px;
   }
 }
 @media (min-width: 1640px) {
@@ -2138,7 +2143,8 @@ span.breadcrumbs__link {
   --color: var(--text-dark);
   gap: 30px;
   max-width: 467px;
-  margin: 0 0 49px;
+  margin: 0 0 59px;
+  padding: 8px 0 16px;
 }
 @media (min-width: 768px) {
   .hero__order {
@@ -2166,19 +2172,19 @@ span.breadcrumbs__link {
   margin: 0;
   font-family: var(--font-secondary);
   font-weight: 400;
-  font-size: 40px;
+  font-size: 35px;
   line-height: 0.9;
   letter-spacing: -0.03em;
   text-transform: uppercase;
-  font-weight: 500;
-  font-variation-settings: "wdth" 200;
+  -webkit-text-stroke: 2px var(--text-dark);
+  text-stroke: 2px var(--text-dark);
   clip-path: inset(0 100% 0 0);
   -webkit-animation: appear 1.2s 0.8s forwards, reveal 1.2s 0.8s forwards;
   animation: appear 1.2s 0.8s forwards, reveal 1.2s 0.8s forwards;
 }
-@media (min-width: 430px) {
+@media (min-width: 320px) {
   .hero__name {
-    font-size: 12.5581395349vw;
+    font-size: 11.3953488372vw;
   }
 }
 @media (min-width: 768px) {
@@ -2187,6 +2193,8 @@ span.breadcrumbs__link {
     width: -moz-fit-content;
     width: fit-content;
     font-size: 60px;
+    -webkit-text-stroke: 2px var(--white);
+    text-stroke: 2px var(--white);
   }
 }
 @media (min-width: 1024px) {
@@ -2211,7 +2219,7 @@ span.breadcrumbs__link {
 }
 
 .about-us {
-  padding: 0 0 40px;
+  padding: 0 0 45px;
   border-bottom: 1px solid var(--grey);
 }
 @media (min-width: 768px) {
@@ -2385,7 +2393,7 @@ span.breadcrumbs__link {
 }
 
 .about-us__subtitle {
-  margin: 0 var(--container-offset-mobile) 20px;
+  margin: 0 var(--container-offset-mobile) 14px;
   font-weight: 600;
   font-size: 18px;
   line-height: 1.1;
@@ -2424,7 +2432,7 @@ span.breadcrumbs__link {
 }
 
 .about-us__content-text {
-  margin: 0 var(--container-offset-mobile) 20px;
+  margin: 0 var(--container-offset-mobile) 24px;
 }
 @media (min-width: 768px) {
   .about-us__content-text {
@@ -2468,7 +2476,7 @@ span.breadcrumbs__link {
   }
 }
 .about-us__content-text p + p {
-  margin-top: 10px;
+  margin-top: 15px;
 }
 @media (min-width: 768px) {
   .about-us__content-text p + p {
@@ -2479,6 +2487,7 @@ span.breadcrumbs__link {
 .about-us__button {
   width: calc(100% - 2 * var(--container-offset-mobile));
   margin: 0 var(--container-offset-mobile);
+  padding: 8px 0 16px;
 }
 @media (min-width: 768px) {
   .about-us__button {
