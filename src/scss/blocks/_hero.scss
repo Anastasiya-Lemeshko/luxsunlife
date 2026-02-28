@@ -2,6 +2,7 @@
 
 .hero {
   margin-top: -58px;
+  padding: 0 0 5px;
 
   @include vp-768 {
     position: relative;
@@ -43,20 +44,15 @@
 .hero__slogan {
   grid-area: 1 / 1 / 2 / 2;
   margin: 0;
-  padding: 500px 9px 40px;
+  padding: 505px 9px 46px;
   font-family: var(--font-secondary);
   font-weight: 400;
-
-  font-weight: 500;
-  font-variation-settings: "wdth" 200;
-
-  // -webkit-text-stroke: 2px var(--white);
-  // text-stroke: 2px var(--white);
-
-  font-size: 25px;
-  line-height: 1.1;
+  font-size: 22px;
+  line-height: 1.2;
   letter-spacing: -0.03em;
   text-transform: uppercase;
+  -webkit-text-stroke: 1px var(--white);
+  text-stroke: 1px var(--white);
   color: var(--white);
 
   -webkit-clip-path: inset(0 100% 0 0);
@@ -79,15 +75,18 @@
   }
 
   @include vp-1280 {
-    font-size: 42px;
+    font-size: 38px;
+    -webkit-text-stroke: 2px var(--white);
+    text-stroke: 2px var(--white);
   }
 
   @include vp-1640 {
-    font-size: 52px;
+    font-size: 45px;
   }
 
   @include vp-1920 {
-    font-size: 62px;
+    font-size: 56px;
+    line-height: 1.23;
   }
 
   br {
@@ -100,8 +99,8 @@
 }
 
 .hero__title {
-  max-width: 70%;
-  margin: 0 var(--container-offset-mobile) 63px;
+  max-width: 500px;
+  margin: 0 var(--container-offset-mobile) 52px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.4;
@@ -118,7 +117,7 @@
 
   @include vp-1024 {
     max-width: 400px;
-    margin: 40px 0 5px;
+    margin: 40px 0 8px;
   }
 
   @include vp-1640 {
@@ -225,7 +224,8 @@
 
   gap: 30px;
   max-width: 467px;
-  margin: 0 0 49px;
+  margin: 0 0 59px;
+  padding: 8px 0 16px;
 
   @include vp-768 {
     --color: var(--white);
@@ -249,28 +249,26 @@
   margin: 0;
   font-family: var(--font-secondary);
   font-weight: 400;
-  font-size: 40px;
+  font-size: 35px;
   line-height: 0.9;
   letter-spacing: -0.03em;
   text-transform: uppercase;
-
-  font-weight: 500;
-  font-variation-settings: "wdth" 200;
-
-  // -webkit-text-stroke: 4px var(--white);
-  // text-stroke: 4px var(--white);
+  -webkit-text-stroke: 2px var(--text-dark);
+  text-stroke: 2px var(--text-dark);
 
   -webkit-clip-path: inset(0 100% 0 0);
   clip-path: inset(0 100% 0 0);
   animation: appear 1.2s 0.8s forwards, reveal 1.2s 0.8s forwards;
 
-  @include vp-430 {
-    font-size: calc(54px / $vp-430 * 100vw);
+  @include vp-320 {
+    font-size: calc(49px / $vp-430 * 100vw);
   }
 
   @include vp-768 {
     width: fit-content;
     font-size: 60px;
+    -webkit-text-stroke: 2px var(--white);
+    text-stroke: 2px var(--white);
   }
 
   @include vp-1024 {

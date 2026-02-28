@@ -1,5 +1,11 @@
 @use "vars" as *;
 
+@mixin vp-320 {
+  @media (min-width: $vp-320) {
+    @content;
+  }
+}
+
 @mixin vp-430 {
   @media (min-width: $vp-430) {
     @content;

@@ -1,15 +1,16 @@
 @use "index" as *;
 
 .title {
-  margin: 0 0 10px;
+  --color: var(--text-dark);
+
+  margin: 0 0 20px;
   font-family: var(--font-secondary);
   font-weight: 400;
-  font-size: 20px;
-  line-height: 1.1;
+  font-size: 19px;
+  line-height: 1.16;
   text-transform: uppercase;
-
-  font-weight: 500;
-  font-variation-settings: "wdth" 200;
+  -webkit-text-stroke: 1px var(--color);
+  text-stroke: 1px var(--color);
 
   @include vp-768 {
     font-size: 25px;
