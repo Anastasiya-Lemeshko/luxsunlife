@@ -1,7 +1,7 @@
 @use "index" as *;
 
 .render {
-  padding: 20px 0;
+  padding: 20px 0 40px;
 
   @include vp-1024 {
     padding: 50px 0 38px;
@@ -53,7 +53,7 @@
 .render__slider {
   width: 100%;
   aspect-ratio: 410 / 295;
-  margin: 0 0 20px;
+  margin: 0 0 16px;
 
   @include vp-1024 {
     margin: 0;
@@ -68,18 +68,27 @@
 }
 
 .render__form-title {
-  font-size: 18px;
+  margin: 0 0 10px;
+  font-size: 16px;
+
+  @include vp-768 {
+    font-size: 18px;
+  }
+
+  @include vp-1024 {
+    font-size: 22px;
+  }
 
   @include vp-1366 {
     font-size: 25px;
   }
 
   @include vp-1640 {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   @include vp-1920 {
-    font-size: 35px;
+    font-size: 32px;
   }
 }
 
@@ -112,7 +121,7 @@
 
 .render__form-item {
   &:not(:last-child) {
-    margin: 0 0 20px;
+    margin: 0 0 24px;
 
     @include vp-768 {
       margin: 0;
@@ -133,6 +142,8 @@
 }
 
 .render__file {
+  margin: 0 0 8px;
+
   @include vp-768 {
     grid-area: 1 / 2 / 3 / 3;
     align-self: start;
@@ -168,4 +179,5 @@
 
 .render__form-button {
   width: 100%;
+  font-size: 14px;
 }

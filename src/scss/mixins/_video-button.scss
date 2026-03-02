@@ -22,8 +22,8 @@
     left: calc(50% + 3px);
     transform: translate(-50%, -50%);
     content: "";
-    border: 15px solid var(--transparent);
-    border-left: 25px solid var(--white);
+    border: 14px solid var(--transparent);
+    border-left: 20px solid var(--white);
     z-index: 2;
 
     @include vp-768 {

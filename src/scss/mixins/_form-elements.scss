@@ -49,6 +49,10 @@
     z-index: 1;
     cursor: pointer;
 
+    @include vp-1366 {
+      font-size: 18px;
+    }
+
     @include hover-focus {
       --color: var(--text-dark);
     }
@@ -59,13 +63,17 @@
     grid-area: 1 / 1 / 2 / 2;
     max-width: 100%;
     padding: 0;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--color);
     background-color: var(--transparent);
     border: none;
     border-bottom: 1px solid var(--grey-dark);
     transition: background-color 0.3s;
     cursor: pointer;
+
+    @include vp-1366 {
+      font-size: 18px;
+    }
 
     &::placeholder {
       font-weight: 400;
@@ -75,11 +83,15 @@
       transform: var(--transform);
       opacity: var(--opacity);
       transition: transform 0.3s, opacity 0.3s, color 0.3s;
+
+      @include vp-1366 {
+        font-size: 18px;
+      }
     }
   }
 
   input {
-    height: 40px;
+    height: 43px;
   }
 
   textarea {

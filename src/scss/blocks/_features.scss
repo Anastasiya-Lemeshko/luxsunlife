@@ -6,10 +6,18 @@
   @include vp-768 {
     padding: 50px 0;
   }
+
+  @include vp-1024 {
+    padding: 77px 0 84px;
+  }
 }
 
 .features__title {
   margin: 0 0 17px;
+
+  @include vp-1024 {
+    margin: 0 0 27px;
+  }
 }
 
 .features__wrapper {
@@ -54,7 +62,7 @@
 
 .features__item {
   position: relative;
-  padding: 24px 0 0;
+  padding: 18px 0 0;
   border-top: 1px solid var(--text-light);
 
   @include vp-1024 {
@@ -89,7 +97,7 @@
 
   &::after {
     position: absolute;
-    top: 25px;
+    top: 19px;
     left: 0;
     counter-increment: features;
     content: counter(features, decimal-leading-zero);
@@ -115,14 +123,14 @@
 
   &--functions {
     @include vp-1024 {
-      top: 34%;
+      top: 29%;
       right: 68%;
     }
   }
 
   &--construction {
     @include vp-1024 {
-      top: 34%;
+      top: 32%;
       right: 21%;
     }
   }
@@ -137,7 +145,7 @@
   &--design {
     @include vp-1024 {
       bottom: 25%;
-      right: 42%;
+      right: 40%;
     }
   }
 }
@@ -154,7 +162,7 @@
   @include accordion-plus;
 
   width: calc(100% - 40px);
-  margin: 0 0 30px 40px;
+  margin: 0 0 20px 40px;
   padding: 0 30px 0 0;
   font-weight: 500;
   font-size: 18px;
@@ -242,9 +250,14 @@
 }
 
 .features__text {
+  max-width: 80%;
   transform: scaleY(0);
   transform-origin: top;
   transition: opacity 0.4s, max-height 0.5s, transform 0.5s, margin 0.5s;
+
+  @include vp-768 {
+    max-width: unset;
+  }
 
   @include vp-1024 {
     max-height: unset;
@@ -253,7 +266,7 @@
   }
 
   &.accordion-content--opened {
-    margin: 20px 0;
+    margin: 14px 0 16px;
     transform: scaleY(1);
     transition: opacity 0.4s, max-height 0.5s, transform 0.3s, margin 0.3s;
 

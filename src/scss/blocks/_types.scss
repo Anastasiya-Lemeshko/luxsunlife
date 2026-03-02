@@ -1,7 +1,7 @@
 @use "index" as *;
 
 .types {
-  padding: 40px 0;
+  padding: 40px 0 26px;
   color: var(--white);
   background-color: var(--bg-dark);
 }
@@ -27,6 +27,14 @@
 
   @include vp-1366 {
     grid-template-columns: 50% 1fr 286px;
+  }
+
+  &:nth-child(2n):not(:last-child) {
+    margin: 0 0 60px;
+
+    @include vp-768 {
+      margin: 0 0 40px;
+    }
   }
 
   &:not(:last-child) {
@@ -111,7 +119,7 @@
 }
 
 .types__text {
-  margin: 0 0 15px;
+  margin: 0 0 11px;
 
   @include vp-1366 {
     align-self: end;
@@ -144,6 +152,8 @@
 }
 
 .types__link {
+  font-size: 14px;
+
   &:not(:last-child) {
     margin: 0 0 15px;
   }

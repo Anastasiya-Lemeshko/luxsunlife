@@ -1,7 +1,11 @@
 @use "index" as *;
 
 .areas {
-  padding: 40px 0;
+  padding: 40px 0 22px;
+
+  @include vp-1024 {
+    padding: 40px 0 80px;
+  }
 }
 
 .areas__header {
@@ -11,8 +15,9 @@
   @include vp-1366 {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    align-items: center;
+    align-items: end;
     gap: 50px;
+    padding: 0 0 32px;
   }
 }
 
@@ -32,6 +37,8 @@
   @include vp-1366 {
     max-width: 454px;
     justify-self: end;
+    margin: 0px 20px 13px 0;
+    font-size: 18px;
   }
 }
 
@@ -48,7 +55,7 @@
   }
 
   @include vp-1920 {
-    gap: 104px 10px;
+    gap: 108px 10px;
   }
 }
 
@@ -57,7 +64,7 @@
   display: flex;
   flex-direction: column-reverse;
   gap: 20px;
-  padding: 20px 0 0;
+  padding: 19px 0 0;
 
   @include vp-768 {
     display: grid;
@@ -80,14 +87,6 @@
 
   @include vp-1366 {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  &:not(:last-child) {
-    margin: 0 0 20px;
-
-    @include vp-768 {
-      margin: 0;
-    }
   }
 
   &:nth-child(2n + 1) {
@@ -142,15 +141,28 @@
   font-size: 18px;
   line-height: 1;
   text-transform: uppercase;
+
+  @include vp-1024 {
+    font-size: 20px;
+  }
+
+  @include vp-1366 {
+    font-size: 22px;
+  }
+
+  @include vp-1640 {
+    font-size: 25px;
+  }
 }
 
 .areas__item-text {
-  margin: 0 0 20px;
+  margin: 0 0 8px;
 
   @include vp-768 {
     height: fit-content;
     min-height: 150px;
     align-self: end;
+    margin: 0 0 20px;
   }
 
   @include vp-1024 {
@@ -168,6 +180,10 @@
     line-height: 1.4;
     letter-spacing: -0.03em;
     color: var(--text-light);
+
+    @include vp-1640 {
+      font-size: 18px;
+    }
   }
 
   p + p {
@@ -176,8 +192,11 @@
 }
 
 .areas__order {
+  padding: 8px 0 16px;
+
   @include vp-768 {
     margin: auto 0 0;
+    padding: 8px 0;
   }
 
   @include vp-1280 {
@@ -238,10 +257,21 @@
   margin: 0;
   padding: 0;
   border: none;
+
+  @include vp-1280 {
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
 }
 
 .areas__form-title {
-  margin: 0 0 16px;
+  margin: 0 0 27px;
+  font-size: 18px;
+  line-height: 1.2;
+
+  @include vp-768 {
+    font-size: 22px;
+  }
 
   @include vp-1024 {
     margin: 0 0 55px;
@@ -252,7 +282,11 @@
   }
 
   @include vp-1366 {
-    font-size: 35px;
+    font-size: 28px;
+  }
+
+  @include vp-1640 {
+    font-size: 32px;
   }
 }
 
@@ -266,20 +300,16 @@
   }
 
   @include vp-1280 {
-    margin: 0 0 20px;
+    margin: 0 0 25px;
   }
 }
 
 .areas__form-item {
   &:not(:last-child) {
-    margin: 0 0 11px;
+    margin: 0 0 29px;
 
     @include vp-1024 {
       margin: 0 0 30px;
-    }
-
-    @include vp-1280 {
-      margin: 0 0 11px;
     }
   }
 }
@@ -309,14 +339,14 @@
   }
 
   @include vp-1640 {
-    grid-template-columns: 1fr minmax(180px, auto);
+    grid-template-columns: 1fr minmax(264px, auto);
   }
 }
 
 .areas__accept {
   @include accept;
 
-  margin: 0 0 10px;
+  margin: 0 0 23px;
 
   @include vp-1024 {
     margin: 0 0 20px;
@@ -327,12 +357,13 @@
   }
 
   @include vp-1366 {
-    max-width: 580px;
+    max-width: 550px;
   }
 }
 
 .areas__form-button {
   width: 100%;
+  font-size: 14px;
 }
 
 .areas__form-error-wrapper {

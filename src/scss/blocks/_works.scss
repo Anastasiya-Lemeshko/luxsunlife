@@ -1,7 +1,7 @@
 @use "index" as *;
 
 .works {
-  padding: 40px 0;
+  padding: 40px 0 32px;
   color: var(--white);
   background-color: var(--bg-dark);
 
@@ -179,6 +179,7 @@
 .works__img {
   width: 100%;
   aspect-ratio: 412 / 419;
+  margin: 0 0 10px;
 
   @include vp-550 {
     aspect-ratio: unset;
@@ -195,15 +196,12 @@
 }
 
 .works__link {
-  font-size: 12px;
-
-  @include vp-1366 {
-    font-size: 14px;
-  }
+  font-size: 14px;
 }
 
 .works__all {
-  margin: 0 0 60px;
+  margin: 0 0 57px;
+  font-size: 14px;
 
   @include vp-768 {
     margin: 350px 0 0;
@@ -239,7 +237,8 @@
 }
 
 .works__form-title {
-  margin: 0 0 16px;
+  margin: 0 0 25px;
+  font-size: 16px;
 
   @include vp-1024 {
     margin: 0 15px 16px 0;
@@ -251,13 +250,13 @@
   }
 
   @include vp-1366 {
-    font-size: 35px;
+    font-size: 32px;
   }
 }
 
 .works__form-text {
   max-width: 385px;
-  margin: 0 0 40px;
+  margin: 0 0 32px;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
@@ -283,7 +282,7 @@
 
 .works__form-item {
   &:not(:last-child) {
-    margin: 0 0 11px;
+    margin: 0 0 30px;
 
     @include vp-1280 {
       margin: 0 0 11px;
@@ -333,7 +332,7 @@
 
   --color: var(--white);
 
-  margin: 0 0 10px;
+  margin: 0 0 21px;
 
   @include vp-1024 {
     margin: 0 0 20px;
@@ -350,6 +349,7 @@
 
 .works__form-button {
   width: 100%;
+  font-size: 14px;
 }
 
 .works__form-error-wrapper {

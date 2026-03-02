@@ -1,7 +1,7 @@
 @use "index" as *;
 
 .blog-preview {
-  padding: 40px 0;
+  padding: 40px 0 26px;
   color: var(--white);
   background-color: var(--bg-dark);
 
@@ -58,8 +58,16 @@
     }
   }
 
-  &:not(:last-child) {
+  &:not(:last-of-type) {
     margin: 0 0 20px;
+
+    @include vp-768 {
+      margin: 0;
+    }
+  }
+
+  &:last-of-type {
+    margin: 0 0 35px;
 
     @include vp-768 {
       margin: 0;
@@ -98,6 +106,8 @@
 }
 
 .blog-preview__all {
+  font-size: 14px;
+
   @include vp-1366 {
     margin: 0 0 35px;
   }

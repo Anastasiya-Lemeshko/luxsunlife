@@ -21,7 +21,6 @@ export const SLIDER_CONFIG = {
     'desktop_count': 100000,
     'loop': true,
     'desktop_width': SMALL_DESKTOP_WIDTH,
-    'fade': true,
   },
   'chars': {
     'mobile_count': 1,

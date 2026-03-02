@@ -205,7 +205,7 @@
   &::before {
     @include vp-1024 {
       position: absolute;
-      top: 0;
+      top: 9px;
       left: 0;
       content: "";
       width: 100%;
@@ -239,7 +239,7 @@
   }
 
   @include vp-1640 {
-    margin: 0 0 35px;
+    margin: 0 0 29px;
     width: unset;
     max-width: 467px;
   }
