@@ -52,6 +52,19 @@
           }
         </div>
 
+        <div class="header__logo-dark">
+          @if (typeof isHomepage !== 'undefined') {
+          <a class="header__logo-img">
+            <img src="img/logo-dark.svg" alt="Логотип компании Luxsunlife.">
+          </a>
+          }
+          @if (typeof isHomepage === 'undefined') {
+          <a class="header__logo-img" href="index.html">Logo
+            <img src="img/logo-dark.svg" alt="Логотип компании Luxsunlife.">
+          </a>
+          }
+        </div>
+
         <div class="header__contacts">
           <div class="header__contacts-wrapper">
             <button class="header__contacts-title button" type="button">Связаться с&nbsp;нами</button>

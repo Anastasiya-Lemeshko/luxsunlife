@@ -21,8 +21,13 @@
   --grey: #969696;
   --grey-dark: #272727;
   --error: #df2312;
-
   --milk: #fefcf6;
+
+  // z-index
+  --z-video-fixed: 5;
+  --z-select: 10;
+  --z-header: 15;
+  --z-modal: 20;
 }
 
 // Viewports

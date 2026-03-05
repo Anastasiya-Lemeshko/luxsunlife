@@ -16,9 +16,8 @@
     transform: translate(-50%, -50%) rotate(45deg);
     content: "";
     width: 18px;
-    height: 2px;
+    height: 1px;
     background-color: var(--white);
-    z-index: 5;
   }
 
   &::after {

@@ -7,7 +7,7 @@
   justify-content: center;
 
   @include vp-1024 {
-    gap: 30px;
+    gap: 17px;
   }
 }
 
@@ -44,7 +44,6 @@
   height: 5px;
   background-color: var(--button-color);
   border: none;
-  z-index: 3;
   transition: background-color 0.3s;
   cursor: pointer;
 

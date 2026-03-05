@@ -24,7 +24,6 @@
     content: "";
     border: 14px solid var(--transparent);
     border-left: 20px solid var(--white);
-    z-index: 2;
 
     @include vp-768 {
       left: calc(50% + 5px);

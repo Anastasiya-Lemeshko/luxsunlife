@@ -23,6 +23,7 @@ class ModalWindow {
 
       button.addEventListener('click', () => {
         const modalName = button.getAttribute('data-modal-button');
+
         if (!modalName) return;
 
         this.modal = document.querySelector(`[data-modal="${modalName}"]`);

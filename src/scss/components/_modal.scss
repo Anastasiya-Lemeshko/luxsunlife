@@ -13,7 +13,7 @@
   background-color: rgba(255, 255, 255, 0.8);
   visibility: hidden;
   opacity: 0;
-  z-index: 300;
+  z-index: var(--z-modal);
 
   &.open {
     visibility: visible;
@@ -26,12 +26,10 @@
   position: relative;
   box-sizing: border-box;
   width: calc(100% - 20px);
-  max-width: 500px;
-  padding: 20px;
+  padding: 10px;
   margin: auto;
-  color: var(--white);
-  background-color: var(--bg-accent);
-  border-radius: 5px;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
 
   @include vp-768 {
     max-width: 680px;
@@ -39,7 +37,30 @@
   }
 }
 
-.modal--photo .modal__container {
+.modal__close-button {
+  @include interactive-opacity;
+  @include close-button;
+
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+
+  @include vp-1024 {
+    width: 40px;
+    height: 40px;
+  }
+
+  &::before,
+  &::after {
+    background-color: var(--text-dark);
+  }
+}
+
+// модальное окно с полноразмерным изображением
+
+.modal-photo__container {
   padding: 0;
 
   @include vp-768 {
@@ -57,23 +78,15 @@
   }
 }
 
-.modal__close-button {
-  @include interactive-opacity;
-  @include close-button;
+.modal-photo .modal__close-button {
 
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 30px;
-  height: 30px;
-
-  @include vp-1024 {
-    width: 40px;
-    height: 40px;
+  &::before,
+  &::after {
+    background-color: var(--white);
   }
 }
 
-.modal__image {
+.modal-photo__img {
   width: 100%;
   max-width: 1280px;
   max-height: 720px;
@@ -88,7 +101,105 @@
   }
 }
 
-.modal.open .modal__image {
+.modal.open .modal-photo__img {
   opacity: 1;
   transform: scale(1);
+}
+
+// стардартное модальное окно
+
+.modal-standard__container {
+  padding: 20px 10px 10px;
+
+  @include vp-1366 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: end;
+    gap: 10px;
+    max-width: 1280px;
+    padding: 46px 20px 20px;
+  }
+}
+
+.modal-standard__title {
+  margin: 0 0 28px;
+
+  @include vp-1366 {
+    grid-column: 1 / -1;
+  }
+}
+
+.modal-standard__description {
+  margin: 0 0 28px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--text-light);
+}
+
+.modal-standard__form {
+  margin: 0 0 28px;
+
+  @include vp-1366 {
+    grid-area: 2 / 3 / 4 / 5;
+  }
+}
+
+.modal-standard__field {
+  @include input;
+
+  input {
+    width: 100%;
+  }
+}
+
+.modal-standard__accept {
+  @include accept;
+
+  margin: 20px 0;
+}
+
+.modal-standard__form-button {
+  width: 100%;
+  font-size: 14px;
+}
+
+.modal-standard__images {
+  margin: 0 0 28px;
+
+  @include vp-1366 {
+    grid-area: 3 / 1 / 5 / 5;
+    display: grid;
+  }
+}
+
+.modal-standard__img {
+  display: none;
+  position: relative;
+  width: 100%;
+  height: 304px;
+
+  &:first-child {
+    display: block;
+  }
+
+  img {
+    @include img-bg;
+  }
+}
+
+.modal-standard__name {
+  @include name-full-width;
+
+  --color: var(--text-dark);
+
+  font-size: calc(45px / $vp-430 * 100vw);
+
+  @include vp-768 {
+    font-size: 74px;
+  }
+
+  @include vp-1366 {
+    display: none;
+  }
 }

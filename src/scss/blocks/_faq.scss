@@ -4,7 +4,7 @@
   padding: 20px 0 30px;
 
   @include vp-1024 {
-    padding: 80px 0;
+    padding: 70px 0 97px;
   }
 }
 
@@ -13,7 +13,7 @@
     display: grid;
     grid-template-columns: 1fr minmax(auto, 310px);
     align-items: end;
-    gap: 50px;
+    gap: 33px 50px;
   }
 }
 
@@ -94,7 +94,7 @@
     grid-template-columns: 450px 1fr;
     gap: 0 20px;
     width: 100%;
-    margin: 0 0 40px;
+    margin: 0 0 24px;
     font-size: 18px;
     text-transform: initial;
   }
@@ -164,5 +164,6 @@ a.faq__callback {
 
   @include vp-1024 {
     grid-area: 1 / 2 / 2 / 3;
+    margin: 0 0 12px;
   }
 }

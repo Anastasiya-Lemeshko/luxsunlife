@@ -73,6 +73,10 @@
   img {
     @include img-cover;
   }
+
+  &[data-animation-el] {
+    transition-delay: 0.7s;
+  }
 }
 
 .about-us__title {

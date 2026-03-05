@@ -6,11 +6,16 @@
   margin: 0 0 20px;
   font-family: var(--font-secondary);
   font-weight: 400;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.23;
+  color: var(--color);
   text-transform: uppercase;
   -webkit-text-stroke: 1px var(--color);
   text-stroke: 1px var(--color);
+
+  @include vp-430 {
+    font-size: 18px;
+  }
 
   @include vp-768 {
     font-size: 22px;

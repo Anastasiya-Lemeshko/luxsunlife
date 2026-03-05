@@ -1,5 +1,5 @@
 const renderPhotoToModal = (modal, button) => {
-  const modalImgContainer = modal.querySelector('.modal__image');
+  const modalImgContainer = modal.querySelector('.modal-photo__img');
   const fullImgContainer = button.parentElement.querySelector('[data-full-photo]');
 
   if (!modalImgContainer || !fullImgContainer) return;

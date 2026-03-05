@@ -9,6 +9,9 @@
 }
 
 .production-video__title {
-  //margin: 0 0 38px;
-  margin: 0 0 506px;
+  margin: 0 0 38px;
+
+  @include vp-1024 {
+    margin: 0 0 15px;
+  }
 }

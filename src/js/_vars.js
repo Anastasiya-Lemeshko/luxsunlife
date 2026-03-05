@@ -9,6 +9,8 @@ export const TABLET_WIDTH = window.matchMedia('(min-width: 768px)');
 export const SMALL_DESKTOP_WIDTH = window.matchMedia('(min-width: 1024px)');
 export const DESKTOP_WIDTH = window.matchMedia('(min-width: 1366px)');
 
+export const HEADER_FIXED_OFFSET = 500;
+
 export const SLIDER_CONFIG = {
   'default': {
     'mobile_count': 1,

@@ -17,7 +17,7 @@
   transition: opacity 0.3s, transform 0.3s, visibility 0.3s, border 0.3s;
   visibility: hidden;
   opacity: 0;
-  z-index: 100;
+  z-index: var(--z-header);
   cursor: pointer;
 
   @include vp-768 {

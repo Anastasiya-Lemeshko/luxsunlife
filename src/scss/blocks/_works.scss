@@ -176,10 +176,16 @@
   }
 }
 
+.works__link {
+  display: block;
+}
+
 .works__img {
   width: 100%;
   aspect-ratio: 412 / 419;
   margin: 0 0 10px;
+  overflow: hidden;
+  transition: transform 0.5s;
 
   @include vp-550 {
     aspect-ratio: unset;
@@ -190,12 +196,21 @@
     height: unset;
   }
 
+  @include hover {
+    img {
+      transform: scale(1.07);
+    }
+  }
+
   img {
     @include img-cover;
+
+    transition: transform 0.5s;
   }
 }
 
-.works__link {
+.works__button {
+  margin: 0;
   font-size: 14px;
 }
 
@@ -204,11 +219,11 @@
   font-size: 14px;
 
   @include vp-768 {
+    align-self: end;
     margin: 350px 0 0;
   }
 
   @include vp-1024 {
-    align-self: end;
     margin: 0;
   }
 }
@@ -246,7 +261,7 @@
   }
 
   @include vp-1280 {
-    margin: 0 0 16px;
+    margin: 0 0 50px;
   }
 
   @include vp-1366 {
@@ -283,10 +298,6 @@
 .works__form-item {
   &:not(:last-child) {
     margin: 0 0 30px;
-
-    @include vp-1280 {
-      margin: 0 0 11px;
-    }
   }
 }
 
@@ -323,7 +334,8 @@
   }
 
   @include vp-1640 {
-    grid-template-columns: 1fr minmax(180px, auto);
+    grid-template-columns: 1fr minmax(260px, auto);
+    gap: 60px;
   }
 }
 

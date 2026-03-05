@@ -69,6 +69,23 @@
   }
 }
 
+@mixin interactive-link-dark {
+  transition: color 0.3s;
+
+  @include hover-focus {
+    --color: var(--text-light);
+
+    color: var(--text-light);
+    outline: none;
+  }
+
+  @include active {
+    --color: var(--text-extra-light);
+
+    color: var(--text-extra-light);
+  }
+}
+
 @mixin interactive-arrow-shift {
   &::after {
     opacity: 0;

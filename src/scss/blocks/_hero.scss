@@ -1,12 +1,10 @@
 @use "index" as *;
 
 .hero {
-  margin-top: -58px;
   padding: 0 0 5px;
 
   @include vp-768 {
     position: relative;
-    margin-top: -116px;
     padding-top: 116px;
   }
 

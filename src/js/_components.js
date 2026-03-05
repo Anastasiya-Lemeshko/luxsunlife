@@ -1,3 +1,4 @@
+import { addFixedHeader } from './components/_fixed-header.js';
 import { toggleBurgerMenu } from './components/_open-mobile-menu.js';
 import { moveHeader } from './components/_move-header.js';
 import { setScrollAnimation } from './components/_scroll-trigger-animation.js';
@@ -10,8 +11,10 @@ import { setFileInputs } from './components/_file-input.js';
 import { setTabs } from './components/_tabs.js';
 import { moveWorks } from './components/_move-works.js';
 import { moveBlogPreview } from './components/_move-blog-preview.js';
+import { setVideoFixed } from './components/_video-fixed.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  addFixedHeader();
   toggleBurgerMenu();
   moveHeader();
   setScrollAnimation();
@@ -25,4 +28,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setTabs();
   moveWorks();
   moveBlogPreview();
+  setVideoFixed();
 });
