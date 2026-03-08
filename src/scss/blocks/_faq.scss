@@ -158,9 +158,8 @@
   }
 }
 
-a.faq__callback {
+.faq__callback {
   font-size: 14px;
-  cursor: pointer;
 
   @include vp-1024 {
     grid-area: 1 / 2 / 2 / 3;

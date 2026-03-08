@@ -21,6 +21,10 @@
   @include vp-1920 {
     width: 290px;
   }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .video-fixed__close {

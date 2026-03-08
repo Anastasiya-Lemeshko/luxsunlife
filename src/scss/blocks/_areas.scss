@@ -191,8 +191,9 @@
   }
 }
 
-.areas__order {
+.areas__callback {
   padding: 8px 0 16px;
+  cursor: pointer;
 
   @include vp-768 {
     margin: auto 0 0;

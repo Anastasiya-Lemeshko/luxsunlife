@@ -11,6 +11,24 @@ export const DESKTOP_WIDTH = window.matchMedia('(min-width: 1366px)');
 
 export const HEADER_FIXED_OFFSET = 500;
 
+export const MODAL_TIMER = 30000;
+
+export const MODAL_CONTENT = {
+  'title': {
+    'individual-calc': 'Получите индивидуальный расчёт под ваш проект',
+    'request': 'Оставьте заявку — мы подберём оптимальное решение для вашей перголы',
+    'order': 'Закажите перголу с гарантией результата',
+    'cost': 'Точная стоимость — для вашего проекта под ключ',
+    'question': 'Не нашли нужной информации? Спросите нас напрямую',
+  },
+  'desc': {
+    'question': 'Мы на связи и готовы помочь с выбором, расчётом или техническими нюансами.',
+  },
+  'pattern': {
+    'individual-design': 'Заказать перголу {title} по индивидуальному дизайну',
+  },
+}
+
 export const SLIDER_CONFIG = {
   'default': {
     'mobile_count': 1,
@@ -43,6 +61,14 @@ export const SLIDER_CONFIG = {
     'tablet_count': 100000,
     'desktop_count': 'auto',
     'desktop_width': SMALL_DESKTOP_WIDTH,
+  },
+  'modal-project': {
+    'mobile_count': 1,
+    'tablet_count': 1,
+    'desktop_count': 1,
+    'fade': true,
+    'auto_height': false,
+    'loop': true,
   },
 };
 

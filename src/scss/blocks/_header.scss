@@ -226,6 +226,10 @@
   display: none;
 }
 
+a.header__logo-img:not([href]) {
+  cursor: default;
+}
+
 .header__contacts {
   @include vp-768 {
     position: relative;
@@ -368,6 +372,7 @@
 
 .header__callback {
   min-width: 156px;
+  cursor: pointer;
 
   @include vp-768 {
     width: 100%;
@@ -390,18 +395,21 @@
 
 .header--fixed {
   position: fixed;
-  padding: 10px 0;
-  background-color: var(--white);
-  color: var(--text-dark);
+  padding: 0;
   animation: appear 0.3s;
 
-  @include vp-768 {
-    padding: 5px 0;
-  }
+  .container {
+    padding: 10px var(--container-offset-mobile);
+    background-color: var(--white);
+    color: var(--text-dark);
 
-  @include vp-1366 {
-    width: calc(100% - 20px * 2);
-    margin: 0 20px;
+    @include vp-768 {
+      padding: 5px var(--container-offset-tablet);
+    }
+
+    @include vp-1366 {
+      margin: 0 20px;
+    }
   }
 
   .header__burger::before,

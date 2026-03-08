@@ -1,0 +1,88 @@
+<div class="modal modal-project" data-modal="project">
+  <div class="modal__container modal-project__container">
+    <button class="modal__close-button">
+      <span class="visually-hidden">Закрыть.</span>
+    </button>
+    <p class="modal-project__title title title--light" data-modal-title>Закажите обратный звонок&nbsp;— мы свяжемся с&nbsp;вами и ответим на&nbsp;вопросы</p>
+    <div class="modal-project__swiper-container">
+      <div class="modal-project__swiper" data-swiper="navigation">
+        <ul class="modal-project__swiper-wrapper">
+          <li class="modal-project__slide">
+            <div class="modal-project__item">
+              <div class="modal-project__img">
+                <picture>
+                  <source width="722" height="572" type="image/webp" media="(min-width: 768px)" srcset="img/chars/aluminum-tablet@1x.webp 1x, img/chars/aluminum-tablet@2x.webp 2x">
+                  <source width="409" height="396" type="image/webp" srcset="img/chars/aluminum-mobile@1x.webp 1x, img/chars/aluminum-mobile@2x.webp 2x">
+                  <source width="722" height="572" type="image/jpg" media="(min-width: 768px)" srcset="img/chars/aluminum-tablet@1x.jpg 1x, img/chars/aluminum-tablet@2x.jpg 2x">
+                  <img src="img/chars/aluminum-mobile@1x.jpg" srcset="img/chars/aluminum-mobile@2x.jpg 2x" width="409" height="396" alt="Премиальные перголы">
+                </picture>
+              </div>
+            </div>
+          </li>
+          <li class="modal-project__slide">
+            <div class="modal-project__item">
+              <div class="modal-project__img">
+                <picture>
+                  <source width="434" height="356" type="image/webp" media="(min-width: 768px)" srcset="img/solutions/fixed-glazing-tablet@1x.webp 1x, img/solutions/fixed-glazing-tablet@2x.webp 2x">
+                  <source width="353" height="240" type="image/webp" srcset="img/solutions/fixed-glazing-mobile@1x.webp 1x, img/solutions/fixed-glazing-mobile@2x.webp 2x">
+                  <source width="434" height="356" type="image/jpg" media="(min-width: 768px)" srcset="img/solutions/fixed-glazing-tablet@1x.jpg 1x, img/solutions/fixed-glazing-tablet@2x.jpg 2x">
+                  <img src="img/solutions/fixed-glazing-mobile@1x.jpg" srcset="img/solutions/fixed-glazing-mobile@2x.jpg 2x" width="353" height="240" alt="Стационарное остекление">
+                </picture>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="modal-project__swiper-controls">
+          <p class="modal-project__swiper-progress swiper-progress"></p>
+          <div class="modal-project__swiper-button-container hidden">
+            <button class="button-swiper button-swiper--prev" type="button">
+              <span class="visually-hidden">Назад.</span>
+            </button>
+            <button class="button-swiper button-swiper--next" type="button">
+              <span class="visually-hidden">Вперёд.</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <dl class="modal-project__details">
+      <div>
+        <dt>Тип конструкции</dt>
+        <dd>Примыкающая</dd>
+      </div>
+      <div>
+        <dt>Описание</dt>
+        <dd>Электродвигатель (например, Somfy или аналогичный) для движения тента по&nbsp;направляющим</dd>
+      </div>
+      <div>
+        <dt>Стоимость</dt>
+        <dd>от&nbsp;100&nbsp;000&nbsp;₽</dd>
+      </div>
+    </dl>
+    <form class="modal-project__form" action="" method="post">
+      <p class="modal-project__form-title title title--light">Хотите такую установить такую&nbsp;же перголу себе? Заполните форму и&nbsp;мы&nbsp;вам перезвоним</p>
+      <label class="modal-project__field">
+        <span class="visually-hidden">Имя</span>
+        <input class="modal-project__input" type="text" name="name" placeholder="Имя*">
+      </label>
+      <label class="modal-project__field">
+        <span class="visually-hidden">Телефон</span>
+        <input class="modal-project__input" type="tel" name="phone" placeholder="Телефон*">
+      </label>
+      <label class="modal-project__field modal-project__field--wide">
+        <span class="visually-hidden">Комментарий</span>
+        <input class="modal-project__input" type="text" name="message" placeholder="Комментарий">
+      </label>
+      <div class="modal-project__form-bottom">
+        <label class="modal-project__accept">
+          <span class="modal-project__label">Я&nbsp;ознакомлен с&nbsp;Политикой конфиденциальности и&nbsp;даю согласие на&nbsp;обработку моих персональных данных</span>
+          <input class="visually-hidden" type="checkbox" name="accept" required>
+        </label>
+        <button class="modal-project__form-button button" type="submit">Отправить заявку</button>
+      </div>
+      <div class="modal-project__form-error-wrapper">
+        <p class="modal-project__form-error hidden"></p>
+      </div>
+    </form>
+  </div>
+</div>

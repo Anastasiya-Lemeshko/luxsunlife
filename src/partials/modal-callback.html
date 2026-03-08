@@ -3,8 +3,8 @@
     <button class="modal__close-button">
       <span class="visually-hidden">Закрыть.</span>
     </button>
-    <p class="modal-standard__title title">Закажите обратный звонок&nbsp;— мы свяжемся с&nbsp;вами и ответим на&nbsp;вопросы</p>
-    <p class="modal-standard__description">Оставьте свои контакты, и наш&nbsp;специалист перезвонит вам в&nbsp;удобное время.</p>
+    <p class="modal-standard__title title" data-modal-title>Закажите обратный звонок&nbsp;— мы свяжемся с&nbsp;вами и ответим на&nbsp;вопросы</p>
+    <p class="modal-standard__description" data-modal-desc>Оставьте свои контакты, и наш&nbsp;специалист перезвонит вам в&nbsp;удобное время.</p>
     <form class="modal-standard__form" action="" method="post">
       <label class="modal-standard__field">
         <span class="visually-hidden">Имя</span>
@@ -14,15 +14,17 @@
         <span class="visually-hidden">Телефон</span>
         <input class="modal-standard__input" type="tel" name="phone" placeholder="Телефон*">
       </label>
-      <label class="modal-standard__field">
+      <label class="modal-standard__field modal-standard__field--wide">
         <span class="visually-hidden">Комментарий</span>
         <input class="modal-standard__input" type="text" name="message" placeholder="Комментарий">
       </label>
-      <label class="modal-standard__accept">
-        <span class="modal-standard__label">Я&nbsp;ознакомлен с&nbsp;Политикой конфиденциальности и&nbsp;даю согласие на&nbsp;обработку моих персональных данных</span>
-        <input class="visually-hidden" type="checkbox" name="accept" required>
-      </label>
-      <button class="modal-standard__form-button button button--dark" type="submit">Заказать звонок</button>
+      <div class="modal-standard__form-bottom">
+        <label class="modal-standard__accept">
+          <span class="modal-standard__label">Я&nbsp;ознакомлен с&nbsp;Политикой конфиденциальности и&nbsp;даю согласие на&nbsp;обработку моих персональных данных</span>
+          <input class="visually-hidden" type="checkbox" name="accept" required>
+        </label>
+        <button class="modal-standard__form-button button button--dark" type="submit">Заказать звонок</button>
+      </div>
       <div class="modal-standard__form-error-wrapper">
         <p class="modal-standard__form-error hidden"></p>
       </div>

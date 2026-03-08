@@ -192,6 +192,26 @@
   }
 }
 
+.footer__widget {
+  display: grid;
+  width: 210px;
+  height: 69px;
+  overflow: hidden;
+  background-color: var(--text-light);
+  border-radius: 7px;
+
+  iframe {
+    grid-area: 1 / 1 / 2 / 2;
+    transform: scale(1.4);
+    transform-origin: top left;
+    z-index: 1;
+  }
+}
+
+.footer__widget-bg {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
 .footer__policy {
   margin: 0 0 26px;
 

@@ -56,7 +56,7 @@ const setNavigationSwiper = () => {
         slidesPerView: sliderConfig.mobile_count,
         spaceBetween: 10,
         loop: isLoopNeeded,
-        autoHeight: sliderConfig.mobile_count === 1,
+        autoHeight: sliderConfig.auto_height ?? sliderConfig.mobile_count === 1,
 
         // autoplay: {
         //   delay: autoplayDelay,
@@ -73,12 +73,12 @@ const setNavigationSwiper = () => {
         breakpoints: {
           768: {
             slidesPerView: sliderConfig.tablet_count,
-            autoHeight: sliderConfig.tablet_count === 1,
+            autoHeight: sliderConfig.auto_height ?? (sliderConfig.tablet_count === 1),
           },
 
           1024: {
             slidesPerView: sliderConfig.desktop_count,
-            autoHeight: sliderConfig.desktop_count === 1,
+            autoHeight: sliderConfig.auto_height ?? (sliderConfig.desktop_count === 1),
             speed: 1000,
             spaceBetween: 32,
           }

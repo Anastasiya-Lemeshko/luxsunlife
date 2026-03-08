@@ -144,6 +144,7 @@
   margin: auto 0 0;
   padding: 8px 0 2px;
   font-size: 14px;
+  cursor: pointer;
 
   @include vp-1640 {
     max-width: 260px;

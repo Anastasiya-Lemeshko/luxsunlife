@@ -3,8 +3,12 @@ import {
   isTabKey,
   getScrollWidth
 } from '../_utils.js';
-import { renderPhotoToModal } from '../components/_modal-render.js';
-import { TABLET_WIDTH } from "./../_vars.js";
+import { renderPhotoToModal, renderModalContent } from '../components/_modal-render.js';
+import { TABLET_WIDTH, MODAL_TIMER } from "./../_vars.js";
+
+// элементы, у которых нужно убрать скачок при открытии модального окна
+const header = document.querySelector('.header');
+const videoFixed = document.querySelector('.video-fixed');
 
 let scrollSize = 0;
 
@@ -31,10 +35,11 @@ class ModalWindow {
 
         if (modalName === 'image-full' && !TABLET_WIDTH.matches) return;
 
-        // проверяет, нужно ли дополнительно отрисовывать элементы в модальном окне
+        // проверка необходимости отрисовки элементов в модальном окне
         if (modalName === 'image-full') {
           renderPhotoToModal(this.modal, button);
         }
+        renderModalContent(this.modal, button);
 
         this.modalWindow = this.modal.querySelector('.modal__container');
         this.closeBtn = this.modal.querySelector('.modal__close-button');
@@ -47,6 +52,39 @@ class ModalWindow {
         this.openModal(this.modal);
       });
     });
+  }
+
+  // открывает модальные окна по истечении таймера
+  timerStart() {
+    const subscribeModal = document.querySelector('[data-modal="subscribe"]');
+
+    if (!subscribeModal) return;
+
+    let inactivityTimer;
+
+    const resetTimer = () => {
+      clearTimeout(inactivityTimer);
+
+      inactivityTimer = setTimeout(() => {
+        this.modal = subscribeModal;
+        this.modalWindow = subscribeModal.querySelector('.modal__container');
+        this.closeBtn = subscribeModal.querySelector('.modal__close-button');
+
+        const focusableElements = Array.from(subscribeModal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
+        this.firstFocusableElement = focusableElements[0];
+        this.lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+        this.addEventListeners();
+        this.openModal(subscribeModal);
+      }, MODAL_TIMER);
+    };
+
+    window.addEventListener('mousemove', resetTimer);
+    window.addEventListener('keydown', resetTimer);
+    window.addEventListener('scroll', resetTimer);
+    window.addEventListener('click', resetTimer);
+
+    resetTimer();
   }
 
   addEventListeners() {
@@ -116,6 +154,8 @@ class ModalWindow {
     // нивелирует скачок из-за полосы прокрутки
     scrollSize = getScrollWidth();
     this.html.style.paddingRight = `${scrollSize}px`;
+    if (header) header.style.width = `calc(100% - ${scrollSize}px)`;
+    if (videoFixed) videoFixed.style.right = `calc(20px + ${scrollSize}px)`;
 
     this.html.classList.add('dis-scroll');
     modal.classList.add('open');
@@ -147,6 +187,8 @@ class ModalWindow {
     modal.classList.remove('open');
     this.removeEventListeners();
     this.html.style.paddingRight = 0;
+    if (header) header.style.width = '';
+    if (videoFixed) videoFixed.style.right = '';
   }
 
   closeAllModal() {
@@ -169,6 +211,7 @@ class ModalWindow {
 
   init() {
     this.handleOpen();
+    this.timerStart();
   }
 }
 
