@@ -10791,6 +10791,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   COUNT_GRID_COLUMNS: () => (/* binding */ COUNT_GRID_COLUMNS),
 /* harmony export */   DESKTOP_WIDTH: () => (/* binding */ DESKTOP_WIDTH),
 /* harmony export */   HEADER_FIXED_OFFSET: () => (/* binding */ HEADER_FIXED_OFFSET),
+/* harmony export */   MODAL_CONTENT: () => (/* binding */ MODAL_CONTENT),
+/* harmony export */   MODAL_TIMER: () => (/* binding */ MODAL_TIMER),
 /* harmony export */   RANGE_VALUES: () => (/* binding */ RANGE_VALUES),
 /* harmony export */   SLIDER_CONFIG: () => (/* binding */ SLIDER_CONFIG),
 /* harmony export */   SMALL_DESKTOP_WIDTH: () => (/* binding */ SMALL_DESKTOP_WIDTH),
@@ -10807,6 +10809,22 @@ const TABLET_WIDTH = window.matchMedia('(min-width: 768px)');
 const SMALL_DESKTOP_WIDTH = window.matchMedia('(min-width: 1024px)');
 const DESKTOP_WIDTH = window.matchMedia('(min-width: 1366px)');
 const HEADER_FIXED_OFFSET = 500;
+const MODAL_TIMER = 30000;
+const MODAL_CONTENT = {
+  'title': {
+    'individual-calc': 'Получите индивидуальный расчёт под ваш проект',
+    'request': 'Оставьте заявку — мы подберём оптимальное решение для вашей перголы',
+    'order': 'Закажите перголу с гарантией результата',
+    'cost': 'Точная стоимость — для вашего проекта под ключ',
+    'question': 'Не нашли нужной информации? Спросите нас напрямую'
+  },
+  'desc': {
+    'question': 'Мы на связи и готовы помочь с выбором, расчётом или техническими нюансами.'
+  },
+  'pattern': {
+    'individual-design': 'Заказать перголу {title} по индивидуальному дизайну'
+  }
+};
 const SLIDER_CONFIG = {
   'default': {
     'mobile_count': 1,
@@ -10839,6 +10857,14 @@ const SLIDER_CONFIG = {
     'tablet_count': 100000,
     'desktop_count': 'auto',
     'desktop_width': SMALL_DESKTOP_WIDTH
+  },
+  'modal-project': {
+    'mobile_count': 1,
+    'tablet_count': 1,
+    'desktop_count': 1,
+    'fade': true,
+    'auto_height': false,
+    'loop': true
   }
 };
 const RANGE_VALUES = {
@@ -11046,8 +11072,11 @@ const addFixedHeader = () => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   renderModalContent: () => (/* binding */ renderModalContent),
 /* harmony export */   renderPhotoToModal: () => (/* binding */ renderPhotoToModal)
 /* harmony export */ });
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../_vars.js */ "./src/js/_vars.js");
+
 const renderPhotoToModal = (modal, button) => {
   const modalImgContainer = modal.querySelector('.modal-photo__img');
   const fullImgContainer = button.parentElement.querySelector('[data-full-photo]');
@@ -11057,6 +11086,52 @@ const renderPhotoToModal = (modal, button) => {
   const copyFullImg = fullImg.cloneNode(true);
   modalImgContainer.innerHTML = '';
   modalImgContainer.appendChild(copyFullImg);
+};
+const renderModalContent = (modal, button) => {
+  // Отрисовка заголовка для модального окна
+  if (button.hasAttribute('data-modal-title')) {
+    const titleKey = button.getAttribute('data-modal-title');
+    const modalTitle = modal.querySelector('[data-modal-title]');
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.MODAL_CONTENT.title && _vars_js__WEBPACK_IMPORTED_MODULE_0__.MODAL_CONTENT.title[titleKey] && modalTitle) {
+      modalTitle.textContent = _vars_js__WEBPACK_IMPORTED_MODULE_0__.MODAL_CONTENT.title[titleKey];
+    }
+    ;
+  }
+
+  // Отрисовка описания для модального окна
+  if (button.hasAttribute('data-modal-desc')) {
+    const descKey = button.getAttribute('data-modal-desc');
+    const modalDesc = modal.querySelector('[data-modal-desc]');
+    if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.MODAL_CONTENT.title && _vars_js__WEBPACK_IMPORTED_MODULE_0__.MODAL_CONTENT.desc[descKey] && modalDesc) {
+      modalDesc.textContent = _vars_js__WEBPACK_IMPORTED_MODULE_0__.MODAL_CONTENT.desc[descKey];
+    }
+    ;
+  }
+
+  // Отрисовка динамического заголовка
+  if (button.hasAttribute('data-modal-dynamic')) {
+    let sourceTitle = button.closest('[data-modal-title]');
+    const modalTitle = modal.querySelector('[data-modal-title]');
+    if (!sourceTitle) sourceTitle = button.parentElement.querySelector('[data-modal-title]');
+    if (sourceTitle && modalTitle) {
+      modalTitle.textContent = sourceTitle.textContent;
+    }
+    ;
+  }
+
+  // Отрисовка заголовка с паттерном
+  if (button.hasAttribute('data-modal-pattern')) {
+    let sourceTitle = button.closest('[data-modal-title]');
+    const modalTitle = modal.querySelector('[data-modal-title]');
+    const patternKey = button.getAttribute('data-modal-pattern');
+    if (!sourceTitle) sourceTitle = button.parentElement.querySelector('[data-modal-title]');
+    if (sourceTitle && modalTitle && _vars_js__WEBPACK_IMPORTED_MODULE_0__.MODAL_CONTENT.pattern[patternKey]) {
+      const dynamicText = sourceTitle.textContent.trim();
+      const pattern = _vars_js__WEBPACK_IMPORTED_MODULE_0__.MODAL_CONTENT.pattern[patternKey];
+      modalTitle.textContent = pattern.replace('{title}', dynamicText);
+    }
+    ;
+  }
 };
 
 
@@ -11078,6 +11153,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+// элементы, у которых нужно убрать скачок при открытии модального окна
+const header = document.querySelector('.header');
+const videoFixed = document.querySelector('.video-fixed');
 let scrollSize = 0;
 class ModalWindow {
   constructor(buttons) {
@@ -11096,10 +11175,11 @@ class ModalWindow {
         if (!this.modal) return;
         if (modalName === 'image-full' && !_vars_js__WEBPACK_IMPORTED_MODULE_2__.TABLET_WIDTH.matches) return;
 
-        // проверяет, нужно ли дополнительно отрисовывать элементы в модальном окне
+        // проверка необходимости отрисовки элементов в модальном окне
         if (modalName === 'image-full') {
           (0,_components_modal_render_js__WEBPACK_IMPORTED_MODULE_1__.renderPhotoToModal)(this.modal, button);
         }
+        (0,_components_modal_render_js__WEBPACK_IMPORTED_MODULE_1__.renderModalContent)(this.modal, button);
         this.modalWindow = this.modal.querySelector('.modal__container');
         this.closeBtn = this.modal.querySelector('.modal__close-button');
         const focusableElements = Array.from(this.modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
@@ -11109,6 +11189,31 @@ class ModalWindow {
         this.openModal(this.modal);
       });
     });
+  }
+
+  // открывает модальные окна по истечении таймера
+  timerStart() {
+    const subscribeModal = document.querySelector('[data-modal="subscribe"]');
+    if (!subscribeModal) return;
+    let inactivityTimer;
+    const resetTimer = () => {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(() => {
+        this.modal = subscribeModal;
+        this.modalWindow = subscribeModal.querySelector('.modal__container');
+        this.closeBtn = subscribeModal.querySelector('.modal__close-button');
+        const focusableElements = Array.from(subscribeModal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
+        this.firstFocusableElement = focusableElements[0];
+        this.lastFocusableElement = focusableElements[focusableElements.length - 1];
+        this.addEventListeners();
+        this.openModal(subscribeModal);
+      }, _vars_js__WEBPACK_IMPORTED_MODULE_2__.MODAL_TIMER);
+    };
+    window.addEventListener('mousemove', resetTimer);
+    window.addEventListener('keydown', resetTimer);
+    window.addEventListener('scroll', resetTimer);
+    window.addEventListener('click', resetTimer);
+    resetTimer();
   }
   addEventListeners() {
     if (!this.modal || !this.modalWindow || !this.closeBtn) return;
@@ -11167,6 +11272,8 @@ class ModalWindow {
     // нивелирует скачок из-за полосы прокрутки
     scrollSize = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.getScrollWidth)();
     this.html.style.paddingRight = `${scrollSize}px`;
+    if (header) header.style.width = `calc(100% - ${scrollSize}px)`;
+    if (videoFixed) videoFixed.style.right = `calc(20px + ${scrollSize}px)`;
     this.html.classList.add('dis-scroll');
     modal.classList.add('open');
     this.closeBtn.focus();
@@ -11189,6 +11296,8 @@ class ModalWindow {
     modal.classList.remove('open');
     this.removeEventListeners();
     this.html.style.paddingRight = 0;
+    if (header) header.style.width = '';
+    if (videoFixed) videoFixed.style.right = '';
   }
   closeAllModal() {
     const allModal = document.querySelectorAll('.modal');
@@ -11206,6 +11315,7 @@ class ModalWindow {
   }
   init() {
     this.handleOpen();
+    this.timerStart();
   }
 }
 const setModals = () => {
@@ -11373,7 +11483,7 @@ const setNavigationSwiper = () => {
         slidesPerView: sliderConfig.mobile_count,
         spaceBetween: 10,
         loop: isLoopNeeded,
-        autoHeight: sliderConfig.mobile_count === 1,
+        autoHeight: sliderConfig.auto_height ?? sliderConfig.mobile_count === 1,
         // autoplay: {
         //   delay: autoplayDelay,
         //   stopOnLastSlide: false,
@@ -11390,11 +11500,11 @@ const setNavigationSwiper = () => {
         breakpoints: {
           768: {
             slidesPerView: sliderConfig.tablet_count,
-            autoHeight: sliderConfig.tablet_count === 1
+            autoHeight: sliderConfig.auto_height ?? sliderConfig.tablet_count === 1
           },
           1024: {
             slidesPerView: sliderConfig.desktop_count,
-            autoHeight: sliderConfig.desktop_count === 1,
+            autoHeight: sliderConfig.auto_height ?? sliderConfig.desktop_count === 1,
             speed: 1000,
             spaceBetween: 32
           }
@@ -11727,6 +11837,7 @@ const closeButton = video ? video.querySelector('.video-fixed__close') : null;
 const setVideoFixed = () => {
   if (!video || !closeButton) return;
   closeButton.addEventListener('click', () => {
+    console.log(1);
     video.classList.add('hidden');
   });
 };
