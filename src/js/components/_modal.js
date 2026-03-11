@@ -76,6 +76,9 @@ class ModalWindow {
       clearTimeout(inactivityTimer);
 
       inactivityTimer = setTimeout(() => {
+        const otherModalOpened = document.querySelector('.modal.open');
+        if (otherModalOpened) return;
+
         this.modal = subscribeModal;
         this.modalWindow = subscribeModal.querySelector('.modal__container');
         this.closeBtn = subscribeModal.querySelector('.modal__close-button');

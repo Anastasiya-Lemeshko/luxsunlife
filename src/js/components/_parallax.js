@@ -8,6 +8,8 @@ const parallaxElement = parallaxContainer ? parallaxContainer.querySelector('.pa
 
 const speed = -0.2;
 let entryScrollY = null;
+let ticking = false;
+let isVisible = false;
 
 const setParallax = () => {
   if (!parallaxElement || !parallaxContainer) return;
@@ -15,10 +17,7 @@ const setParallax = () => {
   const scrollY = window.scrollY;
   const rect = parallaxContainer.getBoundingClientRect();
 
-  // Момент входа контейнера в зону видимости
-  if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-
-    // Если entryScrollY еще не задан ИЛИ контейнер только что вошел в зону видимости
+  if (isVisible) {
     if (entryScrollY === null) {
       entryScrollY = scrollY - (window.innerHeight - rect.top);
     }
@@ -27,13 +26,34 @@ const setParallax = () => {
     const moveY = scrolledSinceEntry * speed;
 
     parallaxElement.style.transform = `translateX(-50%) translateY(${moveY}px)`;
-
   } else {
     entryScrollY = null;
   }
+
+  ticking = false;
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    isVisible = entry.isIntersecting;
+    if (!isVisible) {
+      entryScrollY = null;
+    }
+  });
+}, { threshold: 0 });
+
+if (parallaxContainer) {
+  observer.observe(parallaxContainer);
 }
 
-window.addEventListener('scroll', setParallax);
+const onScroll = () => {
+  if (!ticking && isVisible) {
+    window.requestAnimationFrame(setParallax);
+    ticking = true;
+  }
+};
+
+window.addEventListener('scroll', onScroll, { passive: true });
 
 TABLET_WIDTH.addEventListener('change', setParallax);
 DESKTOP_WIDTH.addEventListener('change', setParallax);

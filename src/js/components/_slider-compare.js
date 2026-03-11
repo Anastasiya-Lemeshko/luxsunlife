@@ -34,6 +34,36 @@ const setSliderCompare = () => {
     afterScreen.style.clipPath = `inset(0 0 0 ${percent}%)`;
     toggle.style.left = `${percent}%`;
   });
+
+  // для мобильных устройств
+
+  toggle.addEventListener('touchstart', (evt) => {
+    evt.preventDefault();
+    isDragging = true;
+  });
+
+  toggle.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+
+  toggle.addEventListener('touchcancel', () => {
+    isDragging = false;
+  });
+
+  slider.addEventListener('touchmove', (evt) => {
+    if (!isDragging) return;
+
+    evt.preventDefault();
+    const touch = evt.touches[0];
+    const rect = slider.getBoundingClientRect();
+    let x = touch.clientX - rect.left;
+    x = Math.max(0, Math.min(x, rect.width));
+
+    const percent = (x / rect.width) * 100;
+
+    afterScreen.style.clipPath = `inset(0 0 0 ${percent}%)`;
+    toggle.style.left = `${percent}%`;
+  });
 };
 
 export { setSliderCompare };

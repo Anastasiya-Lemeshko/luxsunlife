@@ -5,6 +5,7 @@ const header = document.querySelector('.header');
 const menu = header ? header.querySelector('.header__nav') : null;
 const burgerMenu = header ? header.querySelector('.header__burger') : null;
 const headerLinks = menu ? menu.querySelectorAll('a, button') : null;
+const closeButton = menu ? menu.querySelector('.header__close-button') : null;
 
 let scrollSize = 0;
 
@@ -14,6 +15,7 @@ const openMobileMenu = () => {
   document.body.style.overflow = 'hidden';
   document.addEventListener('keydown', onDocumentKeydown);
   document.addEventListener('click', onDocumentClick);
+  closeButton.addEventListener('click', onCloseButtonClick);
   header.addEventListener('focusout', onMenuFocusOut);
   setTabIndex(headerLinks);
 
@@ -28,6 +30,7 @@ const closeMobileMenu = () => {
   document.body.style.paddingRight = 0;
   document.removeEventListener('keydown', onDocumentKeydown);
   document.removeEventListener('click', onDocumentClick);
+  closeButton.removeEventListener('click', onCloseButtonClick);
   header.removeEventListener('focusout', onMenuFocusOut);
   removeTabIndex(headerLinks);
 };
@@ -49,6 +52,10 @@ function onDocumentClick(evt) {
   if (!header.contains(evt.target)) {
     closeMobileMenu();
   }
+}
+
+function onCloseButtonClick() {
+  closeMobileMenu();
 }
 
 const toggleBurgerMenu = () => {
