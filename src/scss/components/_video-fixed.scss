@@ -75,9 +75,18 @@
   text-transform: uppercase;
   color: var(--bg-light);
   background-color: var(--black);
+  transition: background-color 0.3s;
 
   @include vp-1920 {
     padding: 14px 20px 13px;
     font-size: 12px;
+  }
+
+  @include hover-focus {
+    background-color: var(--text-full-width);
+  }
+
+  @include active {
+    background-color: var(--text-light);
   }
 }

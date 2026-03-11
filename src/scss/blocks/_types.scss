@@ -113,6 +113,8 @@
 
 .types__subtitle:focus-visible,
 .types__subtitle:hover {
+  outline: none;
+
   &::after {
     transform: scaleX(1);
   }

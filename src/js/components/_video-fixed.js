@@ -5,8 +5,6 @@ const setVideoFixed = () => {
   if (!video || !closeButton) return;
 
   closeButton.addEventListener('click', () => {
-    console.log(1)
-
     video.classList.add('hidden');
   });
 };

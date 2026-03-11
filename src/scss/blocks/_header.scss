@@ -568,11 +568,14 @@ a.header__logo-img:not([href]) {
 
   .header__submenu {
     @include vp-768 {
+      @include hidden-top;
+
       width: fit-content;
       min-width: 260px;
       padding: 20px 12px 9px;
       left: -12px;
       top: calc(100% - 2px);
+      background-color: var(--white);
     }
 
     .header__menu-link {
@@ -593,14 +596,6 @@ a.header__logo-img:not([href]) {
   .header__menu-item:focus-within .header__subtitle {
     &::after {
       transform: rotate(90deg);
-    }
-  }
-
-  .header__submenu {
-    @include vp-768 {
-      @include hidden-top;
-
-      background-color: var(--white);
     }
   }
 

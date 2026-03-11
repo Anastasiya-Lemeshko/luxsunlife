@@ -1,6 +1,7 @@
 import {
   isEscapeKey,
   isTabKey,
+  isEnterKey,
   getScrollWidth
 } from '../_utils.js';
 import { renderPhotoToModal, renderModalContent } from '../components/_modal-render.js';
@@ -24,7 +25,6 @@ class ModalWindow {
     if (this.buttons.length === 0) return;
 
     this.buttons.forEach(button => {
-
       button.addEventListener('click', () => {
         const modalName = button.getAttribute('data-modal-button');
 
@@ -51,6 +51,16 @@ class ModalWindow {
         this.addEventListeners();
         this.openModal(this.modal);
       });
+
+      // обработка enter, если вызов модалки идет через тег <a>
+      if (button.tagName === 'A' && !button.href) {
+        button.addEventListener('keydown', (evt) => {
+          if (isEnterKey(evt)) {
+            evt.preventDefault();
+            button.click();
+          }
+        });
+      }
     });
   }
 

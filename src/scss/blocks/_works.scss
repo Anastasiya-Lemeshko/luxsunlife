@@ -1,7 +1,7 @@
 @use "index" as *;
 
 .works {
-  padding: 40px 0 32px;
+  padding: 40px 0;
   color: var(--white);
   background-color: var(--bg-dark);
 
@@ -177,7 +177,17 @@
 }
 
 .works__link {
-  display: block;
+  --img-transform: scale(1);
+
+  padding: 0;
+  border: none;
+  background-color: var(--transparent);
+
+  @include focus {
+    --img-transform: scale(1.07);
+
+    outline: none;
+  }
 }
 
 .works__img {
@@ -198,13 +208,14 @@
 
   @include hover {
     img {
-      transform: scale(1.07);
+      --img-transform: scale(1.07);
     }
   }
 
   img {
     @include img-cover;
 
+    transform: var(--img-transform);
     transition: transform 0.5s;
   }
 }
@@ -302,13 +313,7 @@
 }
 
 .works__field {
-  @include input;
-
-  --color: var(--white);
-
-  &:has(span.visually-hidden) {
-    --placeholder-color: var(--white);
-  }
+  @include input-light;
 
   input {
     width: 100%;
@@ -362,28 +367,4 @@
 .works__form-button {
   width: 100%;
   font-size: 14px;
-}
-
-.works__form-error-wrapper {
-  min-height: 20px;
-}
-
-.works__form-error {
-  margin: 10px 0 0 23px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2;
-  text-decoration: underline;
-  text-decoration-skip-ink: none;
-  text-underline-offset: 2px;
-  color: var(--error);
-  animation: appear 0.3s;
-}
-
-.works__form-error-wrapper {
-  @include vp-1024 {
-    position: absolute;
-    width: 100%;
-    top: calc(100% + 10px);
-  }
 }

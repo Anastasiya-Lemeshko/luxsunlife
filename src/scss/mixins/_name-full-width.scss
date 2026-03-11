@@ -13,28 +13,23 @@
   text-transform: uppercase;
   color: var(--color);
   -webkit-text-stroke: 3px var(--color);
-  text-stroke: 3px var(--color);
 
   @include vp-1024 {
-    font-size: calc(222px / $vp-1920 * 100vw);
+    font-size: calc(220px / $vp-1920 * 100vw);
     -webkit-text-stroke: 5px var(--color);
-    text-stroke: 5px var(--color);
   }
 
   @include vp-1366 {
     -webkit-text-stroke: 6px var(--color);
-    text-stroke: 6px var(--color);
   }
 
   @include vp-1640 {
     -webkit-text-stroke: 8px var(--color);
-    text-stroke: 8px var(--color);
   }
 
   @include vp-1920 {
     font-size: 222px;
     -webkit-text-stroke: 10px var(--color);
-    text-stroke: 10px var(--color);
   }
 
   p {

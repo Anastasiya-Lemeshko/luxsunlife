@@ -54,15 +54,15 @@
     --icon: url("../img/sprite.svg#whatsapp");
   }
 
-  // @include hover-focus {
-  //   --color: var(--bg-accent);
+  @include hover-focus {
+    --color: var(--text-light);
 
-  //   outline: none;
-  // }
+    outline: none;
+  }
 
-  // @include active {
-  //   --color: var(--bg-accent-opacity);
-  // }
+  @include active {
+    --color: var(--text-grey);
+  }
 }
 
 @mixin link-with-arrow {

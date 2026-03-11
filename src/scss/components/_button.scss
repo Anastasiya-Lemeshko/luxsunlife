@@ -47,10 +47,10 @@
     --color: var(--text-dark);
   }
 
-  // &--disabled {
-  //   background-color: var(--grey-middle);
-  //   color: var(--grey-extra-light);
-  //   cursor: default;
-  //   pointer-events: none;
-  // }
+  &--disabled {
+    --color: var(--grey-extra-light);
+
+    cursor: default;
+    pointer-events: none;
+  }
 }

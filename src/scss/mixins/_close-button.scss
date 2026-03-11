@@ -1,4 +1,8 @@
+@use "interactive-states" as *;
+
 @mixin close-button {
+  --cross-color: var(--white);
+
   position: relative;
   width: 20px;
   height: 20px;
@@ -17,10 +21,19 @@
     content: "";
     width: 18px;
     height: 1px;
-    background-color: var(--white);
+    background-color: var(--cross-color);
+    transition: background-color 0.3s;
   }
 
   &::after {
     transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  @include hover-focus {
+    --cross-color: var(--grey-hover);
+  }
+
+  @include active {
+    --cross-color: var(--text-grey);
   }
 }

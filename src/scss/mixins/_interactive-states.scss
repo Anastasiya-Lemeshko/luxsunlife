@@ -48,7 +48,11 @@
   }
 
   @include active {
-    --color: var(--text-light);
+    --color: var(--text-grey);
+  }
+
+  @include disabled {
+    --color: var(--text-grey);
   }
 }
 
@@ -63,9 +67,9 @@
   }
 
   @include active {
-    --color: var(--text-light);
+    --color: var(--text-grey);
 
-    color: var(--text-light);
+    color: var(--text-grey);
   }
 }
 
@@ -83,6 +87,23 @@
     --color: var(--text-extra-light);
 
     color: var(--text-extra-light);
+  }
+}
+
+@mixin interactive-link-grey {
+  transition: color 0.3s;
+
+  @include hover-focus {
+    --color: var(--text-dark);
+
+    color: var(--text-dark);
+    outline: none;
+  }
+
+  @include active {
+    --color: var(--text-light);
+
+    color: var(--text-light);
   }
 }
 

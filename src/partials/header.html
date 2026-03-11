@@ -4,9 +4,7 @@
       <button class="header__burger" type="button">
         <span class="visually-hidden">Open menu</span>
       </button>
-
       <div class="header__nav">
-
         <ul class="header__menu">
           <li class="header__menu-item">
             <a class="header__menu-link" href="#">Главная</a>
@@ -38,7 +36,6 @@
             <a class="header__menu-link" href="#">Контакты</a>
           </li>
         </ul>
-
         <div class="header__logo">
           @if (typeof isHomepage !== 'undefined') {
           <a class="header__logo-img">
@@ -51,7 +48,6 @@
           </a>
           }
         </div>
-
         <div class="header__logo-dark">
           @if (typeof isHomepage !== 'undefined') {
           <a class="header__logo-img" href="#">
@@ -64,7 +60,6 @@
           </a>
           }
         </div>
-
         <div class="header__contacts">
           <div class="header__contacts-wrapper">
             <button class="header__contacts-title button" type="button">Связаться с&nbsp;нами</button>
@@ -84,7 +79,6 @@
             </ul>
           </div>
         </div>
-
         <div class="header__socials">
           <p class="header__socials-title">Социальные сети</p>
           <ul class="header__socials-list">
@@ -115,17 +109,8 @@
             </li>
           </ul>
         </div>
-
-
-
       </div>
-
-      <a class="header__callback button" data-modal-button="callback">Обратный звонок</a>
-
-
-
-
-
+      <button class="header__callback button" type="button" aria-label="Открыть форму и заказать обратный звонок" data-modal-button="callback">Обратный звонок</button>
     </nav>
   </div>
 </header>

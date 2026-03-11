@@ -3,7 +3,7 @@
     <h2 class="works__title title title--light title--shift">Наши специалисты установили <span class="title-accent">несколько сотен</span> пергол и знают все&nbsp;нюансы</h2>
     <div class="works__wrapper">
       <div class="works__item">
-        <a class="works__link" data-modal-button="project" data-modal-dynamic>
+        <a class="works__link" role="button" aria-label="Открыть характеристики проекта" data-modal-button="project" data-modal-dynamic data-animation tabindex="0">
           <div class="works__img">
             <picture>
               <source width="421" height="555" type="image/webp" media="(min-width: 768px)" srcset="img/works/pavilion-tablet@1x.webp 1x, img/works/pavilion-tablet@2x.webp 2x">
@@ -16,7 +16,7 @@
         </a>
       </div>
       <div class="works__item">
-        <a class="works__link" data-modal-button="project" data-modal-dynamic data-animation>
+        <a class="works__link" role="button" aria-label="Открыть характеристики проекта" data-modal-button="project" data-modal-dynamic data-animation tabindex="0">
           <div class="works__img">
             <picture>
               <source width="895" height="483" type="image/webp" media="(min-width: 768px)" srcset="img/works/terrace-tablet@1x.webp 1x, img/works/terrace-tablet@2x.webp 2x">
@@ -29,7 +29,7 @@
         </a>
       </div>
       <div class="works__item">
-        <a class="works__link" data-modal-button="project" data-modal-dynamic>
+        <a class="works__link" role="button" aria-label="Открыть характеристики проекта" data-modal-button="project" data-modal-dynamic data-animation tabindex="0">
           <div class="works__img">
             <picture>
               <source width="439" height="521" type="image/webp" media="(min-width: 768px)" srcset="img/works/recreation-tablet@1x.webp 1x, img/works/recreation-tablet@2x.webp 2x">
@@ -42,7 +42,7 @@
         </a>
       </div>
       <a class="works__all button" href="#">Смотреть все проекты</a>
-      <form class="works__form" action="" method="post">
+      <form class="works__form" action="form.php" method="post">
         <fieldset class="works__form-group">
           <legend class="works__form-title title title--light">Хотите заказать такой&nbsp;же проект?</legend>
           <p class="works__form-text">Оставьте свои данные и мы свяжется с&nbsp;вами для уточнения всех деталей.</p>
@@ -68,7 +68,7 @@
           </label>
           <button class="works__form-button button" type="submit">Отправить</button>
         </div>
-        <div class="works__form-error-wrapper">
+        <div class="works__form-error-wrapper form-error-message">
           <p class="works__form-error hidden"></p>
         </div>
       </form>

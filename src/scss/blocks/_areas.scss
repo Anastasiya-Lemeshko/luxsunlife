@@ -1,7 +1,7 @@
 @use "index" as *;
 
 .areas {
-  padding: 40px 0 22px;
+  padding: 40px 0;
 
   @include vp-1024 {
     padding: 40px 0 80px;
@@ -37,7 +37,7 @@
   @include vp-1366 {
     max-width: 454px;
     justify-self: end;
-    margin: 0px 20px 13px 0;
+    margin: 0 20px 13px 0;
     font-size: 18px;
   }
 }
@@ -211,6 +211,7 @@
   aspect-ratio: 410 / 329;
   padding: 0;
   border: none;
+  overflow: hidden;
 
   @include vp-550 {
     height: 310px;
@@ -233,9 +234,18 @@
     height: 100%;
   }
 
+  @include hover-focus {
+    outline: none;
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+
   img {
     @include img-bg;
 
+    transition: transform 0.7s;
     z-index: 1;
   }
 }
@@ -368,20 +378,4 @@
 .areas__form-button {
   width: 100%;
   font-size: 14px;
-}
-
-.areas__form-error-wrapper {
-  min-height: 20px;
-}
-
-.areas__form-error {
-  margin: 10px 0 0 23px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2;
-  text-decoration: underline;
-  text-decoration-skip-ink: none;
-  text-underline-offset: 2px;
-  color: var(--error);
-  animation: appear 0.3s;
 }

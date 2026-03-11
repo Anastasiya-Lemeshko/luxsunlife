@@ -38,7 +38,7 @@
 
 .faq__item {
   position: relative;
-  padding: 24px 0 0;
+  padding: 4px 0 0;
   border-top: 1px solid var(--text-light);
 
   @include vp-1024 {
@@ -73,10 +73,11 @@
 
 .faq__button {
   @include accordion-plus;
+  @include interactive-link-dark;
 
   width: calc(100% - 40px);
-  margin: 0 0 20px 40px;
-  padding: 0 30px 0 0;
+  margin: 0 0 0 40px;
+  padding: 20px 30px 20px 0;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.2;
@@ -94,7 +95,7 @@
     grid-template-columns: 450px 1fr;
     gap: 0 20px;
     width: 100%;
-    margin: 0 0 24px;
+    margin: 0 0 4px;
     font-size: 18px;
     text-transform: initial;
   }
@@ -110,12 +111,13 @@
   &::before,
   &::after {
     @include vp-1024 {
-      top: 14px;
+      top: 30px;
     }
   }
 }
 
 .faq__content {
+  margin: 20px 0 0;
   transform: scaleY(0);
   transform-origin: top;
   transition: opacity 0.4s, max-height 0.5s, transform 0.5s, margin 0.5s;
@@ -131,7 +133,7 @@
     transition: opacity 0.4s, max-height 0.5s, transform 0.5s, margin 0.5s;
 
     @include vp-1024 {
-      margin: 0 0 60px;
+      margin: 20px 0 60px;
       transition: opacity 0.4s, max-height 0.7s, transform 0.5s, margin 0.5s;
     }
   }

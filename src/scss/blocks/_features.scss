@@ -62,13 +62,11 @@
 
 .features__item {
   position: relative;
-  padding: 18px 0 0;
   border-top: 1px solid var(--text-light);
 
   @include vp-1024 {
     position: absolute;
     width: 250px;
-    padding: 0;
     border-top: none;
   }
 
@@ -162,8 +160,8 @@
   @include accordion-plus;
 
   width: calc(100% - 40px);
-  margin: 0 0 20px 40px;
-  padding: 0 30px 0 0;
+  margin: 0 0 0 40px;
+  padding: 20px 30px 20px 0;
   font-weight: 500;
   font-size: 18px;
   line-height: 1.2;
@@ -205,6 +203,10 @@
   &::after {
     width: 1px;
     height: 7px;
+  }
+
+  @include hover-focus {
+    outline: none;
   }
 }
 

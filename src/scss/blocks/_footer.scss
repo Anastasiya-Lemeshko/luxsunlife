@@ -26,6 +26,10 @@
   @include vp-1640 {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @include vp-1920 {
+    grid-template-rows: min-content 1fr;
+  }
 }
 
 .footer__subtitle {
@@ -93,6 +97,10 @@
   @include vp-1640 {
     font-size: 25px;
   }
+
+  &--link {
+    @include interactive-link-dark;
+  }
 }
 
 .footer__socials-list {
@@ -125,6 +133,13 @@
     display: grid;
     grid-template-columns: 4fr 5fr;
     gap: 30px;
+    height: fit-content;
+    align-self: start;
+    margin: 0 0 20px;
+  }
+
+  @include vp-1920 {
+    min-height: 150px;
   }
 
   .footer__subtitle {
@@ -155,6 +170,8 @@
 }
 
 .footer__nav-link {
+  @include interactive-link-dark;
+
   display: block;
   font-weight: 500;
   font-size: 18px;
@@ -205,6 +222,7 @@
     transform: scale(1.4);
     transform-origin: top left;
     z-index: 1;
+    border: none;
   }
 }
 
@@ -226,6 +244,8 @@
 }
 
 .footer__policy-link {
+  @include interactive-link-grey;
+
   display: block;
   font-weight: 500;
   font-size: 14px;

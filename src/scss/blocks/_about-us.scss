@@ -75,7 +75,11 @@
   }
 
   &[data-animation-el] {
-    transition-delay: 0.7s;
+    transition-duration: 1.5s;
+
+    @include vp-1280 {
+      transition-delay: 0.8s;
+    }
   }
 }
 
@@ -90,7 +94,10 @@
   }
 
   @include vp-1280 {
+    --color: var(--white);
+
     margin: 16px var(--container-offset-tablet);
+    -webkit-text-stroke: 1px var(--color);
   }
 }
 

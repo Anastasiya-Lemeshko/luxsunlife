@@ -104,8 +104,55 @@
   }
 }
 
-@mixin input-number-reset {
+@mixin input-light {
+  @include input;
 
+  --color: var(--white);
+
+  &:has(span.visually-hidden) {
+    --placeholder-color: var(--white);
+  }
+
+  &:has(input:hover),
+  &:has(textarea:hover) {
+    --placeholder-color: var(--grey-hover);
+  }
+
+  &:has(input:hover) span,
+  &:has(textarea:hover) span {
+    --color: var(--grey-hover);
+  }
+
+  span:not(.visually-hidden) {
+    @include hover-focus {
+      --color: var(--grey-hover);
+    }
+  }
+}
+
+// стили состояний вынесены отдельно, т.к. в макете есть несколько вариаций цвета полей на темном фоне
+
+@mixin input-for-dark {
+  @include input;
+
+  &:has(input:hover),
+  &:has(textarea:hover) {
+    --placeholder-color: var(--bg-light);
+  }
+
+  &:has(input:hover) span,
+  &:has(textarea:hover) span {
+    --color: var(--bg-light);
+  }
+
+  span:not(.visually-hidden) {
+    @include hover-focus {
+      --color: var(--bg-light);
+    }
+  }
+}
+
+@mixin input-number-reset {
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     appearance: none;

@@ -40,6 +40,8 @@
     @include interactive-opacity;
     @include close-button;
 
+    --cross-color: var(--text-dark);
+
     position: absolute;
     top: 5px;
     right: 5px;
@@ -54,7 +56,6 @@
     &::before,
     &::after {
       width: 25px;
-      background-color: var(--text-dark);
 
       @include vp-1366 {
         width: 35px;
@@ -85,7 +86,6 @@
   }
 
   .modal__close-button {
-
     &::before,
     &::after {
       background-color: var(--white);
@@ -335,7 +335,6 @@
   }
 
   .modal__close-button {
-
     &::before,
     &::after {
       background-color: var(--white);
@@ -536,7 +535,7 @@
   }
 
   &__field {
-    @include input;
+    @include input-for-dark;
 
     --font-size: 14px;
 

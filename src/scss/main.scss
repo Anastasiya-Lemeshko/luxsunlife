@@ -15,6 +15,8 @@
 @use "./components/file-input";
 @use "./components/tabs";
 @use "./components/video";
+@use "./components/video-fixed";
+@use "./components/form-error-message";
 
 // подключения секций страницы
 @use "./blocks/header";
@@ -34,4 +36,3 @@
 @use "./blocks/blog-preview";
 @use "./blocks/bottom-img";
 @use "./blocks/footer";
-@use "./blocks/video-fixed";

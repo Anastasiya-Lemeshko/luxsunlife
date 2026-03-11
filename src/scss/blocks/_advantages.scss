@@ -112,8 +112,6 @@
     margin: 0;
   }
 
-  @include vp-1280 {}
-
   img {
     @include img-contain;
   }

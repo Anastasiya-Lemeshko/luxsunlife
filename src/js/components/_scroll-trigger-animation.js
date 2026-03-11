@@ -1,12 +1,22 @@
+import { DESKTOP_WIDTH } from "./../_vars.js";
+
 const animatedElements = document.querySelectorAll('[data-animation]');
+
+const getThreshold = () => {
+  if (DESKTOP_WIDTH.matches) {
+    return 0.6;
+  }
+  return 0.2;
+};
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('animated');
+      observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.8 });
+}, { threshold: getThreshold() });
 
 const setScrollAnimation = () => {
   animatedElements.forEach((el) => observer.observe(el));

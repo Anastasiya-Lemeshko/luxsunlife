@@ -11,7 +11,7 @@ export const DESKTOP_WIDTH = window.matchMedia('(min-width: 1366px)');
 
 export const HEADER_FIXED_OFFSET = 500;
 
-export const MODAL_TIMER = 30000;
+export const MODAL_TIMER = 3000000;
 
 export const MODAL_CONTENT = {
   'title': {
