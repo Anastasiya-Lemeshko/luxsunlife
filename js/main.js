@@ -10809,7 +10809,7 @@ const TABLET_WIDTH = window.matchMedia('(min-width: 768px)');
 const SMALL_DESKTOP_WIDTH = window.matchMedia('(min-width: 1024px)');
 const DESKTOP_WIDTH = window.matchMedia('(min-width: 1366px)');
 const HEADER_FIXED_OFFSET = 500;
-const MODAL_TIMER = 30000;
+const MODAL_TIMER = 3000000;
 const MODAL_CONTENT = {
   'title': {
     'individual-calc': 'Получите индивидуальный расчёт под ваш проект',
@@ -11188,6 +11188,16 @@ class ModalWindow {
         this.addEventListeners();
         this.openModal(this.modal);
       });
+
+      // обработка enter, если вызов модалки идет через тег <a>
+      if (button.tagName === 'A' && !button.href) {
+        button.addEventListener('keydown', evt => {
+          if ((0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.isEnterKey)(evt)) {
+            evt.preventDefault();
+            button.click();
+          }
+        });
+      }
     });
   }
 
@@ -11726,15 +11736,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   setScrollAnimation: () => (/* binding */ setScrollAnimation)
 /* harmony export */ });
+/* harmony import */ var _vars_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../_vars.js */ "./src/js/_vars.js");
+
 const animatedElements = document.querySelectorAll('[data-animation]');
+const getThreshold = () => {
+  if (_vars_js__WEBPACK_IMPORTED_MODULE_0__.DESKTOP_WIDTH.matches) {
+    return 0.6;
+  }
+  return 0.2;
+};
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('animated');
+      observer.unobserve(entry.target);
     }
   });
 }, {
-  threshold: 0.8
+  threshold: getThreshold()
 });
 const setScrollAnimation = () => {
   animatedElements.forEach(el => observer.observe(el));
@@ -11837,7 +11856,6 @@ const closeButton = video ? video.querySelector('.video-fixed__close') : null;
 const setVideoFixed = () => {
   if (!video || !closeButton) return;
   closeButton.addEventListener('click', () => {
-    console.log(1);
     video.classList.add('hidden');
   });
 };
