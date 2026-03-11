@@ -11209,6 +11209,8 @@ class ModalWindow {
     const resetTimer = () => {
       clearTimeout(inactivityTimer);
       inactivityTimer = setTimeout(() => {
+        const otherModalOpened = document.querySelector('.modal.open');
+        if (otherModalOpened) return;
         this.modal = subscribeModal;
         this.modalWindow = subscribeModal.querySelector('.modal__container');
         this.closeBtn = subscribeModal.querySelector('.modal__close-button');
@@ -11622,6 +11624,7 @@ const header = document.querySelector('.header');
 const menu = header ? header.querySelector('.header__nav') : null;
 const burgerMenu = header ? header.querySelector('.header__burger') : null;
 const headerLinks = menu ? menu.querySelectorAll('a, button') : null;
+const closeButton = menu ? menu.querySelector('.header__close-button') : null;
 let scrollSize = 0;
 const openMobileMenu = () => {
   menu.classList.add('is-open');
@@ -11629,6 +11632,7 @@ const openMobileMenu = () => {
   document.body.style.overflow = 'hidden';
   document.addEventListener('keydown', onDocumentKeydown);
   document.addEventListener('click', onDocumentClick);
+  closeButton.addEventListener('click', onCloseButtonClick);
   header.addEventListener('focusout', onMenuFocusOut);
   (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.setTabIndex)(headerLinks);
   scrollSize = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.getScrollWidth)();
@@ -11641,6 +11645,7 @@ const closeMobileMenu = () => {
   document.body.style.paddingRight = 0;
   document.removeEventListener('keydown', onDocumentKeydown);
   document.removeEventListener('click', onDocumentClick);
+  closeButton.removeEventListener('click', onCloseButtonClick);
   header.removeEventListener('focusout', onMenuFocusOut);
   (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.removeTabIndex)(headerLinks);
 };
@@ -11659,6 +11664,9 @@ function onDocumentClick(evt) {
   if (!header.contains(evt.target)) {
     closeMobileMenu();
   }
+}
+function onCloseButtonClick() {
+  closeMobileMenu();
 }
 const toggleBurgerMenu = () => {
   if (!burgerMenu) return;
@@ -11701,14 +11709,13 @@ const parallaxContainer = document.querySelector('.parallax');
 const parallaxElement = parallaxContainer ? parallaxContainer.querySelector('.parallax-element') : null;
 const speed = -0.2;
 let entryScrollY = null;
+let ticking = false;
+let isVisible = false;
 const setParallax = () => {
   if (!parallaxElement || !parallaxContainer) return;
   const scrollY = window.scrollY;
   const rect = parallaxContainer.getBoundingClientRect();
-
-  // Момент входа контейнера в зону видимости
-  if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-    // Если entryScrollY еще не задан ИЛИ контейнер только что вошел в зону видимости
+  if (isVisible) {
     if (entryScrollY === null) {
       entryScrollY = scrollY - (window.innerHeight - rect.top);
     }
@@ -11718,8 +11725,30 @@ const setParallax = () => {
   } else {
     entryScrollY = null;
   }
+  ticking = false;
 };
-window.addEventListener('scroll', setParallax);
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    isVisible = entry.isIntersecting;
+    if (!isVisible) {
+      entryScrollY = null;
+    }
+  });
+}, {
+  threshold: 0
+});
+if (parallaxContainer) {
+  observer.observe(parallaxContainer);
+}
+const onScroll = () => {
+  if (!ticking && isVisible) {
+    window.requestAnimationFrame(setParallax);
+    ticking = true;
+  }
+};
+window.addEventListener('scroll', onScroll, {
+  passive: true
+});
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.TABLET_WIDTH.addEventListener('change', setParallax);
 _vars_js__WEBPACK_IMPORTED_MODULE_0__.DESKTOP_WIDTH.addEventListener('change', setParallax);
 
@@ -11794,6 +11823,30 @@ const setSliderCompare = () => {
     if (!isDragging) return;
     const rect = slider.getBoundingClientRect();
     let x = evt.clientX - rect.left;
+    x = Math.max(0, Math.min(x, rect.width));
+    const percent = x / rect.width * 100;
+    afterScreen.style.clipPath = `inset(0 0 0 ${percent}%)`;
+    toggle.style.left = `${percent}%`;
+  });
+
+  // для мобильных устройств
+
+  toggle.addEventListener('touchstart', evt => {
+    evt.preventDefault();
+    isDragging = true;
+  });
+  toggle.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+  toggle.addEventListener('touchcancel', () => {
+    isDragging = false;
+  });
+  slider.addEventListener('touchmove', evt => {
+    if (!isDragging) return;
+    evt.preventDefault();
+    const touch = evt.touches[0];
+    const rect = slider.getBoundingClientRect();
+    let x = touch.clientX - rect.left;
     x = Math.max(0, Math.min(x, rect.width));
     const percent = x / rect.width * 100;
     afterScreen.style.clipPath = `inset(0 0 0 ${percent}%)`;
