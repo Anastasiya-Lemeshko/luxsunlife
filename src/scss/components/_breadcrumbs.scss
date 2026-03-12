@@ -1,19 +1,17 @@
 @use "index" as *;
 
 .breadcrumbs {
-  margin: 0 0 14px;
+  margin: 0;
   padding: 0;
   list-style-type: none;
-  font-size: 12px;
-  line-height: 1.2;
 }
 
 .breadcrumbs__item {
   position: relative;
   display: inline;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.2;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1;
 }
 
 .breadcrumbs__item:not(:last-child) {
@@ -31,9 +29,9 @@
     position: absolute;
     right: -2px;
     content: "/";
-    font-weight: 400;
-    font-size: 14px;
-    color: var(--grey);
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--white);
 
     @include vp-768 {
       right: -3px;
@@ -49,11 +47,11 @@
 
 .breadcrumbs__link {
   display: inline;
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-  color: var(--grey);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--white);
 
   @include vp-768 {
     font-size: 18px;
@@ -65,9 +63,10 @@
 }
 
 a.breadcrumbs__link {
-  // @include interactive-link-dark;
+  @include interactive-link;
 }
 
 span.breadcrumbs__link {
-  color: var(--text-basic);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }

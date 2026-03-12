@@ -1,11 +1,8 @@
 @use "index" as *;
 
 .hero {
-  padding: 0 0 5px;
-
   @include vp-768 {
     position: relative;
-    padding-top: 116px;
   }
 
   .container {
@@ -17,9 +14,23 @@
   }
 }
 
+.hero__wrapper {
+  padding: 0 0 5px;
+
+  @include vp-768 {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    min-height: 100vh;
+    padding: 116px 0 25px;
+  }
+
+  @include vp-1024 {
+    padding: 116px 0 38px;
+  }
+}
+
 .hero__content {
   display: grid;
-  gap: 40px;
 
   @include vp-768 {
     display: block;
@@ -39,10 +50,11 @@
   }
 }
 
-.hero__slogan {
+.hero__title {
   grid-area: 1 / 1 / 2 / 2;
+  align-self: end;
   margin: 0;
-  padding: 505px 9px 46px;
+  padding: 100px 9px 46px;
   font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 22px;
@@ -93,9 +105,9 @@
   }
 }
 
-.hero__title {
+.hero__text {
   max-width: 500px;
-  margin: 0 var(--container-offset-mobile) 52px;
+  margin: 34px var(--container-offset-mobile) 36px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.4;
@@ -148,8 +160,9 @@
   }
 }
 
-.hero__image {
+.hero__img {
   position: relative;
+  min-height: 450px;
   grid-area: 1 / 1 / 2 / 2;
   background-color: var(--bg-dark);
   z-index: -1;
@@ -160,6 +173,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    min-height: unset;
   }
 
   &::after {
@@ -167,33 +181,37 @@
   }
 
   img {
-    @include img-cover;
+    @include img-bg;
+
+    @include vp-768 {
+      @include img-cover;
+    }
   }
 }
 
 .hero__bottom {
-  padding: 0 var(--container-offset-mobile);
-
   @include vp-768 {
-    padding: 150px 0 25px;
+    //padding: 150px 0 25px;
+    display: grid;
+    grid-template-rows: 1fr auto;
     color: var(--white);
   }
 
   @include vp-1024 {
     position: relative;
-    padding: 200px 0 38px;
+    //padding: 200px 0 38px;
   }
 
   @include vp-1366 {
-    padding: 300px 0 38px;
+    //padding: 300px 0 38px;
   }
 
   @include vp-1640 {
-    padding: 350px 0 48px;
+    //padding: 350px 0 48px;
   }
 
   @include vp-1920 {
-    padding: 486px 0 68px;
+    //padding: 486px 0 68px;
   }
 
   &::before {
@@ -216,14 +234,15 @@
   --color: var(--text-dark);
 
   gap: 30px;
-  width: 100%;
+  width: calc(100% - 2 * var(--container-offset-mobile));
   max-width: 467px;
-  margin: 0 0 59px;
+  margin: 0 var(--container-offset-mobile) 59px;
   padding: 8px 0 16px;
 
   @include vp-768 {
     --color: var(--white);
 
+    align-self: end;
     width: fit-content;
     margin: 0 0 10px;
   }
@@ -247,6 +266,7 @@
   line-height: 0.9;
   letter-spacing: -0.03em;
   text-transform: uppercase;
+  text-align: center;
   -webkit-text-stroke: 2px var(--text-dark);
   -webkit-clip-path: inset(0 100% 0 0);
   clip-path: inset(0 100% 0 0);
@@ -259,6 +279,7 @@
   @include vp-768 {
     width: fit-content;
     font-size: 60px;
+    text-align: left;
     -webkit-text-stroke: 2px var(--white);
   }
 
@@ -276,5 +297,44 @@
 
   @include vp-1920 {
     font-size: 100px;
+  }
+}
+
+.hero__breadcrumbs {
+  grid-area: 1 / 1 / 2 / 2;
+  align-self: end;
+  margin: 0 var(--container-offset-mobile) 16px;
+
+  @include vp-768 {
+    grid-area: unset;
+    margin: 0;
+  }
+}
+
+.hero__content--second {
+  @include vp-768 {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+  }
+
+  .hero__title {
+    padding: 46px 9px 85px;
+
+    @include vp-768 {
+      padding: 50px 0 30px;
+    }
+  }
+
+  .hero__text::before {
+    @include vp-768 {
+      display: none;
+    }
+  }
+
+  .hero__name {
+    @include vp-768 {
+      display: none;
+    }
   }
 }

@@ -9,7 +9,6 @@
 @use "./components/button-scroll-top";
 @use "./components/breadcrumbs";
 @use "./components/map";
-@use "./components/modal";
 @use "./components/scroll-animation";
 @use "./components/slider-compare";
 @use "./components/file-input";
@@ -21,7 +20,7 @@
 // подключения секций страницы
 @use "./blocks/header";
 @use "./blocks/hero";
-@use "./blocks/about-us";
+@use "./blocks/about";
 @use "./blocks/areas";
 @use "./blocks/advantages";
 @use "./blocks/features";
@@ -36,3 +35,5 @@
 @use "./blocks/blog-preview";
 @use "./blocks/bottom-img";
 @use "./blocks/footer";
+@use "./blocks/callback-form";
+@use "./blocks/modal";

@@ -1,3 +1,4 @@
+import { setHeroHeight } from './components/_set-hero-height.js';
 import { addFixedHeader } from './components/_fixed-header.js';
 import { toggleBurgerMenu } from './components/_open-mobile-menu.js';
 import { moveHeader } from './components/_move-header.js';
@@ -14,6 +15,7 @@ import { moveBlogPreview } from './components/_move-blog-preview.js';
 import { setVideoFixed } from './components/_video-fixed.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+  setHeroHeight();
   addFixedHeader();
   toggleBurgerMenu();
   moveHeader();
