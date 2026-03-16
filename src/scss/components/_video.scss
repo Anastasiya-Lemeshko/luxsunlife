@@ -5,29 +5,23 @@
 }
 
 .video__img {
+  position: relative;
   grid-area: 1 / 1 / 2 / 2;
   width: 100%;
-  height: calc(290px / $vp-430 * 100vw);
-
-  @include vp-1024 {
-    height: calc(1005px / $vp-1920 * 100vw);
-  }
-
-  @include vp-1920 {
-    height: 1005px;
-  }
 
   img {
-    @include img-cover;
-  }
-
-  video {
-    @include img-contain;
+    @include img-bg;
   }
 }
 
-.video__iframe-wrap {
+.video__player {
+  position: relative;
   grid-area: 1 / 1 / 2 / 2;
+  z-index: 1;
+
+  video {
+    @include img-cover;
+  }
 }
 
 .video__button-play {

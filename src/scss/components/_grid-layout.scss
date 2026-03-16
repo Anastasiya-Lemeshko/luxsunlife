@@ -1,0 +1,128 @@
+@use "index" as *;
+
+.grid-layout {
+  @include vp-768 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @include vp-1366 {
+    gap: 60px 0;
+  }
+}
+
+.grid-layout__item {
+  --link-height: 100%;
+  --link-width: 100%;
+  --justify-position: unset;
+  --align-position: unset;
+  --button-margin-left: auto;
+  --button-width: 50%;
+
+  @include vp-768 {
+    display: grid;
+    aspect-ratio: 354 / 414;
+  }
+
+  @include vp-1366 {
+    aspect-ratio: 935 / 511;
+  }
+
+  &:nth-child(4n+2),
+  &:nth-child(4n+3):not(:last-child) {
+    @include vp-768 {
+      --link-height: 60%;
+      --align-position: end;
+    }
+
+    @include vp-1366 {
+      --link-height: 100%;
+      --link-width: 49%;
+      --align-position: unset;
+      --button-margin-left: 0;
+      --button-width: 100%;
+    }
+  }
+
+  &:nth-child(4n+2) {
+    @include vp-1366 {
+      --justify-position: end;
+    }
+  }
+
+  &:nth-child(4n+3):last-child {
+    grid-column: 2 / 3;
+  }
+
+  &:not(:last-child) {
+    margin: 0 0 20px;
+
+    @include vp-768 {
+      margin: 0;
+    }
+  }
+}
+
+.grid-layout__link {
+  --img-transform: scale(1);
+
+  display: block;
+  width: var(--link-width);
+  height: var(--link-height);
+  justify-self: var(--justify-position);
+  align-self: var(--align-position);
+
+  @include vp-768 {
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+
+  @include focus {
+    --img-transform: scale(1.07);
+
+    outline: none;
+  }
+}
+
+.grid-layout__img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 412 / 419;
+  margin: 0 0 5px;
+  overflow: hidden;
+  transition: transform 0.5s;
+
+  @include vp-550 {
+    aspect-ratio: unset;
+    height: 539px;
+  }
+
+  @include vp-768 {
+    height: unset;
+  }
+
+  @include hover {
+    img {
+      --img-transform: scale(1.07);
+    }
+  }
+
+  img {
+    @include img-bg;
+
+    transform: var(--img-transform);
+    transition: transform 0.5s;
+  }
+}
+
+.grid-layout__button {
+  margin: 0;
+  font-size: 14px;
+
+  @include vp-1366 {
+    width: var(--button-width);
+    max-width: 460px;
+    margin-left: var(--button-margin-left);
+  }
+}

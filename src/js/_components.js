@@ -13,6 +13,7 @@ import { setTabs } from './components/_tabs.js';
 import { moveWorks } from './components/_move-works.js';
 import { moveBlogPreview } from './components/_move-blog-preview.js';
 import { setVideoFixed } from './components/_video-fixed.js';
+import { playVideo } from './components/_video.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setHeroHeight();
@@ -31,4 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   moveWorks();
   moveBlogPreview();
   setVideoFixed();
+  playVideo();
 });
+
+

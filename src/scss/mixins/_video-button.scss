@@ -3,6 +3,9 @@
 @use "../vars" as *;
 
 @mixin video-button {
+  --button-transform: translate(-50%, -50%);
+  --pause-opacity: 0;
+
   box-sizing: border-box;
   position: relative;
   grid-area: 1 / 1 / 2 / 2;
@@ -20,23 +23,43 @@
     position: absolute;
     top: 50%;
     left: calc(50% + 3px);
-    transform: translate(-50%, -50%);
+    transform: var(--button-transform);
     content: "";
     border: 14px solid var(--transparent);
     border-left: 20px solid var(--white);
+    transition: transform 0.5s, border 0.5s, opacity 0.5s;
 
     @include vp-768 {
-      left: calc(50% + 5px);
+      left: calc(50% + 15px);
       border: 20px solid var(--transparent);
       border-left: 35px solid var(--white);
     }
   }
 
   @include hover-focus {
-    background-color: var(--text-grey);
+    --button-transform: translate(-50%, -50%) scale(1.15);
   }
 
-  @include active {
-    background-color: var(--text-extra-light);
+  &.playing {
+    &::after {
+      opacity: 0;
+    }
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: "";
+      width: 40px;
+      height: 45px;
+      background-image: linear-gradient(to right, var(--white) 35%, var(--transparent) 35%, var(--transparent) 65%, var(--white) 65%);
+      opacity: var(--pause-opacity);
+      transition: opacity 0.2s;
+    }
+
+    @include hover-focus {
+      --pause-opacity: 1;
+    }
   }
 }

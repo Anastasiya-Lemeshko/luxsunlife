@@ -4,25 +4,14 @@
 @include('partials/head.html')
 
 <body class="page__body">
-  @include('partials/header.html', {"isHomepage": false})
+  @include('partials/header.html')
   <main class="page__main index">
     @include('partials/pages/tent-hero.html')
-
-
-    <!-- @include('partials/about.html')
-    @include('partials/areas.html')
-    @include('partials/advantages.html')
-    @include('partials/features.html')
-    @include('partials/types.html')
-    @include('partials/render.html')
-    @include('partials/chars.html')
-    @include('partials/production-video.html')
-    @include('partials/solutions.html')
-    @include('partials/process.html')
-    @include('partials/works-preview.html')
-    @include('partials/faq.html')
-    @include('partials/blog-preview.html')
-    @include('partials/bottom-img-index.html') -->
+    @include('partials/pages/tent-about.html')
+    @include('partials/pages/tent-reasons.html')
+    @include('partials/pages/tent-areas.html')
+    @include('partials/solutions.html', { "title": "тентовой перголы" })
+    @include('partials/features.html', { "title": "тентовая пергола" })
   </main>
   @include('partials/footer.html')
 </body>

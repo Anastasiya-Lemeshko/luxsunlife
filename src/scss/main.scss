@@ -16,6 +16,7 @@
 @use "./components/video";
 @use "./components/video-fixed";
 @use "./components/form-error-message";
+@use "./components/grid-layout";
 
 // подключения секций страницы
 @use "./blocks/header";
@@ -30,10 +31,13 @@
 @use "./blocks/production-video";
 @use "./blocks/solutions";
 @use "./blocks/process";
-@use "./blocks/works";
+@use "./blocks/works-preview";
 @use "./blocks/faq";
 @use "./blocks/blog-preview";
 @use "./blocks/bottom-img";
 @use "./blocks/footer";
 @use "./blocks/callback-form";
 @use "./blocks/modal";
+@use "./blocks/works";
+@use "./blocks/blog";
+@use "./blocks/reasons";
