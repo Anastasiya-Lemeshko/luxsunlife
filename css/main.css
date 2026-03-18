@@ -3276,6 +3276,7 @@ a.header__logo-img:not([href]) {
 
 .about__content-video {
   width: 100%;
+  min-height: 328px;
   margin: 0 0 20px;
   background-color: var(--bg-light);
 }
@@ -3284,6 +3285,11 @@ a.header__logo-img:not([href]) {
     -ms-grid-column: 1;
     -ms-grid-column-span: 3;
     grid-column: 1/4;
+  }
+}
+@media (min-width: 1024px) {
+  .about__content-video {
+    min-height: 400px;
   }
 }
 
