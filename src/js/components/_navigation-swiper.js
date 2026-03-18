@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import { Navigation, Autoplay, EffectFade } from 'swiper/modules';
+import { Navigation, EffectFade } from 'swiper/modules';
 import {
   getSlidesCount,
   getAutoSlidesCount,
@@ -22,18 +22,17 @@ const sections = document.querySelectorAll('[data-swiper="navigation"]');
 const setNavigationSwiper = () => {
   if (!sections || !sections.length) return;
 
-  sections.forEach((section, index) => {
+  sections.forEach((section) => {
     const sectionClass = getSwiperClass(section);
     const sectionName = getBlockClass(section);
     const swiperButtons = section.querySelector(`.${sectionClass}swiper-button-container`) ?? section.parentElement.querySelector(`.${sectionClass}swiper-button-container`);
     const sliderConfig = SLIDER_CONFIG[sectionName] || SLIDER_CONFIG.default;
     const desktopBreakpoint = sliderConfig.desktop_width ?? DESKTOP_WIDTH;
 
-    const sectionBlock = document.querySelector(`.${sectionName}`);
-    const tabs = sectionBlock ? sectionBlock.querySelector('.tabs') : null;
+    const sectionSection = section.closest('section');
+    const tabs = sectionSection ? sectionSection.querySelector('.tabs') : null;
 
     let swiperContainer = null;
-    let autoplayDelay = 7000 + index * 1000;
 
     const destroyNavigationSwiper = (swiper, el) => {
       if (swiperContainer) {
@@ -49,7 +48,7 @@ const setNavigationSwiper = () => {
       swiperButtons.classList.remove('hidden');
 
       swiperContainer = new Swiper(section, {
-        modules: [Navigation, Autoplay, EffectFade],
+        modules: [Navigation, EffectFade],
         direction: 'horizontal',
         speed: 500,
         allowTouchMove: true,
@@ -57,13 +56,6 @@ const setNavigationSwiper = () => {
         spaceBetween: 10,
         loop: isLoopNeeded,
         autoHeight: sliderConfig.auto_height ?? sliderConfig.mobile_count === 1,
-
-        // autoplay: {
-        //   delay: autoplayDelay,
-        //   stopOnLastSlide: false,
-        //   reverseDirection: false,
-        //   waitForTransition: true,
-        // },
 
         ...(sliderConfig.fade && {
           effect: 'fade',

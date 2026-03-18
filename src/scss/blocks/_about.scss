@@ -1,15 +1,17 @@
 @use "index" as *;
 
 .about {
-  padding: 0 0 45px;
+  padding: 20px 0 45px;
+  border-top: 1px solid var(--grey);
   border-bottom: 1px solid var(--grey);
 
   @include vp-768 {
+    border-top: none;
     border-bottom: none;
   }
 
   @include vp-1024 {
-    padding: 0 0 32px;
+    padding: 20px 0 32px;
   }
 
   .container {

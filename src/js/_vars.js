@@ -20,6 +20,7 @@ export const MODAL_CONTENT = {
     'order': 'Закажите перголу с гарантией результата',
     'cost': 'Точная стоимость — для вашего проекта под ключ',
     'question': 'Не нашли нужной информации? Спросите нас напрямую',
+    'design': 'Закажите перголу с индивидуальным дизайном',
   },
   'desc': {
     'question': 'Мы на связи и готовы помочь с выбором, расчётом или техническими нюансами.',
@@ -63,6 +64,14 @@ export const SLIDER_CONFIG = {
     'desktop_width': SMALL_DESKTOP_WIDTH,
   },
   'modal-project': {
+    'mobile_count': 1,
+    'tablet_count': 1,
+    'desktop_count': 1,
+    'fade': true,
+    'auto_height': false,
+    'loop': true,
+  },
+  'cases': {
     'mobile_count': 1,
     'tablet_count': 1,
     'desktop_count': 1,

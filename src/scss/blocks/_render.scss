@@ -53,7 +53,7 @@
 .render__slider {
   width: 100%;
   aspect-ratio: 410 / 295;
-  margin: 0 0 16px;
+  margin: 0 0 30px;
 
   @include vp-1024 {
     aspect-ratio: 410 / 350;
@@ -69,6 +69,7 @@
   @include vp-1024 {
     display: grid;
     grid-template-rows: 1fr auto;
+    margin: 0 0 27px;
   }
 }
 
