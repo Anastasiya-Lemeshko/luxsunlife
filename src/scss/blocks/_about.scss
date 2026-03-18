@@ -161,11 +161,16 @@
 
 .about__content-video {
   width: 100%;
+  min-height: 328px;
   margin: 0 0 20px;
   background-color: var(--bg-light);
 
   @include vp-768 {
     grid-column: 1 / 4;
+  }
+
+  @include vp-1024 {
+    min-height: 400px;
   }
 }
 
