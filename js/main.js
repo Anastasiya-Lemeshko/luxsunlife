@@ -10822,7 +10822,8 @@ const MODAL_CONTENT = {
     'request': 'Оставьте заявку — мы подберём оптимальное решение для вашей перголы',
     'order': 'Закажите перголу с гарантией результата',
     'cost': 'Точная стоимость — для вашего проекта под ключ',
-    'question': 'Не нашли нужной информации? Спросите нас напрямую'
+    'question': 'Не нашли нужной информации? Спросите нас напрямую',
+    'design': 'Закажите перголу с индивидуальным дизайном'
   },
   'desc': {
     'question': 'Мы на связи и готовы помочь с выбором, расчётом или техническими нюансами.'
@@ -10865,6 +10866,14 @@ const SLIDER_CONFIG = {
     'desktop_width': SMALL_DESKTOP_WIDTH
   },
   'modal-project': {
+    'mobile_count': 1,
+    'tablet_count': 1,
+    'desktop_count': 1,
+    'fade': true,
+    'auto_height': false,
+    'loop': true
+  },
+  'cases': {
     'mobile_count': 1,
     'tablet_count': 1,
     'desktop_count': 1,
@@ -11472,16 +11481,15 @@ __webpack_require__.r(__webpack_exports__);
 const sections = document.querySelectorAll('[data-swiper="navigation"]');
 const setNavigationSwiper = () => {
   if (!sections || !sections.length) return;
-  sections.forEach((section, index) => {
+  sections.forEach(section => {
     const sectionClass = (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.getSwiperClass)(section);
     const sectionName = (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.getBlockClass)(section);
     const swiperButtons = section.querySelector(`.${sectionClass}swiper-button-container`) ?? section.parentElement.querySelector(`.${sectionClass}swiper-button-container`);
     const sliderConfig = _vars_js__WEBPACK_IMPORTED_MODULE_3__.SLIDER_CONFIG[sectionName] || _vars_js__WEBPACK_IMPORTED_MODULE_3__.SLIDER_CONFIG.default;
     const desktopBreakpoint = sliderConfig.desktop_width ?? _vars_js__WEBPACK_IMPORTED_MODULE_3__.DESKTOP_WIDTH;
-    const sectionBlock = document.querySelector(`.${sectionName}`);
-    const tabs = sectionBlock ? sectionBlock.querySelector('.tabs') : null;
+    const sectionSection = section.closest('section');
+    const tabs = sectionSection ? sectionSection.querySelector('.tabs') : null;
     let swiperContainer = null;
-    let autoplayDelay = 7000 + index * 1000;
     const destroyNavigationSwiper = (swiper, el) => {
       if (swiperContainer) {
         swiperContainer.destroy();
@@ -11494,7 +11502,7 @@ const setNavigationSwiper = () => {
       (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.addSwiperClass)(section, sectionClass);
       swiperButtons.classList.remove('hidden');
       swiperContainer = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](section, {
-        modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Autoplay, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.EffectFade],
+        modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.EffectFade],
         direction: 'horizontal',
         speed: 500,
         allowTouchMove: true,
@@ -11502,13 +11510,6 @@ const setNavigationSwiper = () => {
         spaceBetween: 10,
         loop: isLoopNeeded,
         autoHeight: sliderConfig.auto_height ?? sliderConfig.mobile_count === 1,
-        // autoplay: {
-        //   delay: autoplayDelay,
-        //   stopOnLastSlide: false,
-        //   reverseDirection: false,
-        //   waitForTransition: true,
-        // },
-
         ...(sliderConfig.fade && {
           effect: 'fade',
           fadeEffect: {
