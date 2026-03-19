@@ -5674,12 +5674,6 @@ a.header__logo-img:not([href]) {
   }
 }
 
-@media (min-width: 1024px) {
-  .chars__tabs {
-    margin: 0 0 30px;
-  }
-}
-
 .chars__tabs-wrapper {
   margin: 0 0 36px;
 }
@@ -5755,6 +5749,12 @@ a.header__logo-img:not([href]) {
 }
 .chars__tablink.tabs__tablink--active {
   color: var(--white);
+}
+
+@media (min-width: 1024px) {
+  .chars__tabcontents {
+    margin: 0 0 30px;
+  }
 }
 
 .chars__swiper-container {
