@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru" class="page">
+
+@include('partials/head.html')
+
+<body class="page__body">
+  @include('partials/header.html')
+  <main class="page__main index">
+    @include('partials/pages/winter-hero.html')
+    @include('partials/pages/winter-about.html')
+    @include('partials/pages/winter-reasons.html')
+    @include('partials/pages/winter-areas.html')
+    @include('partials/solutions.html', { "title": "зимнего сада" })
+    @include('partials/features.html', { "title": "зимний сад, который" })
+    @include('partials/pages/winter-chars.html')
+    @include('partials/render.html')
+    @include('partials/pages/winter-cases.html')
+    @include('partials/pages/winter-variants.html')
+    @include('partials/process.html')
+    @include('partials/pages/winter-works.html')
+    @include('partials/pages/winter-faq.html')
+    @include('partials/pages/bottom-img-common.html')
+  </main>
+  @include('partials/footer.html')
+</body>
+
+</html>
