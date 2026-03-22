@@ -57,6 +57,35 @@
       -webkit-text-stroke: 1px var(--color);
     }
   }
+
+  &--h1 {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+
+    @include vp-550 {
+      font-size: 28px;
+    }
+
+    @include vp-768 {
+      font-size: 32px;
+    }
+
+    @include vp-1280 {
+      font-size: 38px;
+      -webkit-text-stroke: 2px var(--color);
+    }
+
+    @include vp-1640 {
+      font-size: 45px;
+    }
+
+    @include vp-1920 {
+      font-size: 56px;
+      line-height: 1.23;
+    }
+  }
 }
 
 .title-accent {

@@ -10,6 +10,19 @@
   @include vp-1366 {
     padding: 20px 0 10px;
   }
+
+  &--static {
+    position: relative;
+    padding: 17px 0 30px;
+
+    @include vp-768 {
+      padding: 17px 0 70px;
+    }
+
+    @include vp-1366 {
+      padding: 20px 0 70px;
+    }
+  }
 }
 
 .header__wrapper {
@@ -437,6 +450,10 @@ a.header__logo-img:not([href]) {
     @include vp-1366 {
       margin: 0 20px;
     }
+
+    @include vp-1920 {
+      margin: 0 auto;
+    }
   }
 
   .header__burger::before,
@@ -634,6 +651,65 @@ a.header__logo-img:not([href]) {
 
   .header__logo-dark {
     @include vp-1366 {
+      display: block;
+    }
+  }
+}
+
+// шапка с темным шрифтом
+
+.header--dark {
+  .container {
+    color: var(--text-dark);
+  }
+
+  .header__burger::before,
+  .header__burger::after {
+    background-color: var(--text-dark);
+  }
+
+  .header__callback {
+    --color: var(--text-dark);
+  }
+
+  .header__contacts-title {
+    @include vp-768 {
+      --color: var(--text-dark);
+    }
+  }
+
+  .header__contacts-link {
+    @include vp-768 {
+      --color: var(--text-dark);
+    }
+  }
+
+  .header__nav {
+    @include vp-768 {
+      color: var(--text-dark);
+    }
+  }
+
+  .header__menu-link {
+    @include vp-768 {
+      @include interactive-link-dark;
+    }
+  }
+
+  .header__subtitle::after {
+    @include vp-768 {
+      background-color: var(--text-dark);
+    }
+  }
+
+  .header__logo {
+    @include vp-768 {
+      display: none;
+    }
+  }
+
+  .header__logo-dark {
+    @include vp-768 {
       display: block;
     }
   }

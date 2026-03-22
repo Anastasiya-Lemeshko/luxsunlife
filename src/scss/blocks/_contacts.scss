@@ -1,0 +1,47 @@
+@use "index" as *;
+
+.contacts__title {
+  margin: 0;
+  padding: 0 0 20px;
+  border-bottom: 1px solid var(--text-light);
+}
+
+.contacts__wrapper {
+  display: grid;
+  height: 474px;
+  margin: 20px 0 0;
+  border-radius: 5px;
+  overflow: hidden;
+
+  @include vp-768 {
+    height: 520px;
+  }
+
+  @include vp-1366 {
+    height: 603px;
+  }
+}
+
+.contacts__image {
+  grid-area: 1 / 1 / 2 / 2;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-color: var(--text-light);
+}
+
+.contacts__image img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.contacts__iframe {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.contacts__iframe iframe {
+  height: 100%;
+  border: none;
+}

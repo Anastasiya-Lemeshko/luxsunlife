@@ -1,4 +1,9 @@
+@if (typeof headerClass !== 'undefined') {
+<header class="header @headerClass">
+}
+@if (typeof headerClass === 'undefined') {
 <header class="header">
+}
   <div class="container">
     <nav class="header__wrapper">
       <button class="header__burger" type="button">
@@ -10,33 +15,33 @@
         </button>
         <ul class="header__menu">
           <li class="header__menu-item">
-            <a class="header__menu-link" href="#">Главная</a>
+            <a class="header__menu-link" href="index.html">Главная</a>
           </li>
           <li class="header__menu-item">
             <button class="header__subtitle" type="button">Перголы</button>
             <ul class="header__submenu">
               <li class="header__subitem">
-                <a class="header__menu-link" href="#">Тентовая пергола</a>
+                <a class="header__menu-link" href="tent.html">Тентовая пергола</a>
               </li>
               <li class="header__subitem">
-                <a class="header__menu-link" href="#">Биоклиматическая пергола</a>
+                <a class="header__menu-link" href="bio.html">Биоклиматическая пергола</a>
               </li>
               <li class="header__subitem">
-                <a class="header__menu-link" href="#">Пергола с&nbsp;сэндвич&#8288;-&#8288;панелями</a>
+                <a class="header__menu-link" href="sandwich.html">Пергола с&nbsp;сэндвич&#8288;-&#8288;панелями</a>
               </li>
               <li class="header__subitem">
-                <a class="header__menu-link" href="#">Зимний сад</a>
+                <a class="header__menu-link" href="winter.html">Зимний сад</a>
               </li>
             </ul>
           </li>
           <li class="header__menu-item">
-            <a class="header__menu-link" href="#">Наши работы</a>
+            <a class="header__menu-link" href="works.html">Наши работы</a>
           </li>
           <li class="header__menu-item">
-            <a class="header__menu-link" href="#">Блог</a>
+            <a class="header__menu-link" href="blog.html">Блог</a>
           </li>
           <li class="header__menu-item">
-            <a class="header__menu-link" href="#">Контакты</a>
+            <a class="header__menu-link" href="contacts.html">Контакты</a>
           </li>
         </ul>
         <div class="header__logo">

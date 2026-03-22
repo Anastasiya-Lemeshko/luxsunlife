@@ -1,0 +1,94 @@
+@use "index" as *;
+
+.content-page__wrapper {
+  h1 {
+    margin: 0 0 40px;
+    padding: 0 0 20px;
+    border-bottom: 1px solid var(--text-light);
+
+    @include vp-1024 {
+      margin: 0;
+      padding: 0 0 66px;
+    }
+
+    @include vp-1366 {
+      max-width: calc(100% - 250px);
+    }
+  }
+
+  div {
+    margin: 0 0 40px;
+
+    @include vp-1024 {
+      margin: 0;
+      padding: 64px 0 75px;
+    }
+  }
+
+  h2 {
+    --color: var(--text-dark);
+
+    margin: 0 0 20px;
+    font-family: var(--font-secondary);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.23;
+    color: var(--color);
+    text-transform: uppercase;
+    -webkit-text-stroke: 1px var(--color);
+
+    @include vp-430 {
+      font-size: 20px;
+    }
+
+    @include vp-768 {
+      font-size: 22px;
+    }
+
+    @include vp-1024 {
+      margin: 0 0 40px;
+      font-size: 25px;
+      line-height: 1.1;
+    }
+
+    @include vp-1280 {
+      font-size: 28px;
+    }
+
+    @include vp-1366 {
+      font-size: 32px;
+      -webkit-text-stroke: 2px var(--color);
+    }
+
+    @include vp-1640 {
+      font-size: 38px;
+    }
+
+    @include vp-1920 {
+      max-width: 70%;
+      font-size: 42px;
+    }
+  }
+
+  p {
+    max-width: 1675px;
+    margin: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: -0.03em;
+    color: var(--text-light);
+
+    @include vp-1024 {
+      font-size: 22px;
+    }
+
+    @include vp-1366 {
+      font-size: 25px;
+    }
+
+    @include vp-1920 {
+      font-size: 28px;
+    }
+  }
+}
