@@ -79,6 +79,13 @@ export const SLIDER_CONFIG = {
     'auto_height': false,
     'loop': true,
   },
+  'article': {
+    'mobile_count': 1,
+    'tablet_count': 2,
+    'desktop_count': 100000,
+    'loop': true,
+    'desktop_width': SMALL_DESKTOP_WIDTH,
+  },
 };
 
 export const RANGE_VALUES = {
