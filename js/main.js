@@ -10602,9 +10602,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_tabs_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/_tabs.js */ "./src/js/components/_tabs.js");
 /* harmony import */ var _components_move_works_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/_move-works.js */ "./src/js/components/_move-works.js");
 /* harmony import */ var _components_move_blog_preview_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./components/_move-blog-preview.js */ "./src/js/components/_move-blog-preview.js");
-/* harmony import */ var _components_video_fixed_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/_video-fixed.js */ "./src/js/components/_video-fixed.js");
-/* harmony import */ var _components_video_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/_video.js */ "./src/js/components/_video.js");
-/* harmony import */ var _components_article_layout_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/_article-layout.js */ "./src/js/components/_article-layout.js");
+/* harmony import */ var _components_video_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/_video.js */ "./src/js/components/_video.js");
+/* harmony import */ var _components_article_layout_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/_article-layout.js */ "./src/js/components/_article-layout.js");
+/* harmony import */ var _components_button_scroll_top_js__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/_button-scroll-top.js */ "./src/js/components/_button-scroll-top.js");
+/* harmony import */ var _components_popup_cookies_js__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/_popup-cookies.js */ "./src/js/components/_popup-cookies.js");
+
 
 
 
@@ -10638,9 +10640,10 @@ document.addEventListener('DOMContentLoaded', () => {
   (0,_components_tabs_js__WEBPACK_IMPORTED_MODULE_11__.setTabs)();
   (0,_components_move_works_js__WEBPACK_IMPORTED_MODULE_12__.moveWorks)();
   (0,_components_move_blog_preview_js__WEBPACK_IMPORTED_MODULE_13__.moveBlogPreview)();
-  (0,_components_video_fixed_js__WEBPACK_IMPORTED_MODULE_14__.setVideoFixed)();
-  (0,_components_video_js__WEBPACK_IMPORTED_MODULE_15__.playVideo)();
-  (0,_components_article_layout_js__WEBPACK_IMPORTED_MODULE_16__.moveArticleElements)();
+  (0,_components_video_js__WEBPACK_IMPORTED_MODULE_14__.playVideo)();
+  (0,_components_article_layout_js__WEBPACK_IMPORTED_MODULE_15__.moveArticleElements)();
+  (0,_components_button_scroll_top_js__WEBPACK_IMPORTED_MODULE_16__.addScrollButton)();
+  (0,_components_popup_cookies_js__WEBPACK_IMPORTED_MODULE_17__.setPopupCookies)();
 });
 
 /***/ }),
@@ -11029,6 +11032,42 @@ const moveArticleElements = () => {
 
 /***/ }),
 
+/***/ "./src/js/components/_button-scroll-top.js":
+/*!*************************************************!*\
+  !*** ./src/js/components/_button-scroll-top.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   addScrollButton: () => (/* binding */ addScrollButton)
+/* harmony export */ });
+/* harmony import */ var _utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../_utils.js */ "./src/js/_utils.js");
+
+const scrollButton = document.querySelector('.button-scroll-top');
+const onWindowScroll = () => {
+  if (window.pageYOffset > 350) {
+    scrollButton.classList.add('button-scroll-top--visible');
+  } else {
+    scrollButton.classList.remove('button-scroll-top--visible');
+  }
+};
+const debouncedOnScrollWindow = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.debounce)(onWindowScroll, 30);
+const onScrollButtonClick = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
+const addScrollButton = () => {
+  if (!scrollButton) return;
+  window.addEventListener('scroll', debouncedOnScrollWindow);
+  scrollButton.addEventListener('click', onScrollButtonClick);
+};
+
+
+/***/ }),
+
 /***/ "./src/js/components/_file-input.js":
 /*!******************************************!*\
   !*** ./src/js/components/_file-input.js ***!
@@ -11220,11 +11259,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-// элементы, у которых нужно убрать скачок при открытии модального окна
-const header = document.querySelector('.header');
-const videoFixed = document.querySelector('.video-fixed');
-let scrollSize = 0;
 class ModalWindow {
   constructor(buttons) {
     this.html = document.querySelector('html');
@@ -11248,7 +11282,7 @@ class ModalWindow {
         }
         (0,_components_modal_render_js__WEBPACK_IMPORTED_MODULE_1__.renderModalContent)(this.modal, button);
         this.modalWindow = this.modal.querySelector('.modal__container');
-        this.closeBtn = this.modal.querySelector('.modal__close-button');
+        this.closeBtn = this.modal.querySelector('.modal-close');
         const focusableElements = Array.from(this.modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
         this.firstFocusableElement = focusableElements[0];
         this.lastFocusableElement = focusableElements[focusableElements.length - 1];
@@ -11280,7 +11314,7 @@ class ModalWindow {
         if (otherModalOpened) return;
         this.modal = subscribeModal;
         this.modalWindow = subscribeModal.querySelector('.modal__container');
-        this.closeBtn = subscribeModal.querySelector('.modal__close-button');
+        this.closeBtn = subscribeModal.querySelector('.modal-close');
         const focusableElements = Array.from(subscribeModal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
         this.firstFocusableElement = focusableElements[0];
         this.lastFocusableElement = focusableElements[focusableElements.length - 1];
@@ -11347,13 +11381,6 @@ class ModalWindow {
   };
   openModal(modal) {
     if (!modal) return;
-
-    // нивелирует скачок из-за полосы прокрутки
-    scrollSize = (0,_utils_js__WEBPACK_IMPORTED_MODULE_0__.getScrollWidth)();
-    this.html.style.paddingRight = `${scrollSize}px`;
-    if (header) header.style.width = `calc(100% - ${scrollSize}px)`;
-    if (videoFixed) videoFixed.style.right = `calc(20px + ${scrollSize}px)`;
-    this.html.classList.add('dis-scroll');
     modal.classList.add('open');
     this.closeBtn.focus();
   }
@@ -11362,7 +11389,7 @@ class ModalWindow {
     this.closeAllModal();
     this.modal = modalSuccess;
     this.modalWindow = this.modal.querySelector('.modal__container');
-    this.closeBtn = this.modal.querySelector('.modal__close-button');
+    this.closeBtn = this.modal.querySelector('.modal-close');
     const focusableElements = Array.from(this.modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
     this.firstFocusableElement = focusableElements[0];
     this.lastFocusableElement = focusableElements[focusableElements.length - 1];
@@ -11371,12 +11398,8 @@ class ModalWindow {
   }
   closeModal(modal) {
     if (!modal) return;
-    this.html.classList.remove('dis-scroll');
     modal.classList.remove('open');
     this.removeEventListeners();
-    this.html.style.paddingRight = 0;
-    if (header) header.style.width = '';
-    if (videoFixed) videoFixed.style.right = '';
   }
   closeAllModal() {
     const allModal = document.querySelectorAll('.modal');
@@ -11385,12 +11408,8 @@ class ModalWindow {
       if (el.classList.contains('open')) {
         el.classList.remove('open');
       }
-      if (this.html.classList.contains('dis-scroll')) {
-        this.html.classList.remove('dis-scroll');
-      }
     });
     this.removeEventListeners();
-    this.html.style.paddingRight = 0;
   }
   init() {
     this.handleOpen();
@@ -11554,7 +11573,7 @@ const setNavigationSwiper = () => {
       (0,_utils_js__WEBPACK_IMPORTED_MODULE_2__.addSwiperClass)(section, sectionClass);
       swiperButtons.classList.remove('hidden');
       swiperContainer = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"](section, {
-        modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.EffectFade],
+        modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_1__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.EffectFade, swiper_modules__WEBPACK_IMPORTED_MODULE_1__.FreeMode],
         direction: 'horizontal',
         speed: 500,
         allowTouchMove: true,
@@ -11562,6 +11581,12 @@ const setNavigationSwiper = () => {
         spaceBetween: 10,
         loop: isLoopNeeded,
         autoHeight: sliderConfig.auto_height ?? sliderConfig.mobile_count === 1,
+        freeMode: {
+          enabled: true,
+          momentum: false,
+          sticky: false
+        },
+        noSwiping: true,
         ...(sliderConfig.fade && {
           effect: 'fade',
           fadeEffect: {
@@ -11814,6 +11839,38 @@ _vars_js__WEBPACK_IMPORTED_MODULE_0__.DESKTOP_WIDTH.addEventListener('change', s
 
 /***/ }),
 
+/***/ "./src/js/components/_popup-cookies.js":
+/*!*********************************************!*\
+  !*** ./src/js/components/_popup-cookies.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   setPopupCookies: () => (/* binding */ setPopupCookies)
+/* harmony export */ });
+const popupCookies = document.querySelector('.popup-cookies');
+const setPopupCookies = () => {
+  if (!popupCookies && localStorage.getItem('cookiesAccepted')) return;
+  popupCookies.classList.add('show');
+  const popupCookiesBtn = popupCookies.querySelector('.popup-cookies__button');
+  const popupCookiesClose = popupCookies.querySelector('.popup-cookies__close');
+  if (popupCookiesClose) {
+    popupCookiesClose.addEventListener('click', () => {
+      popupCookies.classList.remove('show');
+    });
+  }
+  if (popupCookiesBtn) {
+    popupCookiesBtn.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      popupCookies.classList.remove('show');
+    });
+  }
+};
+
+
+/***/ }),
+
 /***/ "./src/js/components/_scroll-trigger-animation.js":
 /*!********************************************************!*\
   !*** ./src/js/components/_scroll-trigger-animation.js ***!
@@ -11978,28 +12035,6 @@ const setTabs = () => {
 
 /***/ }),
 
-/***/ "./src/js/components/_video-fixed.js":
-/*!*******************************************!*\
-  !*** ./src/js/components/_video-fixed.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   setVideoFixed: () => (/* binding */ setVideoFixed)
-/* harmony export */ });
-const video = document.querySelector('.video-fixed');
-const closeButton = video ? video.querySelector('.video-fixed__close') : null;
-const setVideoFixed = () => {
-  if (!video || !closeButton) return;
-  closeButton.addEventListener('click', () => {
-    video.classList.add('hidden');
-  });
-};
-
-
-/***/ }),
-
 /***/ "./src/js/components/_video.js":
 /*!*************************************!*\
   !*** ./src/js/components/_video.js ***!
@@ -12016,12 +12051,17 @@ const playVideo = () => {
   videoWrappers.forEach(wrapper => {
     const video = wrapper.querySelector('video');
     const playButton = wrapper.querySelector('.video__button-play');
+    const isNeedControls = wrapper.classList.contains('video--controls');
     if (!video || !playButton) return;
     playButton.addEventListener('click', () => {
       const isVideoPlaying = playButton.classList.contains('playing');
       if (!isVideoPlaying) {
         video.play().then(() => {
           playButton.classList.add('playing');
+          if (isNeedControls) {
+            playButton.classList.add('hidden');
+            video.setAttribute('controls', '');
+          }
         }).catch(err => {
           console.warn('Не удалось воспроизвести видео:', err);
         });
