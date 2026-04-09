@@ -141,7 +141,6 @@
 .advantages__callback {
   width: 100%;
   margin: auto 0 0;
-  padding: 8px 0 2px;
   font-size: 14px;
   cursor: pointer;
 
@@ -166,15 +165,23 @@
   @include vp-1024 {
     display: block;
     overflow-y: visible;
+    height: calc(200px / $vp-1920 * 100vw);
+  }
+
+  @include vp-1920 {
     height: 200px;
   }
 
   p {
     position: absolute;
-    bottom: -90px;
+    bottom: -120px;
     left: 50%;
     transform: translateX(-50%);
     transition: transform 0.1s ease-out;
     pointer-events: none;
+
+    @include vp-1640 {
+      bottom: -150px;
+    }
   }
 }

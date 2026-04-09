@@ -12,9 +12,10 @@ import { setFileInputs } from './components/_file-input.js';
 import { setTabs } from './components/_tabs.js';
 import { moveWorks } from './components/_move-works.js';
 import { moveBlogPreview } from './components/_move-blog-preview.js';
-import { setVideoFixed } from './components/_video-fixed.js';
 import { playVideo } from './components/_video.js';
 import { moveArticleElements } from './components/_article-layout.js';
+import { addScrollButton } from './components/_button-scroll-top.js';
+import { setPopupCookies } from './components/_popup-cookies.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   setHeroHeight();
@@ -32,9 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
   setTabs();
   moveWorks();
   moveBlogPreview();
-  setVideoFixed();
   playVideo();
   moveArticleElements();
+  addScrollButton();
+  setPopupCookies();
 });
 
 

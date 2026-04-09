@@ -2,7 +2,6 @@
 @use "index" as *;
 
 // подключения компонентов
-@use "./components/logo-image";
 @use "./components/title";
 @use "./components/button";
 @use "./components/button-swiper";
@@ -17,6 +16,7 @@
 @use "./components/video-fixed";
 @use "./components/form-error-message";
 @use "./components/grid-layout";
+@use "./components/popup-cookies";
 
 // подключения секций страницы
 @use "./blocks/header";

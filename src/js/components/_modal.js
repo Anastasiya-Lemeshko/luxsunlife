@@ -2,16 +2,9 @@ import {
   isEscapeKey,
   isTabKey,
   isEnterKey,
-  getScrollWidth
 } from '../_utils.js';
 import { renderPhotoToModal, renderModalContent } from '../components/_modal-render.js';
 import { TABLET_WIDTH, MODAL_TIMER } from "./../_vars.js";
-
-// элементы, у которых нужно убрать скачок при открытии модального окна
-const header = document.querySelector('.header');
-const videoFixed = document.querySelector('.video-fixed');
-
-let scrollSize = 0;
 
 class ModalWindow {
   constructor(buttons) {
@@ -42,7 +35,7 @@ class ModalWindow {
         renderModalContent(this.modal, button);
 
         this.modalWindow = this.modal.querySelector('.modal__container');
-        this.closeBtn = this.modal.querySelector('.modal__close-button');
+        this.closeBtn = this.modal.querySelector('.modal-close');
 
         const focusableElements = Array.from(this.modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
         this.firstFocusableElement = focusableElements[0];
@@ -81,7 +74,7 @@ class ModalWindow {
 
         this.modal = subscribeModal;
         this.modalWindow = subscribeModal.querySelector('.modal__container');
-        this.closeBtn = subscribeModal.querySelector('.modal__close-button');
+        this.closeBtn = subscribeModal.querySelector('.modal-close');
 
         const focusableElements = Array.from(subscribeModal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
         this.firstFocusableElement = focusableElements[0];
@@ -164,13 +157,6 @@ class ModalWindow {
   openModal(modal) {
     if (!modal) return;
 
-    // нивелирует скачок из-за полосы прокрутки
-    scrollSize = getScrollWidth();
-    this.html.style.paddingRight = `${scrollSize}px`;
-    if (header) header.style.width = `calc(100% - ${scrollSize}px)`;
-    if (videoFixed) videoFixed.style.right = `calc(20px + ${scrollSize}px)`;
-
-    this.html.classList.add('dis-scroll');
     modal.classList.add('open');
     this.closeBtn.focus();
   }
@@ -183,7 +169,7 @@ class ModalWindow {
     this.modal = modalSuccess;
 
     this.modalWindow = this.modal.querySelector('.modal__container');
-    this.closeBtn = this.modal.querySelector('.modal__close-button');
+    this.closeBtn = this.modal.querySelector('.modal-close');
 
     const focusableElements = Array.from(this.modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'));
     this.firstFocusableElement = focusableElements[0];
@@ -196,12 +182,8 @@ class ModalWindow {
   closeModal(modal) {
     if (!modal) return;
 
-    this.html.classList.remove('dis-scroll');
     modal.classList.remove('open');
     this.removeEventListeners();
-    this.html.style.paddingRight = 0;
-    if (header) header.style.width = '';
-    if (videoFixed) videoFixed.style.right = '';
   }
 
   closeAllModal() {
@@ -213,13 +195,9 @@ class ModalWindow {
       if (el.classList.contains('open')) {
         el.classList.remove('open');
       }
-      if (this.html.classList.contains('dis-scroll')) {
-        this.html.classList.remove('dis-scroll');
-      }
     });
 
     this.removeEventListeners();
-    this.html.style.paddingRight = 0;
   }
 
   init() {

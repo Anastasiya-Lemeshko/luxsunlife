@@ -8,6 +8,7 @@
   width: 210px;
   padding: 14px 9px;
   background-color: var(--bg-light);
+  box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.2);
   z-index: var(--z-video-fixed);
 
   @include vp-1366 {
@@ -33,20 +34,50 @@
   position: absolute;
   top: 14px;
   right: 9px;
+  z-index: 2;
 }
 
-.video-fixed__img {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 273 / 147;
+.video-fixed__wrapper {
   margin: 0 0 10px;
 
   @include vp-1920 {
     margin: 0 0 14px;
   }
+}
 
-  img {
-    @include img-bg;
+.video-fixed__img {
+  aspect-ratio: 273 / 147;
+}
+
+.video-fixed__player {
+  aspect-ratio: 273 / 147;
+
+  video {
+    width: 192px;
+    height: auto;
+
+    @include vp-1640 {
+      width: 232px;
+    }
+
+    @include vp-1920 {
+      width: 272px;
+    }
+  }
+}
+
+.video-fixed__button-play {
+  &::after {
+    left: calc(50% + 10px);
+    border: 12px solid var(--transparent);
+    border-left: 20px solid var(--white);
+  }
+
+  &.playing {
+    &::before {
+      width: 20px;
+      height: 25px;
+    }
   }
 }
 
@@ -61,32 +92,5 @@
   @include vp-1920 {
     margin: 0 0 17px;
     font-size: 14px;
-  }
-}
-
-.video-fixed__link {
-  display: block;
-  width: 100%;
-  padding: 7px 20px 6px;
-  font-weight: 500;
-  font-size: 10px;
-  letter-spacing: -0.03em;
-  text-align: center;
-  text-transform: uppercase;
-  color: var(--bg-light);
-  background-color: var(--black);
-  transition: background-color 0.3s;
-
-  @include vp-1920 {
-    padding: 14px 20px 13px;
-    font-size: 12px;
-  }
-
-  @include hover-focus {
-    background-color: var(--text-full-width);
-  }
-
-  @include active {
-    background-color: var(--text-light);
   }
 }

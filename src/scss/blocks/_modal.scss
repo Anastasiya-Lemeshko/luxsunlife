@@ -545,3 +545,39 @@
     }
   }
 }
+
+// отбивка об успешной отправке
+
+.modal-success {
+  .modal__container {
+    width: 80%;
+    max-width: 372px;
+    padding: 50px 10px 30px;
+
+    @include vp-1024 {
+      max-width: 621px;
+    }
+  }
+}
+
+.modal__success-title {
+  margin: 0 0 50px;
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  text-align: center;
+
+  @include vp-1024 {
+    margin: 0 0 111px;
+    font-size: 46px;
+  }
+}
+
+.modal__success-button {
+  max-width: 353px;
+  margin: 0 auto;
+  padding: 15px 20px 13px;
+}

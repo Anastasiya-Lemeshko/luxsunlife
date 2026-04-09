@@ -1,5 +1,5 @@
 import Swiper from 'swiper';
-import { Navigation, EffectFade } from 'swiper/modules';
+import { Navigation, EffectFade, FreeMode } from 'swiper/modules';
 import {
   getSlidesCount,
   getAutoSlidesCount,
@@ -48,7 +48,7 @@ const setNavigationSwiper = () => {
       swiperButtons.classList.remove('hidden');
 
       swiperContainer = new Swiper(section, {
-        modules: [Navigation, EffectFade],
+        modules: [Navigation, EffectFade, FreeMode],
         direction: 'horizontal',
         speed: 500,
         allowTouchMove: true,
@@ -56,6 +56,12 @@ const setNavigationSwiper = () => {
         spaceBetween: 10,
         loop: isLoopNeeded,
         autoHeight: sliderConfig.auto_height ?? sliderConfig.mobile_count === 1,
+        freeMode: {
+          enabled: true,
+          momentum: false,
+          sticky: false,
+        },
+        noSwiping: true,
 
         ...(sliderConfig.fade && {
           effect: 'fade',

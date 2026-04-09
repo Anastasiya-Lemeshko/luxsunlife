@@ -50,12 +50,16 @@
     padding: 19px 0 0;
   }
 
+  @include vp-1280 {
+    gap: 70px 30px;
+  }
+
   @include vp-1366 {
-    gap: 80px 10px;
+    gap: 80px 30px;
   }
 
   @include vp-1920 {
-    gap: 108px 10px;
+    gap: 108px 30px;
   }
 }
 
@@ -83,6 +87,7 @@
   @include vp-1280 {
     display: grid;
     grid-template-columns: 1fr 280px;
+    gap: 20px 10px;
   }
 
   @include vp-1366 {
@@ -193,12 +198,10 @@
 
 .areas__callback {
   width: 100%;
-  padding: 8px 0 16px;
   cursor: pointer;
 
   @include vp-768 {
     margin: auto 0 0;
-    padding: 8px 0;
   }
 
   @include vp-1280 {

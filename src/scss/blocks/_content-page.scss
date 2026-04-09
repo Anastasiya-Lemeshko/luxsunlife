@@ -1,5 +1,13 @@
 @use "index" as *;
 
+.content-page {
+  padding: 85px 0 0;
+
+  @include vp-768 {
+    padding: 175px 0 0;
+  }
+}
+
 .content-page__wrapper {
   h1 {
     margin: 0 0 40px;

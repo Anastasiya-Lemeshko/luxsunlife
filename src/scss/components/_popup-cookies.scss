@@ -1,0 +1,40 @@
+@use "index" as *;
+
+.popup-cookies {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 80%;
+  max-width: 393px;
+  padding: 20px;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+  box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.2);
+  z-index: var(--z-header);
+
+  @include vp-768 {
+    bottom: 20px;
+    right: 25px;
+  }
+}
+
+.popup-cookies.show {
+  display: block;
+}
+
+.popup-cookies__text {
+  margin: 0 0 20px;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+
+  @include vp-768 {
+    font-size: 14px;
+  }
+}
+
+.popup-cookies__button {
+  text-transform: none;
+}

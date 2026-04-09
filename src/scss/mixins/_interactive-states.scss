@@ -43,8 +43,15 @@
   transition: color 0.3s, transform 0.3s;
 
   @include hover-focus {
-    transform: scale(1.03);
     outline: none;
+
+    span {
+      transform: scale(1.03);
+    }
+
+    &::after {
+      transform: scale(1.1);
+    }
   }
 
   @include active {

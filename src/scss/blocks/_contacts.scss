@@ -1,5 +1,13 @@
 @use "index" as *;
 
+.contacts {
+  padding: 85px 0 0;
+
+  @include vp-768 {
+    padding: 175px 0 0;
+  }
+}
+
 .contacts__title {
   margin: 0;
   padding: 0 0 20px;

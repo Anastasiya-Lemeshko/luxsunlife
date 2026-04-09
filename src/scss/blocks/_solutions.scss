@@ -140,6 +140,7 @@
   width: 100%;
   height: 240px;
   margin: 0 0 28px;
+  overflow: hidden;
 
   @include vp-430 {
     height: auto;
@@ -163,10 +164,19 @@
     aspect-ratio: unset;
   }
 
+  @include hover-focus {
+    outline: none;
+
+    img {
+      transform: scale(1.05);
+    }
+  }
+
   img {
     @include img-bg;
 
     object-fit: cover;
+    transition: transform 0.7s;
     z-index: 1;
   }
 }

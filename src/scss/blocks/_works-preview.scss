@@ -35,9 +35,12 @@
   @include vp-1024 {
     position: relative;
     grid-template-columns: minmax(0, 483fr) minmax(0, 472fr) minmax(0, 926fr);
-    grid-template-rows: 1fr 1fr;
     align-items: end;
     gap: 30px;
+  }
+
+  @include vp-1640 {
+    gap: 70px 30px;
   }
 
   &::before {
